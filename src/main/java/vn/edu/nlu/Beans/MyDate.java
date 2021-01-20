@@ -12,8 +12,8 @@ public class MyDate {
     }
 
     public MyDate(String input) {
-        StringTokenizer stk = new StringTokenizer(input,"-");
-        if (stk.countTokens()==3){
+        StringTokenizer stk = new StringTokenizer(input, "-");
+        if (stk.countTokens() == 3) {
             this.day = Integer.parseInt(stk.nextToken());
             this.month = Integer.parseInt(stk.nextToken());
             this.year = Integer.parseInt(stk.nextToken());
@@ -46,6 +46,6 @@ public class MyDate {
 
     @Override
     public String toString() {
-        return day+"-"+month+"-"+year;
+        return day + "-" + month + "-" + year;
     }
 }
