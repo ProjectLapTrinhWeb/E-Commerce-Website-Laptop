@@ -19,7 +19,9 @@ public class AdminCustomer extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Customer> listCus = null, listAc = null, listUnAc = null;
+        List<Customer> listCus = null;
+        List<Customer> listAc = null;
+        List<Customer> listUnAc = null;
         try {
             listCus = CustomerEntity.getAllCustomer();
             listAc = CustomerEntity.getActiveCustomer();

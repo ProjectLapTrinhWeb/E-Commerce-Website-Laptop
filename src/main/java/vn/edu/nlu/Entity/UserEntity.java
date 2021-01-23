@@ -98,6 +98,8 @@ public class UserEntity {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        User u = Login("mmm", "123");
+//        System.out.println(u.getUserName());
 //        System.out.println(Register("nch","132@gmail.com","123"));
     }
 
