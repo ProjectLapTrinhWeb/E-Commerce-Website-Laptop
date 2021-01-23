@@ -1,3 +1,4 @@
+<%@ page import="vn.edu.nlu.Beans.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -116,15 +117,40 @@
                         </ul>
                     </li>
                     <li><a href="about.html">About Us</a></li>
-<%--                    <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"--%>
-<%--                                           aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>--%>
-<%--                        <ul class="dropdown-menu">--%>
-<%--                            <li><a href="icons.html">Web Icons</a></li>--%>
-<%--                            <li><a href="codes.html">Short Codes</a></li>--%>
-<%--                        </ul>--%>
-<%--                    </li>--%>
+                    <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="icons.html">Web Icons</a></li>
+                            <li><a href="codes.html">Short Codes</a></li>
+                        </ul>
+                    </li>
                     <li><a href="faq.html" class="">FAQ's</a></li>
                     <li><a href="mail.html">Mail Us</a></li>
+
+                    <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-haspopup="true" aria-expanded="false">Account <span
+                            class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <% User user1 = (User) session.getAttribute("User");
+                                if (user1 != null) {%>
+                            <li><button class="disabled"><a  href="icons.html"><%= user1.getUserName()%>
+                            </a></button></li>
+                            <li>
+                                <form action="/WebLaptop/Logout">
+                                    <button type="submit" class="btn btn-default">Info</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="/WebLaptop/Logout" method="get">
+                                    <button type="submit" class="btn btn-default">Logout</button>
+                                </form>
+                            </li>
+                            <%
+                                }
+                            %>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
         </nav>
