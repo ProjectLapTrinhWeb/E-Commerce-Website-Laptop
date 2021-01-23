@@ -27,7 +27,11 @@ public class ProductEntity {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+<<<<<<< Updated upstream
         System.out.println(getProductWithRangePrice("5000000","10000000"));
+=======
+        System.out.println(getProductWithCategoryID(1));
+>>>>>>> Stashed changes
     }
 
     public static List<Product> getHomeProduct() throws SQLException {
@@ -35,10 +39,24 @@ public class ProductEntity {
         String sql = "select * from product where categoryId = '1'";
         return getFromDB(sql, rs);
     }
+<<<<<<< Updated upstream
 
     public static List<Product> getProductWithId(String id) throws SQLException, ClassNotFoundException {
         List<Product> rs = new ArrayList<Product>();
         String sql = "select * from product where id = '"+id+"' ";
+=======
+
+    public static List<Product> getProductWithId(String id) throws SQLException, ClassNotFoundException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where id = '"+id+"' ";
+        return getFromDB(sql, rs);
+
+    }
+
+    public static List<Product> getProductWithName(String name) throws SQLException, ClassNotFoundException {
+        List<Product>  rs =  new ArrayList<Product>();
+        String sql = "select * from product where name like '%"+name+"%'";
+>>>>>>> Stashed changes
         return getFromDB(sql, rs);
 
     }
@@ -61,6 +79,7 @@ public class ProductEntity {
         return  getFromDB(sql, rs);
     }
 
+<<<<<<< Updated upstream
     public static List<Product> getProductWithDescensionPrice(String fromPrice, String toPrice) throws SQLException, ClassNotFoundException {
         List<Product> rs = new ArrayList<Product>();
         String sql = "select * from product where price between  "+Integer.parseInt(fromPrice)+" and "+Integer.parseInt(toPrice)+" Order By price desc;";
@@ -101,7 +120,48 @@ public class ProductEntity {
         List<Product> rs = new ArrayList<Product>();
         String sql = "select * from product p join category c on p.CategoryId=c.ID where c.Name = 'Graphic'";
         return getFromDB(sql, rs);
+=======
+    public static List<Product> getProductWithPrice(String price) throws SQLException, ClassNotFoundException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where price = '"+price+"'";
+        return  getFromDB(sql, rs);
     }
+
+    public static List<Product> getProductWithRangePrice(String fromPrice, String toPrice) throws SQLException, ClassNotFoundException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where price between  "+Integer.parseInt(fromPrice)+" and "+Integer.parseInt(toPrice)+";";
+        return  getFromDB(sql, rs);
+    }
+
+    public static List<Product> getProductWithDescensionPrice(String fromPrice, String toPrice) throws SQLException, ClassNotFoundException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where price between  "+Integer.parseInt(fromPrice)+" and "+Integer.parseInt(toPrice)+" Order By price desc;";
+        return  getFromDB(sql, rs);
+    }
+
+    public static List<Product> getProductWithAscensionPrice(String fromPrice, String toPrice) throws SQLException, ClassNotFoundException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where price between  "+Integer.parseInt(fromPrice)+" and "+Integer.parseInt(toPrice)+" Order By price asc;";
+        return  getFromDB(sql, rs);
+    }
+
+    public static List<Product> getProductWithCategoryID(int categoryId) throws SQLException, ClassNotFoundException{
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where categoryID = '"+categoryId+"'";
+        return getFromDB(sql,rs);
+    }
+
+    public static List<Product> getProductWithSupplierID(int supplierId) throws SQLException, ClassNotFoundException{
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where supplierId = '"+supplierId+"'";
+        return getFromDB(sql,rs);
+>>>>>>> Stashed changes
+    }
+
+
+
+
+
 
     public static List<Product> getFromDB(String sql, List<Product> rs) throws SQLException {
         PreparedStatement ps = null;
