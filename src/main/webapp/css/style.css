@@ -5773,8 +5773,8 @@ li.pape-item {
 	opacity: 0.6;
 	font-weight: normal;
 }
-#supplierProduct,#discountProduct,#categoryProduct{
-	width: 200px;
+#supplierProduct,#discountProduct,#categoryProduct, #statusProduct, #quantityProduct, #imgProduct {
+	width: 200px !important;
 }
 /*  end form add product-----------------*/
 .template1{
@@ -5830,4 +5830,21 @@ input{
 }
 .center{
 	text-align: center;
+}
+
+.un-form-group{
+    margin-left: 0;
+    margin-right: 100px;
+}
+.tab-product{
+    width: 100%;
+    min-height: 100px;
+}
+#content-product{
+    width: 100%;
+    min-height: 100px;
+}
+.my-pagination{
+    float: left;
+    margin-right: 10px;
 }
