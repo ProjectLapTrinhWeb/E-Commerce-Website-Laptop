@@ -188,10 +188,9 @@
                                 <div class="col-sm-3">
                                     <ul class="multi-column-dropdown">
                                         <h6>Laptop</h6>
-                                        <li><a href="LaptopGaming.html">Laptop Gaming</a></li>
-                                        <li><a href="products.html">Macbook<span>New</span></a></li>
-                                        <li><a href="products.html">Laptop Văn Phòng</a></li>
-                                        <li><a href="products.html">Laptop Đồ Họa<span>New</span></a></li>
+                                        <li><a href="/WebLaptop/LaptopGaming">Laptop Gaming</a></li>
+                                        <li><a href="/WebLaptop/LaptopOffice">Laptop Office</a></li>
+                                        <li><a href="/WebLaptop/LaptopGraphic">Laptop Graphic</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-3">
@@ -279,10 +278,9 @@
                                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body panel_text">
                                         <ul>
-                                            <li><a href="products.html">Laptop Gaming</a></li>
-                                            <li><a href="products1.html">Laptop Office</a></li>
-                                            <li><a href="products2.html">Tablet</a></li>
-                                            <li><a href="products.html">Laptop Studying</a></li>
+                                            <li><a href="/WebLaptop/LaptopGaming">Laptop Gaming</a></li>
+                                            <li><a href="/WebLaptop/LaptopOffice">Laptop Office</a></li>
+                                            <li><a href="/WebLaptop/LaptopGraphic">Laptop Graphic</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -336,11 +334,11 @@
                     <div class="w3ls_mobiles_grid_left_grid_sub">
                         <div class="ecommerce_color ecommerce_size">
                             <ul>
-                                <li><a href="#">Below $ 100</a></li>
-                                <li><a href="#">$ 100-500</a></li>
-                                <li><a href="#">$ 1k-10k</a></li>
-                                <li><a href="#">$ 10k-20k</a></li>
-                                <li><a href="#">$ Above 20k</a></li>
+                                <li><a href="/WebLaptop/LoadProductWithRangePrice">5.000.000 - 10.000.000 triệu</a></li>
+                                <li><a href="/WebLaptop/LoadProductWithRangePrice">10.000.000 - 20.000.000 triệu</a></li>
+                                <li><a href="/WebLaptop/LoadProductWithRangePrice">20.000.000 - 30.000.000 triệu</a></li>
+                                <li><a href="/WebLaptop/LoadProductWithRangePrice">30.000.000 - 40.000.000 triệu</a></li>
+                                <li><a href="/WebLaptop/LoadProductWithRangePrice">40.000.000 - 50.000.000 triệu</a></li>
                             </ul>
                         </div>
                     </div>

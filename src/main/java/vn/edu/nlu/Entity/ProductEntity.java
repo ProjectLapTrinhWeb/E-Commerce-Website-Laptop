@@ -4,6 +4,7 @@ import vn.edu.nlu.Beans.MyDate;
 import vn.edu.nlu.Beans.Product;
 import vn.edu.nlu.db.ConnectionDB;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,54 +17,90 @@ public class ProductEntity {
     public static List<Product> getAllProduct() throws SQLException {
         List<Product> rs = new ArrayList<Product>();
         String sql = "select * from product";
-
         return getFromDB(sql, rs);
     }
 
     public static List<Product> getDiscountProduct() throws SQLException {
         List<Product> rs = new ArrayList<Product>();
         String sql = "select * from product where DISCOUNT IS NOT NULL";
-
         return getFromDB(sql, rs);
     }
 
-    public static void main(String[] args) throws SQLException {
-        System.out.println(getDiscountProduct());
-
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        System.out.println(getProductWithRangePrice("5000000","10000000"));
     }
 
     public static List<Product> getHomeProduct() throws SQLException {
         List<Product> rs = new ArrayList<Product>();
         String sql = "select * from product where categoryId = '1'";
-
         return getFromDB(sql, rs);
     }
 
-    public static Product getId(int id) throws SQLException, ClassNotFoundException {
-        String sql = "select * from product where id = '?'";
-        PreparedStatement ps = ConnectionDB.connect(sql);
-        ps.setInt(1, id);
-        ResultSet rst = ps.executeQuery();
+    public static List<Product> getProductWithId(String id) throws SQLException, ClassNotFoundException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where id = '"+id+"' ";
+        return getFromDB(sql, rs);
 
-        return getOneProduct(rst);
     }
 
-    public static Product getName(String name) throws SQLException, ClassNotFoundException {
-        String sql = "select * from product where name = '?'";
-        PreparedStatement ps = ConnectionDB.connect(sql);
-        ps.setString(1, name);
-        ResultSet rst = ps.executeQuery();
-
-        return getOneProduct(rst);
+    public static List<Product> getProductWithName(String name) throws SQLException, ClassNotFoundException {
+        List<Product>  rs =  new ArrayList<Product>();
+        String sql = "select * from product where name like '%"+name+"%'";
+        return getFromDB(sql, rs);
     }
 
-    public static Product getPrice(String price) throws SQLException, ClassNotFoundException {
-        String sql = "select * from product where name = '?'";
-        PreparedStatement ps = ConnectionDB.connect(sql);
-//        ps.setDouble(1, price);
-        ResultSet rst = ps.executeQuery();
+    public static List<Product> getProductWithPrice(String price) throws SQLException, ClassNotFoundException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where price = '"+price+"'";
+        return  getFromDB(sql, rs);
+    }
 
-        return getOneProduct(rst);
+    public static List<Product> getProductWithRangePrice(String fromPrice, String toPrice) throws SQLException, ClassNotFoundException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where price between  "+Integer.parseInt(fromPrice)+" and "+Integer.parseInt(toPrice)+";";
+        return  getFromDB(sql, rs);
+    }
+
+    public static List<Product> getProductWithDescensionPrice(String fromPrice, String toPrice) throws SQLException, ClassNotFoundException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where price between  "+Integer.parseInt(fromPrice)+" and "+Integer.parseInt(toPrice)+" Order By price desc;";
+        return  getFromDB(sql, rs);
+    }
+
+    public static List<Product> getProductWithAscensionPrice(String fromPrice, String toPrice) throws SQLException, ClassNotFoundException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where price between  "+Integer.parseInt(fromPrice)+" and "+Integer.parseInt(toPrice)+" Order By price asc;";
+        return  getFromDB(sql, rs);
+    }
+
+    public static List<Product> getProductWithCategoryID(int categoryId) throws SQLException, ClassNotFoundException{
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where categoryID = '"+categoryId+"'";
+        return getFromDB(sql,rs);
+    }
+
+    public static List<Product> getProductWithSupplierID(int supplierId) throws SQLException, ClassNotFoundException{
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where supplierId = '"+supplierId+"'";
+        return getFromDB(sql,rs);
+    }
+
+    public static List<Product> getLaptopGaming() throws SQLException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product p join category c on p.CategoryID=c.ID where c.Name = 'Gaming'";
+        return getFromDB(sql,rs);
+    }
+
+    public static List<Product> getLaptopOffice() throws SQLException{
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product p join category c on p.CategoryId=c.ID where c.Name = 'Office'";
+        return getFromDB(sql, rs);
+    }
+
+    public static List<Product> getLaptopGraphic() throws SQLException{
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product p join category c on p.CategoryId=c.ID where c.Name = 'Graphic'";
+        return getFromDB(sql, rs);
     }
 
     public static List<Product> getFromDB(String sql, List<Product> rs) throws SQLException {
@@ -74,7 +111,7 @@ public class ProductEntity {
             rst.last();
             int i = rst.getRow();
             rst.beforeFirst();
-            while (rst.next() && i > 1) {
+            while (rst.next() && i >= 1) {
                 rs.add(getOneProduct(rst));
             }
         } catch (ClassNotFoundException | SQLException e) {

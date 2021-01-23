@@ -5,7 +5,7 @@
 <html lang="en">
 
 <head>
-    <title>Laptop Store</title>
+    <title>Admin Order | Laptop Store</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
