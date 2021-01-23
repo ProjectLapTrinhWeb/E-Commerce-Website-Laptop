@@ -1,6 +1,5 @@
 package vn.edu.nlu.controller;
 
-import vn.edu.nlu.Beans.Product;
 import vn.edu.nlu.Entity.ProductEntity;
 
 import javax.servlet.ServletException;
