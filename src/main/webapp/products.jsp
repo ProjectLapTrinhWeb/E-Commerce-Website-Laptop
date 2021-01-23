@@ -278,7 +278,6 @@
                                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body panel_text">
                                         <ul>
-                                            
                                             <li><a href="/WebLaptop/LaptopGaming">Laptop Gaming</a></li>
                                             <li><a href="/WebLaptop/LaptopOffice">Laptop Office</a></li>
                                             <li><a href="/WebLaptop/LaptopGraphic">Laptop Graphic</a></li>
@@ -335,11 +334,11 @@
                     <div class="w3ls_mobiles_grid_left_grid_sub">
                         <div class="ecommerce_color ecommerce_size">
                             <ul>
-                                <li><a href="/WebLaptop/Laptop5To10MA">5.000.000 - 10.000.000 triệu</a></li>
-                                <li><a href="/WebLaptop/Laptop10To20MA">10.000.000 - 20.000.000 triệu</a></li>
-                                <li><a href="/WebLaptop/Laptop20To30MA">20.000.000 - 30.000.000 triệu</a></li>
-                                <li><a href="/WebLaptop/Laptop30To40MA">30.000.000 - 40.000.000 triệu</a></li>
-                                <li><a href="/WebLaptop/Laptop40To50MA">40.000.000 - 50.000.000 triệu</a></li>
+                                <li><a href="/WebLaptop/LoadProductWithRangePrice">5.000.000 - 10.000.000 triệu</a></li>
+                                <li><a href="/WebLaptop/LoadProductWithRangePrice">10.000.000 - 20.000.000 triệu</a></li>
+                                <li><a href="/WebLaptop/LoadProductWithRangePrice">20.000.000 - 30.000.000 triệu</a></li>
+                                <li><a href="/WebLaptop/LoadProductWithRangePrice">30.000.000 - 40.000.000 triệu</a></li>
+                                <li><a href="/WebLaptop/LoadProductWithRangePrice">40.000.000 - 50.000.000 triệu</a></li>
                             </ul>
                         </div>
                     </div>

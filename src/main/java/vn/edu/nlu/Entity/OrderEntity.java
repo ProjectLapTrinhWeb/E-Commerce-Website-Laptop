@@ -24,20 +24,6 @@ public class OrderEntity {
         return getFromDB(sql, rs);
     }
 
-    public static List<Order> getLimitOrder(int limit, int offset) throws SQLException, ClassNotFoundException {
-        List<Order> rs = new ArrayList<>();
-        String sql = "select * from orders limit " + limit + " offset " + offset;
-
-        return getFromDB(sql, rs);
-    }
-
-    public static List<Order> getLimitSearchOrder(String search, int limit, int offset) throws SQLException, ClassNotFoundException {
-        List<Order> rs = new ArrayList<>();
-        String sql = "select * from orders where id = '" + search + "' limit " + limit + " offset " + offset;
-
-        return getFromDB(sql, rs);
-    }
-
     public static List<Order> getShippingOrder() throws SQLException, ClassNotFoundException {
         List<Order> rs = new ArrayList<>();
         String sql = "select * from orders where status like'%dang giao%'";
@@ -76,8 +62,8 @@ public class OrderEntity {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        System.out.println(getLimitOrder(10, 1));
+        System.out.println(getAllOrder());
     }
-
-
+    
+    
 }
