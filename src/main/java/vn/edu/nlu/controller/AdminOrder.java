@@ -19,23 +19,17 @@ public class AdminOrder extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Order> listAll = null, listCancel = null, listDelivered = null, listShipping = null;
+        List<Order> list = null;
+
         try {
-            listAll = OrderEntity.getAllOrder();
-            listCancel = OrderEntity.getCancelOrder();
-            listShipping = OrderEntity.getShippingOrder();
-            listDelivered = OrderEntity.getDeliveredOrder();
+            list = OrderEntity.getAllOrder();
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } finally {
-            request.setAttribute("ListOrder", listAll);
-            request.setAttribute("ListCancel", listCancel);
-            request.setAttribute("ListShipping", listShipping);
-            request.setAttribute("ListDelivered", listDelivered);
-
-            request.getRequestDispatcher("adminOrder.jsp").forward(request, response);
         }
+        request.setAttribute("List", list);
+        request.getRequestDispatcher("adminOrder.jsp").forward(request, response);
     }
 }

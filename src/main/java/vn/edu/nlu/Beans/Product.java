@@ -1,6 +1,8 @@
 package vn.edu.nlu.Beans;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Product implements Serializable {
     private String id;
@@ -151,7 +153,18 @@ public class Product implements Serializable {
         this.priceSale = priceSale;
     }
 
-    public Product(String id, String name, String price, double discount, String description, String img, int categoryId, int supplierId,String status, int quantity) {
+    public Product(String name, String price, double discount, String img, int categoryId, int supplierId, String status, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.discount = discount;
+        this.img = img;
+        this.categoryId = categoryId;
+        this.supplierId = supplierId;
+        this.status = status;
+        this.quantity = quantity;
+    }
+
+    public Product(String id, String name, String price, double discount, String description, String img, int categoryId, int supplierId, String status, int quantity) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -164,6 +177,20 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
+    public String getVNDPrice() {
+        String rs = null;
+        Locale loc = Locale.getDefault();
+        NumberFormat nf = NumberFormat.getCurrencyInstance(loc);
+        rs = nf.format(Double.parseDouble(price));
+        return rs.substring(1, rs.length() - 3) + " VNĐ";
+    }
+
+    public static void main(String[] args) {
+        Product p = new Product();
+        p.setPrice("100000");
+        System.out.println(p.getVNDPrice());
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -171,6 +198,6 @@ public class Product implements Serializable {
                 ", name='" + name + '\'' +
                 ", price='" + price + '\'' +
                 ", discount=" + discount +
-                '}'+"\n";
+                '}' + "\n";
     }
 }

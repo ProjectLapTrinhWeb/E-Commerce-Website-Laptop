@@ -26,4 +26,19 @@ public class Order {
         this.totalPrice = totalPrice;
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id='" + id + '\'' +
+                ", userId=" + userId +
+                ", paymentId=" + paymentId +
+                ", customerName='" + customerName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", note='" + note + '\'' +
+                ", totalPrice=" + totalPrice +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

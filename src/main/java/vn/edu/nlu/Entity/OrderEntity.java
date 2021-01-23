@@ -12,28 +12,42 @@ import java.util.List;
 public class OrderEntity {
     public static List<Order> getAllOrder() throws SQLException, ClassNotFoundException {
         List<Order> rs = new ArrayList<>();
-        String sql = "select * from order";
+        String sql = "select * from orders";
 
         return getFromDB(sql, rs);
     }
 
     public static List<Order> getCancelOrder() throws SQLException, ClassNotFoundException {
         List<Order> rs = new ArrayList<>();
-        String sql = "select * from order where status like'%huy%'";
+        String sql = "select * from orders where status like'%huy%'";
+
+        return getFromDB(sql, rs);
+    }
+
+    public static List<Order> getLimitOrder(int limit, int offset) throws SQLException, ClassNotFoundException {
+        List<Order> rs = new ArrayList<>();
+        String sql = "select * from orders limit " + limit + " offset " + offset;
+
+        return getFromDB(sql, rs);
+    }
+
+    public static List<Order> getLimitSearchOrder(String search, int limit, int offset) throws SQLException, ClassNotFoundException {
+        List<Order> rs = new ArrayList<>();
+        String sql = "select * from orders where id = '" + search + "' limit " + limit + " offset " + offset;
 
         return getFromDB(sql, rs);
     }
 
     public static List<Order> getShippingOrder() throws SQLException, ClassNotFoundException {
         List<Order> rs = new ArrayList<>();
-        String sql = "select * from order where status like'%dang giao%'";
+        String sql = "select * from orders where status like'%dang giao%'";
 
         return getFromDB(sql, rs);
     }
 
     public static List<Order> getDeliveredOrder() throws SQLException, ClassNotFoundException {
         List<Order> rs = new ArrayList<>();
-        String sql = "select * from order where status like'%da giao%'";
+        String sql = "select * from orders where status like'%da giao%'";
 
         return getFromDB(sql, rs);
     }
@@ -41,10 +55,7 @@ public class OrderEntity {
     public static List<Order> getFromDB(String sql, List<Order> rs) throws SQLException, ClassNotFoundException {
         PreparedStatement ps = ConnectionDB.connect(sql);
         ResultSet rst = ps.executeQuery();
-        rst.last();
-        int i = rst.getRow();
-        rst.beforeFirst();
-        while (rst.next() && i > 1) {
+        while (rst.next()) {
             rs.add(getOrder(rst));
         }
         return rs;
@@ -63,4 +74,10 @@ public class OrderEntity {
 
         return new Order(id, userId, paymentId, customerName, phone, address, note, totalPrice, status);
     }
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        System.out.println(getLimitOrder(10, 1));
+    }
+
+
 }
