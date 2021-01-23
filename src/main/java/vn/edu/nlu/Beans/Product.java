@@ -2,6 +2,7 @@ package vn.edu.nlu.Beans;
 
 import java.io.Serializable;
 
+
 public class Product implements Serializable {
     private String id;
     private String name;
@@ -164,13 +165,4 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", price='" + price + '\'' +
-                ", discount=" + discount +
-                '}'+"\n";
-    }
 }

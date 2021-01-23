@@ -1,6 +1,5 @@
 package vn.edu.nlu.Entity;
 
-import vn.edu.nlu.Beans.Customer;
 import vn.edu.nlu.db.ConnectionDB;
 
 import java.sql.PreparedStatement;

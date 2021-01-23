@@ -1,6 +1,5 @@
 package vn.edu.nlu.controller;
 
-import vn.edu.nlu.Beans.Order;
 import vn.edu.nlu.Entity.OrderEntity;
 
 import javax.servlet.ServletException;

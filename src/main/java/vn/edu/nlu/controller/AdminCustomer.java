@@ -1,6 +1,5 @@
 package vn.edu.nlu.controller;
 
-import vn.edu.nlu.Beans.Customer;
 import vn.edu.nlu.Entity.CustomerEntity;
 
 import javax.servlet.ServletException;
