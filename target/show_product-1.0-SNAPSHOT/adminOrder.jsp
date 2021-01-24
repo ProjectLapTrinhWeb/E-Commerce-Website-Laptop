@@ -110,7 +110,7 @@
                                 <input type="search" name="search" id="search-order" class="search-box"
                                        value="<% String searchKey;
                                 if((searchKey = (String) request.getAttribute("SearchKey"))!=null){%><%= searchKey%><%}%>"
-                                       placeholder="Theo tên khách hàng...">
+                                       placeholder="Theo id khách hàng...">
                                 <input type="submit" value="Tìm" class="search-btn">
                             </label>
                         </form>

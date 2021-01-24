@@ -41,6 +41,7 @@ public class SearchAdminOrder extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        request.setAttribute("NamePage", "orderAdmin");
         request.setAttribute("List", data);
         request.getRequestDispatcher("adminOder.jsp").forward(request, response);
     }

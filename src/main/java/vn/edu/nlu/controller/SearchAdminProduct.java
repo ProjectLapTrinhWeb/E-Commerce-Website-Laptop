@@ -39,6 +39,7 @@ public class SearchAdminProduct extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        request.setAttribute("NamePage", "productAdmin");
         request.setAttribute("List", data);
         request.getRequestDispatcher("adminProduct.jsp").forward(request, response);
     }
