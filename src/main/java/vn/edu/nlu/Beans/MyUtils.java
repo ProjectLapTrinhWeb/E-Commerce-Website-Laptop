@@ -1,6 +1,16 @@
 package vn.edu.nlu.Beans;
 
+import vn.edu.nlu.Entity.ProductEntity;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.List;
 
 public class MyUtils {
     private static final char[] SOURCE_CHARACTERS = {'À', 'Á', 'Â', 'Ã', 'È', 'É',
@@ -43,8 +53,57 @@ public class MyUtils {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        String t = "Vũ Trương Quang Hào";
-        System.out.println(removeAccent(t));
+    //khong duoc test cái nay
+    public static String downloadImage(String strImageURL, String path) {
+
+        //get file name from image path
+        String strImageName =
+                strImageURL.substring(strImageURL.lastIndexOf("/") + 1);
+
+        System.out.println("Saving: " + strImageName + ", from: " + strImageURL);
+
+        try {
+
+            //open the stream from URL
+            URLConnection openConnection = new URL(strImageURL).openConnection();
+            System.out.println(openConnection);
+            openConnection.addRequestProperty("User-Agent", "Chrome");
+            InputStream in = openConnection.getInputStream();
+
+            byte[] buffer = new byte[4096];
+            int n = -1;
+
+            OutputStream os =
+                    new FileOutputStream(path + "/" + strImageName);
+
+            //write bytes to the output stream
+            while ((n = in.read(buffer)) != -1) {
+                os.write(buffer, 0, n);
+            }
+
+            //close the stream
+            os.close();
+
+            System.out.println("Image saved");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return path + "/" + strImageName;
+    }
+
+    public static String cutPath(String path) {
+
+        return path.substring(42, path.length());
+    }
+
+    public static void main(String[] args) throws SQLException {
+        //nghiem cam test duoi moi hinh thuc
+//        List<Product> list = ProductEntity.getAllProduct();
+//        for (Product p : list) {
+//            String path = cutPath(p.getImg());
+//            System.out.println("Update: " + p.getName() + " : " + ProductEntity.updateImg(path, p.getId()));
+//        }
+//        System.out.println(cutPath("E:/IntelliJIDEA/WebLaptop/src/main/webapp/img/hinhanh/637444866084415793_dell-vostro-v3400-den-dd.png"));
     }
 }

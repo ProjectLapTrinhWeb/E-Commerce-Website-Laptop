@@ -232,4 +232,16 @@ public class ProductEntity {
         }
         return true;
     }
+
+    public static boolean updateImg(String img, String id) {
+        try {
+            String sql = "update product set image = '" + img + "' where id = '"+id+"'";
+            PreparedStatement ps = ConnectionDB.connect(sql);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }

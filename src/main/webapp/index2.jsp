@@ -115,19 +115,6 @@
 <!-- header -->
 <div class="header" id="home1">
     <div class="container">
-        <%--        <% User user = (User) session.getAttribute("user");--%>
-        <%--            if (user != null) {%>--%>
-        <%--        <div class="dropdown box-user" style="display: flex;padding-left: 0px;float: left">--%>
-        <%--            <button style="width: 50px;height: 50px" class="dropdown-toggle circle" type="button" data-toggle="dropdown"><img style="width: 100%" src="img/1.jpg" alt=""></button>--%>
-        <%--            <ul class="dropdown-menu">--%>
-        <%--                <li><a class="disabled" style="padding-top:20px;border-bottom: 1px solid darkgray "><%user.getUserName();%></a></li>--%>
-        <%--                <li><a href="account.html" style="padding-top:20px;border-bottom: 1px solid darkgray ">Thông tin</a></li>--%>
-        <%--                <li><a href="index.html" style="padding-top:20px;">Thoát</a></li>--%>
-        <%--            </ul>--%>
-        <%--        </div>--%>
-        <%--        <%--%>
-        <%--            }--%>
-        <%--        %>--%>
         <div class="w3l_logo">
             <h1><a href="index.html">Laptop Store<span>Nonglam University</span></a></h1>
         </div>

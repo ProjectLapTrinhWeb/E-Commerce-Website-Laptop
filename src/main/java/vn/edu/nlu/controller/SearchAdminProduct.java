@@ -35,7 +35,7 @@ public class SearchAdminProduct extends HttpServlet {
             request.setAttribute("SearchKey", search);
             request.setAttribute("SumPage", sumPage);
             request.setAttribute("CurrentPage", page);
-            data = ProductEntity.getLimitSearchProduct(MyUtils.removeAccent(search),10, (page - 1) * 10 + 1);
+            data = ProductEntity.getLimitSearchProduct(MyUtils.removeAccent(search),10, (page - 1) * 10);
         } catch (Exception e) {
             e.printStackTrace();
         }

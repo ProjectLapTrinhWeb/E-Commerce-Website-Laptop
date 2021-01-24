@@ -89,117 +89,9 @@
     <div class="container" style="margin: 0 !important;">
         <div class="w3ls_mobiles_grids">
             <div class="col-md-4 w3ls_mobiles_grid_left">
-                <div class="w3ls_mobiles_grid_left_grid">
-                    <h3>Quản lý</h3>
-                    <div class="w3ls_mobiles_grid_left_grid_sub">
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <h4 class="panel-title asd">
-                                        <a class="pa_italic" href="adminOrder.html">
-                                            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>Đơn hàng
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                              <div class="panel-body panel_text">
-                                <ul>
-                                    <li><a href="" role="button" data-toggle="collapse" >Tất cả</a></li>
-                                    <li><a href="#cancel"  role="button" data-toggle="collapse" >Đơn đã hủy</a></li>
-                                    <li><a href="products2.html">Đơn đang giao</a></li>
-                                    <li><a href="#delivered">Đơn đã giao</a></li>
-                                    <li><a href="products.html">Trả hàng/Hoàn tiền</a></li>
-                                </ul>
-                              </div>
-                            </div> -->
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title asd">
-                                        <a class="pa_italic collapsed" href="adminProduct.html">
-                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><i
-                                                class="glyphicon glyphicon-plus" aria-hidden="true"></i>Sản phẩm
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                               <div class="panel-body panel_text">
-                                <ul>
-                                    <li><a href="products2.html">Tất cả sản phẩm</a></li>
-                                    <li><a href="products2.html">Thêm sản phẩm</a></li>
-                                    <li><a href="products2.html">Đang kinh doanh</a></li>
-                                    <li><a href="products2.html">Đã hết</a></li>
-                                </ul>
-                              </div>
-                            </div> -->
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="heading3">
-                                    <h4 class="panel-title asd">
-                                        <a class="pa_italic" href="adminStaff.html">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
-                                                class="glyphicon glyphicon-plus" aria-hidden="true"></i>Nhân viên
-                                        </a>
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="heading4">
-                                    <h4 class="panel-title asd">
-                                        <a class="pa_italic" href="adminCustomer.html">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
-                                                class="glyphicon glyphicon-plus" aria-hidden="true"></i>Khách hàng
-                                        </a>
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="heading5">
-                                    <h4 class="panel-title asd">
-                                        <a class="pa_italic" href="adminContact.html">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
-                                                class="glyphicon glyphicon-plus" aria-hidden="true"></i>Liên hệ
-                                        </a>
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="heading6">
-                                    <h4 class="panel-title asd">
-                                        <a class="pa_italic" href="adminSupplier.html">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
-                                                class="glyphicon glyphicon-plus" aria-hidden="true"></i>Nhà sản xuất
-                                        </a>
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="w3ls_mobiles_grid_left_grid">
-                    <h3>Tài chính</h3>
-                    <div class="w3ls_mobiles_grid_left_grid_sub">
-                        <div class="ecommerce_color ecommerce_size">
-                            <ul>
-                                <li><a href="#">Doanh thu theo tuần</a></li>
-                                <li><a href="#">Doanh thu theo tháng</a></li>
-                                <li><a href="#">Doanh thu theo quý</a></li>
-                                <li><a href="#">Doanh thu theo năm</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="w3ls_mobiles_grid_left_grid">
-                    <h3>Dữ liệu</h3>
-                    <div class="w3ls_mobiles_grid_left_grid_sub">
-                        <div class="ecommerce_color ecommerce_size">
-                            <ul>
-                                <li><a href="#">Phân tích bán hàng</a></li>
-                                <li><a href="#">Hiệu quả hoạt động</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
+                <%-- menu admin  --%>
+                <%@include file="iMenuAdmin.jsp" %>
+                <%-- // menu admin  --%>
             </div>
         </div>
         <div class="tab-content">
@@ -219,7 +111,7 @@
                                 <input type="search" name="search" value="<% String searchKey;
                                 if((searchKey = (String) request.getAttribute("SearchKey"))!=null){%><%= searchKey%><%}%>"
                                        class="search-box"
-                                       placeholder="Theo tên thương hiệu...">
+                                       placeholder="Theo tên...">
                                 <input type="submit" value="Tìm" class="search-btn">
                                 <a href="addProduct.html" target="_blank" rel="noopener noreferrer"
                                    id="add-product">Thêm sản phẩm</a>
@@ -281,7 +173,8 @@
                                                             <h4 class="modal-title">Xóa sản phẩm</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p class="center">Bạn có muốn xóa sản phẩm ${p.name} này
+                                                            <p class="center">Bạn có muốn <strong>XÓA</strong> sản phẩm
+                                                                <strong>${p.name}</strong> này
                                                                 không!?</p>
                                                         </div>
                                                         <div class="modal-footer">

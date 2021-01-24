@@ -34,10 +34,11 @@ public class AdminProduct extends HttpServlet {
                 sumPage++;
             request.setAttribute("SumPage", sumPage);
             request.setAttribute("CurrentPage", page);
-            data = ProductEntity.getLimitProduct(10, (page - 1) * 10 + 1);
+            data = ProductEntity.getLimitProduct(10, (page - 1) * 10);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        request.setAttribute("NamePage", "productAdmin");
         request.setAttribute("List", data);
         request.getRequestDispatcher("adminProduct.jsp").forward(request, response);
     }

@@ -38,6 +38,7 @@ public class OrderEntity {
         return getFromDB(sql, rs);
     }
 
+
     public static List<Order> getFromDB(String sql, List<Order> rs) throws SQLException, ClassNotFoundException {
         PreparedStatement ps = ConnectionDB.connect(sql);
         ResultSet rst = ps.executeQuery();
@@ -61,9 +62,37 @@ public class OrderEntity {
         return new Order(id, userId, paymentId, customerName, phone, address, note, totalPrice, status);
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        System.out.println(getAllOrder());
+    public static List<Order> getLimitOrder(int limit, int offset) throws SQLException, ClassNotFoundException {
+        List<Order> rs = new ArrayList<>();
+        String sql = "select * from orders limit " + limit + " offset " + offset;
+
+        return getFromDB(sql, rs);
     }
-    
-    
+
+    public static List<Order> searchOrderByCustomerId(String searchKey) throws SQLException, ClassNotFoundException {
+        List<Order> rs = new ArrayList<>();
+        String sql = "select * from orders where userId = '" + searchKey + "'";
+
+        return getFromDB(sql, rs);
+    }
+
+    public static List<Order> getLimitSearchOrder(String searchKey, int limit, int offset) throws SQLException, ClassNotFoundException {
+        List<Order> rs = new ArrayList<>();
+        String sql = "select * from orders where userId = '" + searchKey + "' limit " + limit + " offset " + offset;
+
+        return getFromDB(sql, rs);
+    }
+
+    public static Order getById(String id) throws SQLException, ClassNotFoundException {
+        String sql = "select * from orders where id = '" + id + "'";
+        PreparedStatement ps = ConnectionDB.connect(sql);
+        ResultSet rst = ps.executeQuery();
+        rst.next();
+        return getOrder(rst);
+    }
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        System.out.println(getById("1"));
+    }
+
 }
