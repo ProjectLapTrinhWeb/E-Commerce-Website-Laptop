@@ -166,7 +166,7 @@ public class ProductEntity {
             int quantity = p.getQuantity();
             String status = p.getStatus();
             String img = p.getImg();
-            String sql = "insert into product(id, name, price, supplierID, discount, categoryID, image, status, quantity) values('" + id + "', '" + name + "', " + price + ", '" + supplierID + "', '" + discount + "', " + categoryID + ", '" + img + "', '" + status + "', " + quantity + ")";
+            String sql = "insert into product(id, name, price, supplierID, discount, categoryID, image, status, quantity) values('" + id + "', '" + name + "', '" + price + "', '" + supplierID + "', '" + discount + "', " + categoryID + ", '" + img + "', '" + status + "', " + quantity + ")";
             PreparedStatement ps = ConnectionDB.connect(sql);
             ps.execute();
         } catch (Exception e) {
@@ -178,7 +178,12 @@ public class ProductEntity {
 
     public static boolean updateProduct(Product p) {
         try {
-            String sql = "update product set name = '" + p.getName() + "', price = " + p.getPrice() + ", supplierID = '" + p.getSupplierId() + "', discount = " + p.getDiscount() + ", categoryID = '" + p.getCategoryId() + "', quantity = " + p.getQuantity() + ", status ='" + p.getStatus() + "', image ='" + p.getImg() + "' where id = '" + p.getId() + "'";
+            String sql;
+            if (!p.getImg().equalsIgnoreCase("")) {
+                sql = "update product set name = '" + p.getName() + "', price = '" + p.getPrice() + "', supplierID = '" + p.getSupplierId() + "', discount = " + p.getDiscount() + ", categoryID = '" + p.getCategoryId() + "', quantity = " + p.getQuantity() + ", status ='" + p.getStatus() + "', image ='" + p.getImg() + "' where id = '" + p.getId() + "'";
+            } else {
+                sql = "update product set name = '" + p.getName() + "', price = '" + p.getPrice() + "', supplierID = '" + p.getSupplierId() + "', discount = " + p.getDiscount() + ", categoryID = '" + p.getCategoryId() + "', quantity = " + p.getQuantity() + ", status ='" + p.getStatus() + "' where id = '" + p.getId() + "'";
+            }
             PreparedStatement ps = ConnectionDB.connect(sql);
             ps.execute();
         } catch (Exception e) {
@@ -235,7 +240,7 @@ public class ProductEntity {
 
     public static boolean updateImg(String img, String id) {
         try {
-            String sql = "update product set image = '" + img + "' where id = '"+id+"'";
+            String sql = "update product set image = '" + img + "' where id = '" + id + "'";
             PreparedStatement ps = ConnectionDB.connect(sql);
             ps.execute();
         } catch (Exception e) {

@@ -91,8 +91,26 @@ public class OrderEntity {
         return getOrder(rst);
     }
 
+    public static boolean updateOrder(Order o) {
+        try {
+            String sql = "update orders set customerName = '" + o.getCustomerName() + "', phone = '" + o.getPhone() + "', address = '" + o.getAddress() + "', status = '" + o.getStatus() + "' where id = '" + o.getId() + "'";
+            PreparedStatement ps = ConnectionDB.connect(sql);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        System.out.println(getById("1"));
+//        Order o = new Order();
+//        o.setId("1");
+//        o.setCustomerName("Hao Kylnnnnn");
+//        o.setPhone("0372721409");
+//        o.setAddress("Đồng Naiiiiii");
+//        o.setStatus("Đã giao");
+//        System.out.println(updateOrder(o));
     }
 
 }

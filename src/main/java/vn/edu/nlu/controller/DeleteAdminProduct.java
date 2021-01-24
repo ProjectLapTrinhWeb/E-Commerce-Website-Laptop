@@ -19,11 +19,12 @@ public class DeleteAdminProduct extends HttpServlet {
         try {
             String id = request.getParameter("id");
             if (ProductEntity.deleteProductByID(id)) {
-                request.setAttribute("DeleteStatus", "Đã xóa sản phẩm có id là: " + id);
+                request.setAttribute("Status", "Đã xóa sản phẩm có id là: " + id);
             } else {
-                request.setAttribute("DeleteStatus", "Chưa xóa được sản phẩm có id là: " + id);
+                request.setAttribute("Status", "Chưa xóa được sản phẩm có id là: " + id);
             }
-            request.getRequestDispatcher("resultDelete.jsp").forward(request, response);
+            request.setAttribute("BackPage", "/WebLaptop/AdminProduct");
+            request.getRequestDispatcher("resultDeleteOrUpdate.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }

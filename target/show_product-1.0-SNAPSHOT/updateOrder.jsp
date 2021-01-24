@@ -99,7 +99,7 @@
     <div class="body-card">
         <form id="form-add-product" enctype="multipart/form-data" class="form-horizontal"
               action="/WebLaptop/UpdatedOrder"
-              method="post">
+              method="get">
             <div class="form-group">
                 <label for="customerNameOrder">
                     Tên khách hàng:
@@ -111,7 +111,7 @@
             <div class="form-group">
                 <label for="phoneOrder">
                     Số điện thoại:
-                    <input type="text" width="500px" value="<%= order.getPhone()%>" class="form-control" name="phone"
+                    <input type="phone" width="500px" value="<%= order.getPhone()%>" class="form-control" name="phone"
                            id="phoneOrder"
                            placeholder="Nhập số điện thoại" required>
                 </label>
@@ -119,9 +119,17 @@
             <div class="form-group">
                 <label for="addressOrder">
                     Địa chỉ nhận hàng:
-                    <input type="text" width="500px" value="<%= order.getPhone()%>" class="form-control" name="address"
+                    <input type="text" width="500px" value="<%= order.getAddress()%>" class="form-control" name="address"
                            id="addressOrder"
                            placeholder="Nhập địa chỉ nhận hàng" required>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="totalPriceOrder">
+                    Giá trị đơn hàng:
+                    <input type="text" width="500px" value="<%= order.getTotalPrice()%>" class="form-control" name="totalPrice"
+                           id="totalPriceOrder"
+                           placeholder="Nhập giá trị đơn hàng" required>
                 </label>
             </div>
             <div class="form-group">
@@ -179,15 +187,13 @@
                     </select>
                 </label>
             </div>
-            <input type="text" name="id" class="hidden" value="<%= order.getId()%>">
+            <div class="form-group">
+                <input type="text" name="id" class="hidden" value="<%= order.getId()%>">
+            </div>
             <div class="form-group">
                 <input type="submit" value="Sửa sản phẩm" class="btn btn-lg">
             </div>
         </form>
-        <div class="thumbnail">
-            <img src="" style="max-width: 450px; max-height: 300px" alt="hinh-anh-san-pham"
-                 id="img-upload">
-        </div>
     </div>
 </div>
 <script>
@@ -247,95 +253,8 @@
 <div style="background-color: #0064cf; width: 100%; height: 60px;"></div>
 <!-- end div -->
 <!-- footer -->
-<div class="footer">
-    <div class="container">
-        <div class="w3_footer_grids">
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Liên hệ</h3>
-                <ul class="address">
-                    <li><i class="glyphicon glyphicon-map-marker"
-                           aria-hidden="true"></i>Trường Đại Học Nông Lâm
-                        <span>Kp6, P.Linh Trung, Q.Thủ Đức, TP. Hồ Chí Minh</span>
-                    </li>
-                    <li><i class="glyphicon glyphicon-envelope"
-                           aria-hidden="true"></i><a
-                            href="18130000@st.hcmuaf.edu.vn">18130000@st.hcmuaf.edu.vn</a>
-                    </li>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+84
-                        999 999 999
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Thông tin</h3>
-                <ul class="info">
-                    <li><a href="about.html">Về chúng tôi</a></li>
-                    <li><a href="mail.html">Liên hệ chúng tôi</a></li>
-                    <li><a href="codes.html">Mã khuyến mãi</a></li>
-                    <li><a href="products.html">Sản phẩm đặc biệt</a></li>
-                    <li><a href="faq.html">FAQ's</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Danh mục</h3>
-                <ul class="info">
-                    <li><a href="products.html">Tablets</a></li>
-                    <li><a href="products1.html">Laptops Gaming</a></li>
-                    <li><a href="products.html">Laptops Office</a></li>
-                    <li><a href="products2.html">Laptops Studying</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Hồ sơ</h3>
-                <ul class="info">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="products.html">Today's Deals</a></li>
-                </ul>
-                <h4>Theo dõi</h4>
-                <div class="agileits_social_button">
-                    <ul>
-                        <li><a href="#" class="facebook"> </a></li>
-                        <li><a href="#" class="twitter"> </a></li>
-                        <li><a href="#" class="google"> </a></li>
-                        <li><a href="#" class="pinterest"> </a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <div class="footer-copy">
-        <div class="footer-copy1">
-            <div class="footer-copy-pos">
-                <a href="#home1" class="scroll"><img src="images/arrow.png" alt=" "
-                                                     class="img-responsive"/></a>
-            </div>
-        </div>
-        <div class="container">
-            <p>&copy; 2020 Laptop Store. All rights reserved | Design by <a
-                    href="#">WE</a></p>
-        </div>
-    </div>
-</div>
+<%@include file="ifooter.jsp"%>
 <!-- //footer -->
-
-<!-- cart-js -->
-<!-- <script src="js/minicart.js"></script>
-<script>
-    w3ls.render();
-
-    w3ls.cart.on('w3sb_checkout', function (evt) {
-        var items, len, i;
-
-        if (this.subtotal() > 0) {
-            items = this.items();
-
-            for (i = 0, len = items.length; i < len; i++) {
-            }
-        }
-    });
-</script>   -->
-<!-- //cart-js -->
 </body>
 
 </html>

@@ -113,7 +113,7 @@
                                        class="search-box"
                                        placeholder="Theo tên...">
                                 <input type="submit" value="Tìm" class="search-btn">
-                                <a href="addProduct.html" target="_blank" rel="noopener noreferrer"
+                                <a href="addProduct.jsp" target="_blank" rel="noopener noreferrer"
                                    id="add-product">Thêm sản phẩm</a>
                             </label>
                         </form>

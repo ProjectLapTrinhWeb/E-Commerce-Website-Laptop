@@ -24,6 +24,7 @@ public class UpdatedProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DataInputStream in = null;
         DataOutputStream out = null;
+        String id;
         String name;
         String price;
         int supplier;
@@ -32,8 +33,9 @@ public class UpdatedProduct extends HttpServlet {
         int quantity;
         String status;
         Part partImg;
-        String img;
+        String img = null;
         try {
+            id = request.getParameter("id");
             name = request.getParameter("name");
             price = request.getParameter("price");
             supplier = Integer.parseInt(request.getParameter("supplier"));
@@ -42,31 +44,37 @@ public class UpdatedProduct extends HttpServlet {
             quantity = Integer.parseInt(request.getParameter("quantity"));
             status = request.getParameter("status");
             partImg = request.getPart("img");
-            img = "img/" + Paths.get(partImg.getSubmittedFileName()).getFileName().toString();
-            String imgPath = new StringBuilder().append("E:/IntelliJIDEA/WebLaptop/src/main/webapp/img/").append(Paths.get(partImg.getSubmittedFileName()).getFileName().toString()).toString();
-            in = new DataInputStream(partImg.getInputStream());
-            out = new DataOutputStream(new FileOutputStream(imgPath));
-            byte[] data = new byte[1024], temp = null;
-            int length = -1;
-            while ((length = in.read(data)) != -1) {
-                temp = Arrays.copyOf(data, length);
-                out.write(temp, 0, length);
-                out.flush();
+            img = Paths.get(partImg.getSubmittedFileName()).getFileName().toString();
+            System.out.println(img);
+            if (!img.equalsIgnoreCase("")) {
+                img = "img/" + Paths.get(partImg.getSubmittedFileName()).getFileName().toString();
+                String imgPath = new StringBuilder().append("E:/IntelliJIDEA/WebLaptop/src/main/webapp/img/").append(Paths.get(partImg.getSubmittedFileName()).getFileName().toString()).toString();
+                in = new DataInputStream(partImg.getInputStream());
+                out = new DataOutputStream(new FileOutputStream(imgPath));
+                byte[] data = new byte[1024], temp = null;
+                int length = -1;
+                while ((length = in.read(data)) != -1) {
+                    temp = Arrays.copyOf(data, length);
+                    out.write(temp, 0, length);
+                    out.flush();
+                }
             }
+            request.setAttribute("BackPage", "/WebLaptop/AdminProduct");
             Product p = new Product(name, price, discount, img, category, supplier, status, quantity);
+            p.setId(id);
             boolean updated = ProductEntity.updateProduct(p);
             if (updated) {
-                request.setAttribute("StatusUpdate", "Đã cập nhật sản phẩm " + name);
+                request.setAttribute("Status", "Đã cập nhật sản phẩm " + name);
             } else {
-                request.setAttribute("StatusUpdate", "Không cập nhật được sản phẩm " + name);
+                request.setAttribute("Status", "Không cập nhật được sản phẩm " + name);
             }
             Product p1 = ProductEntity.getName(name);
             request.setAttribute("product", p1);
-            request.getRequestDispatcher("/AdminProduct").forward(request, response);
+            request.getRequestDispatcher("resultDeleteOrUpdate.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("StatusUpdate", "Không cập nhật được sản phẩm!!!");
-            request.getRequestDispatcher("updateProduct.jsp").forward(request, response);
+            request.setAttribute("Status", "Không cập nhật được sản phẩm!!!");
+            request.getRequestDispatcher("resultDeleteOrUpdate.jsp").forward(request, response);
         } finally {
             if (in != null)
                 in.close();

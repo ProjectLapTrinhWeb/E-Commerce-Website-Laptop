@@ -283,7 +283,7 @@
                             Ảnh:
                             <input type="file" style="max-width: 450px; max-height: 300px" class="form-control"
                                    value="<%=product.getImg()%>"
-                                   onchange="readURL(this)" name="img" id="imgProduct" required>
+                                   onchange="readURL(this)" name="img" id="imgProduct">
                         </label>
                     </div>
                 </div>

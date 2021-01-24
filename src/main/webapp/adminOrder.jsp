@@ -159,11 +159,11 @@
                                                         data-target="#myModalCancel${o.id}">
                                                     <i class="fa fa-remove" style="font-size:12px;color:red"></i>
                                                 </button>
-                                                <!-- Modal delete -->
+                                                <!-- Modal cancel -->
                                                 <div class="modal fade" id="myModalCancel${o.id}" role="dialog">
                                                     <div class="modal-dialog">
 
-                                                        <!-- Modal delete content-->
+                                                        <!-- Modal cancel content-->
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <button type="button" class="close"
@@ -195,7 +195,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- end Modal delete-->
+                                                <!-- end Modal cancel-->
                                             </td>
                                         </tr>
                                         <!-- end don hang -->
