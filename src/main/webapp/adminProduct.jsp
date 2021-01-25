@@ -105,7 +105,7 @@
                         <li><a data-toggle="tab" href="#comingSoon">Sắp ra mắt</a></li>
                     </ul>
                     <div class="search-product search-order">
-                        <form action="/WebLaptop/SearchAdminProduct" method="get">
+                        <form action="SearchAdminProduct" method="get">
                             <label>
                                 Tìm kiếm sản phẩm:
                                 <input type="search" name="search" value="<% String searchKey;
@@ -140,7 +140,7 @@
                                     <tr>
                                         <td>${p.id}</td>
                                         <td>${p.name}</td>
-                                        <td><img src="${p.img}" style="max-width: 40px; max-height: 40px;"
+                                        <td><img src="${p.img}" style="max-width: 50px; max-height: 50px;"
                                                  alt="img-product"></td>
                                         <td>${p.price}</td>
                                         <td>${p.quantity}</td>
@@ -148,7 +148,7 @@
                                         <td>${p.categoryId}</td>
                                         <td>${p.status}</td>
                                         <td>
-                                            <form action="/WebLaptop/UpdateProduct" class="center" method="post">
+                                            <form action="UpdateProduct" class="center" method="post">
                                                 <input type="text" name="id" value="${p.id}" class="hidden">
                                                 </button>
                                                 <button type="submit" class="btn btn-warning left">
@@ -178,7 +178,7 @@
                                                                 không!?</p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <form action="/WebLaptop/DeleteAdminProduct" method="post">
+                                                            <form action="DeleteAdminProduct" method="post">
                                                                 <input type="text" name="id" value="${p.id}"
                                                                        class="hidden">
                                                                 <button type="submit" class="btn btn-warning right">Xóa
@@ -206,18 +206,18 @@
                                             if (((int) request.getAttribute("CurrentPage")) == i) {
                                 %>
                                 <li class="my-pagination">
-                                    <form action="/WebLaptop/SearchAdminProduct" method="get">
+                                    <form action="SearchAdminProduct" method="get">
                                         <input type="text" name="search" class="hidden"
                                                value="<%= request.getAttribute("SearchKey")%>">
                                         <input type="text" name="page" value="<%= i%>" class="hidden">
-                                        <button type="submit" class="btn btn-sm btn-default"><%= i%>
+                                        <button type="submit" class="btn btn-sm btn-default disabled"><%= i%>
                                         </button>
                                     </form>
                                 </li>
                                 <%
                                 } else {%>
                                 <li class="my-pagination">
-                                    <form action="/WebLaptop/SearchAdminProduct" method="get">
+                                    <form action="SearchAdminProduct" method="get">
                                         <input type="text" name="search" class="hidden"
                                                value="<%= request.getAttribute("SearchKey")%>">
                                         <input type="text" name="page" value="<%= i%>" class="hidden">
@@ -232,9 +232,9 @@
                                 } else {
                                     if (((int) request.getAttribute("CurrentPage")) == i) {%>
                                 <li class="my-pagination">
-                                    <form action="/WebLaptop/AdminProduct" method="get">
+                                    <form action="AdminProduct" method="get">
                                         <input type="text" name="page" value="<%= i%>" class="hidden">
-                                        <button type="submit" class="btn btn-sm btn-default"><%= i%>
+                                        <button type="submit" class="btn btn-sm btn-default disabled"><%= i%>
                                         </button>
                                     </form>
                                 </li>
@@ -242,7 +242,7 @@
                                 } else {
                                 %>
                                 <li class="my-pagination">
-                                    <form action="/WebLaptop/AdminProduct" method="get">
+                                    <form action="AdminProduct" method="get">
                                         <input type="text" name="page" value="<%= i%>" class="hidden">
                                         <button type="submit" class="btn btn-sm btn-info"><%= i%>
                                         </button>

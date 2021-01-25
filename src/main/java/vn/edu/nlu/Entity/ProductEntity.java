@@ -249,4 +249,8 @@ public class ProductEntity {
         }
         return true;
     }
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        System.out.println(getId(10).getDescription());
+    }
 }

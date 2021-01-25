@@ -104,7 +104,7 @@
                         <li><a data-toggle="tab" href="#refund">Trả hàng</a></li>
                     </ul>
                     <div class="search-order">
-                        <form action="">
+                        <form action="SearchAdminOrder" method="get">
                             <label for="search-order">
                                 Tìm kiếm đơn hàng:
                                 <input type="search" name="search" id="search-order" class="search-box"
@@ -213,7 +213,7 @@
                                             <input type="text" name="search" class="hidden"
                                                    value="<%= request.getAttribute("SearchKey")%>">
                                             <input type="text" name="page" value="<%= i%>" class="hidden">
-                                            <button type="submit" class="btn btn-sm btn-default"><%= i%>
+                                            <button type="submit" class="btn btn-sm btn-default disabled"><%= i%>
                                             </button>
                                         </form>
                                     </li>
@@ -237,7 +237,7 @@
                                     <li class="my-pagination">
                                         <form action="/WebLaptop/AdminOrder" method="get">
                                             <input type="text" name="page" value="<%= i%>" class="hidden">
-                                            <button type="submit" class="btn btn-sm btn-default"><%= i%>
+                                            <button type="submit" class="btn btn-sm btn-default disabled"><%= i%>
                                             </button>
                                         </form>
                                     </li>

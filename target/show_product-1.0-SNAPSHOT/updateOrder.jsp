@@ -70,7 +70,7 @@
 <!-- banner -->
 <div class="banner banner10" style="background-image: url(images/banner-about1.jpg);">
     <div class="container">
-        <h2>Add Product</h2>
+        <h2>Update Order</h2>
     </div>
 </div>
 <!-- //banner -->

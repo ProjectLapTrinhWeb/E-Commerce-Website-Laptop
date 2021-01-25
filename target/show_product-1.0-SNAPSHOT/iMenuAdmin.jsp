@@ -74,7 +74,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title asd">
-                        <a class="pa_italic collapsed" href="/WebLaptop/AdminProduct">
+                        <a class="pa_italic collapsed" href="AdminProduct">
                             <% if (namePage.equalsIgnoreCase("productAdmin")) {%>
                             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><i
                                 class="glyphicon glyphicon-minus" aria-hidden="true">
@@ -89,7 +89,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="heading3">
                     <h4 class="panel-title asd">
-                        <a class="pa_italic" href="/WebLaptop/AdminStaff">
+                        <a class="pa_italic" href="AdminStaff">
                             <% if (namePage.equalsIgnoreCase("staffAdmin")) {%>
                             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><i
                                 class="glyphicon glyphicon-minus" aria-hidden="true">
@@ -104,7 +104,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="heading4">
                     <h4 class="panel-title asd">
-                        <a class="pa_italic" href="/WebLaptop/AdminCustomer">
+                        <a class="pa_italic" href="AdminCustomer">
                             <% if (namePage.equalsIgnoreCase("customerAdmin")) {%>
                             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><i
                                 class="glyphicon glyphicon-minus" aria-hidden="true">
@@ -119,7 +119,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="heading5">
                     <h4 class="panel-title asd">
-                        <a class="pa_italic" href="/WebLaptop/AdminContact">
+                        <a class="pa_italic" href="AdminContact">
                             <% if (namePage.equalsIgnoreCase("contactAdmin")) {%>
                             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><i
                                 class="glyphicon glyphicon-minus" aria-hidden="true">
@@ -134,7 +134,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="heading6">
                     <h4 class="panel-title asd">
-                        <a class="pa_italic" href="/WebLaptop/AdminSupplier">
+                        <a class="pa_italic" href="AdminSupplier">
                             <% if (namePage.equalsIgnoreCase("supplierAdmin")) {%>
                             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><i
                                 class="glyphicon glyphicon-minus" aria-hidden="true">
