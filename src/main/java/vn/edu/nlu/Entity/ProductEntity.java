@@ -1,19 +1,14 @@
 package vn.edu.nlu.Entity;
 
-import vn.edu.nlu.Beans.MyDate;
 import vn.edu.nlu.Beans.MyUtils;
 import vn.edu.nlu.Beans.Product;
-import vn.edu.nlu.controller.Laptop5To10MA;
 import vn.edu.nlu.db.ConnectionDB;
 
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class ProductEntity {
     public static List<Product> getAllProduct() throws SQLException {
@@ -60,14 +55,12 @@ public class ProductEntity {
         return getFromDB(sql, rs);
     }
 
-
     public static List<Product> getProductWithSupplierName(String name) throws SQLException, ClassNotFoundException {
         List<Product> rs = new ArrayList<Product>();
         String sql = "SELECT * from product c join supplier s on c.SupplierID = s.ID  where c.Name like '%" + name + "%'";
         return getFromDB(sql, rs);
 
     }
-
 
     public static List<Product> getProductWithPrice(String price) throws SQLException, ClassNotFoundException {
         List<Product> rs = new ArrayList<Product>();
@@ -92,7 +85,6 @@ public class ProductEntity {
         }
         return true;
     }
-
 
     public static List<Product> getProductWithDescensionPrice(String fromPrice, String toPrice) throws SQLException, ClassNotFoundException {
         List<Product> rs = new ArrayList<Product>();
@@ -284,7 +276,6 @@ public class ProductEntity {
         }
         return true;
     }
-
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
     }

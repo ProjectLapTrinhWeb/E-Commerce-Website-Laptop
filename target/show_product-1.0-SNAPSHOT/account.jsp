@@ -253,7 +253,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <p style="margin-top: 60px;"><%= user2.getUserName()%>
                                             </p>
                                             <input style="margin-top: 25px ;" type="text">
-                                            <p style="margin-top: 26px ;"><a href=""><%= user2.getEmail()%>/a></p>
+                                            <p style="margin-top: 26px ;"><a href=""><%= user2.getEmail()%></a></p>
                                             <p style="margin-top: 30px ;"><a href=""><%= user2.getPhone()%>
                                             </a></p>
                                             <input style="margin-top: 25px ;" type="text"
@@ -526,7 +526,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <h3 style="text-align: center;margin-top: 50px;">Bạn chưa thêm địa chỉ</h3>
                                 <%} else {%>
                                 <h3 style="text-align: center;margin-top: 50px;">Địa chỉ: <%= user2.getAddress()%>
-                                </h3>>
+                                </h3>
                                 <% }%>
                             </div>
                         </div>

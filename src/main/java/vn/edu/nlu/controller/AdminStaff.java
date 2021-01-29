@@ -37,6 +37,7 @@ public class AdminStaff extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        request.setAttribute("StatusAdd", "");
         request.setAttribute("NamePage", "staffAdmin");
         request.setAttribute("List", data);
         request.getRequestDispatcher("adminStaff.jsp").forward(request, response);

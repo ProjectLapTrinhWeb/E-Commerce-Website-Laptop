@@ -7,7 +7,7 @@
 <html lang="en">
 
 <head>
-    <title>Laptop Store</title>
+    <title>Admin Staff | Laptop Store</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -58,10 +58,10 @@
 <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
 <!-- header modal -->
-<%@include file="iheaderModal.jsp"%>
+<%@include file="iheaderModal.jsp" %>
 <!-- header modal -->
 <!-- header -->
-<%@include file="iheader.jsp"%>
+<%@include file="iheader.jsp" %>
 <!-- //header -->
 <!-- navigation -->
 <%@include file="inavigation.jsp" %>
@@ -86,12 +86,22 @@
 </div>
 <!-- //breadcrumbs -->
 <!-- body -->
+<%-- status add--%>
+<% String status = (String) request.getAttribute("StatusAdd");
+    if (status != null || !status.equals("")) {
+%>
+<h1><%= status%>
+</h1>
+<%
+    }
+%>
+<%-- status add--%>
 <!-- admin -->
 <div class="mobiles">
     <div class="container" style="margin: 0 !important;">
         <div class="w3ls_mobiles_grids">
             <div class="col-md-4 w3ls_mobiles_grid_left">
-                <%@include file="iMenuAdmin.jsp"%>
+                <%@include file="iMenuAdmin.jsp" %>
             </div>
         </div>
 
@@ -103,68 +113,74 @@
                     <li><a data-toggle="tab" href="#unactiveStaff">Ngưng hoạt động</a></li>
                 </ul>
                 <div class="search-product search-order">
-                    <form action="" method="POST">
+                    <form action="SearchAdminStaff" method="POST">
                         <label>
                             Tìm kiếm nhân viên:
                             <input type="search" name="search" class="search-box"
                                    placeholder="Theo tên nhân viên...">
                             <input type="submit" value="Tìm" class="search-btn">
                         </label>
-                        <button type="button" data-toggle="modal" data-target="#add-more-staff"
-                                rel="noopener noreferrer" id="add-staff">Thêm
-                            nhân viên
-                        </button>
-                        <!-- modal -->
-                        <div id="add-more-staff" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
+                    </form>
+                    <button type="button" data-toggle="modal" data-target="#add-more-staff"
+                            rel="noopener noreferrer" id="add-staff">Thêm
+                        nhân viên
+                    </button>
+                    <!-- modal -->
+                    <div id="add-more-staff" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
 
-                                <!-- Modal content-->
-                                <div class="modal-content" id="add-staff-div">
-                                    <form action="AddStaff" name="form-add-staff" method="post">
-                                        <div class="modal-header">
-                                            <button type="button" class="close"
-                                                    data-dismiss="modal">&times;
-                                            </button>
-                                            <h4 class="modal-title">Thêm nhân viên</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <label>
-                                                Tên:
-                                                <input type="text" name="name"
-                                                       placeholder="Tên nhân viên..." required>
-                                            </label>
-                                            <label>
-                                                Tên:
-                                                <input type="text" name="userName"
-                                                       placeholder="Tên tài khoản..." required>
-                                            </label>
-                                            <label>
-                                                Tên:
-                                                <input type="text" name="password"
-                                                       placeholder="Mật khẩu..." required>
-                                            </label>
-                                            <label>
-                                                Email:
-                                                <input type="mail" name="mail"
-                                                       placeholder="Email..." required>
-                                            </label>
-                                            <label>
-                                                Sđt:
-                                                <input type="phone" name="phone" id="phone"
-                                                       placeholder="Số điện thoại..." required>
-                                            </label>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn my-blue">Thêm nhân viên
-                                            </button>
-                                            <button type="button" class="btn btn-default"
-                                                    data-dismiss="modal">Đóng
-                                            </button>
-                                        </div>
-                                    </form>
+                            <!-- Modal content-->
+                            <div class="modal-content" id="add-staff-div">
+                                <div class="modal-header">
+                                    <button type="button" class="close"
+                                            data-dismiss="modal">&times;
+                                    </button>
+                                    <h4 class="modal-title">Thêm nhân viên</h4>
                                 </div>
+                                <form method="get" action="AddStaff">
+                                    <div class="modal-body">
+                                        <label>
+                                            Họ tên:
+                                            <input type="text" name="name"
+                                                   placeholder="Tên nhân viên..." required>
+                                        </label>
+
+                                        <label>
+                                            Tên tài khoản:
+                                            <input type="text" name="userName"
+                                                   placeholder="Tên tài khoản..." minlength="6" required>
+                                        </label>
+
+                                        <label>
+                                            Mật khẩu:
+                                            <input type="text" name="password" minlength="6" id="password-field"
+                                                   placeholder="Mật khẩu..." required>
+                                        </label>
+
+                                        <label>
+                                            Email:
+                                            <input type="mail" name="mail"
+                                                   placeholder="Email..." minlength="11" required>
+                                        </label>
+
+                                        <label>
+                                            Sđt:
+                                            <input type="phone" name="phone" id="phone"
+                                                   placeholder="Số điện thoại..." minlength="10" maxlength="13"
+                                                   required>
+                                        </label>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn my-blue">Thêm nhân viên
+                                        </button>
+                                        <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">Đóng
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div>
                     </form>
                 </div>
                 <div class="tab-content">
@@ -221,7 +237,7 @@
 
                                                 <!-- Modal config content-->
                                                 <div class="modal-content">
-                                                    <form action="UpdateStaff" name="form-add-staff" method="post">
+                                                    <form action="UpdateStaff" method="post">
                                                         <div class="modal-header">
                                                             <button type="button" class="close"
                                                                     data-dismiss="modal">&times;

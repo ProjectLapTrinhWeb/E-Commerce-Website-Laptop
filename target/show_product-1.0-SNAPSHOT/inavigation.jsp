@@ -68,7 +68,7 @@
                     <li><a href="index.html" class="act">Trang chủ</a></li>
                     <!-- Mega Menu -->
                     <li class="dropdown">
-                        <a href="/WebLaptop/products" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm<b
+                        <a href="products.html" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm<b
                                 class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-3">
                             <div class="row">
@@ -117,13 +117,6 @@
                         </ul>
                     </li>
                     <li><a href="about.html">About Us</a></li>
-                    <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                           aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="icons.html">Web Icons</a></li>
-                            <li><a href="codes.html">Short Codes</a></li>
-                        </ul>
-                    </li>
                     <li><a href="faq.html" class="">FAQ's</a></li>
                     <li><a href="mail.html">Mail Us</a></li>
 
@@ -133,18 +126,19 @@
                         <ul class="dropdown-menu">
                             <% User user1 = (User) session.getAttribute("User");
                                 if (user1 != null) {%>
-                            <li><button class="btn-default user-button disabled"><a  href="icons.html"><%= user1.getUserName()%>
-                            </a></button></li>
-                            <li>
-                                <form action="/WebLaptop/Info" method="post">
-                                    <button type="submit" class="btn btn-default user-button">Info</button>
-                                </form>
-                            </li>
-                            <li>
-                                <form action="/WebLaptop/Logout" method="get">
-                                    <button type="submit" class="btn btn-default user-button">Logout</button>
-                                </form>
-                            </li>
+                                <li><button type="button" class="btn btn-outline-info btn-user" disabled><%= user1.getUserName()%>
+                                </button></li>
+                                <li>
+                                    <form action="Info" method="post">
+                                        <button type="submit" class="btn btn-outline-info btn-user"><span class="glyphicon glyphicon-user" aria-hidden="true" style="margin-right: 20px;"></span>Profile</button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="Logout" method="get">
+                                        <button type="submit" class="btn btn-outline-danger btn-user"><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="margin-right: 20px;"></span>Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
                             <%
                                 }
                             %>
