@@ -217,7 +217,11 @@ public class ProductEntity {
             ps.setInt(5, p.getCategoryId());
             ps.setInt(6, p.getQuantity());
             ps.setString(7, p.getStatus());
-            ps.setString(8, p.getImg());
+            if (p.getImg().equals("") || p.getImg() == null) {
+                ps.setString(8, ProductEntity.getId(Integer.parseInt(p.getId())).getImg());
+            } else{
+                ps.setString(8, p.getImg());
+            }
             ps.setString(9, p.getId());
 
             ps.execute();

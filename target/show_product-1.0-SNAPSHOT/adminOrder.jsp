@@ -147,7 +147,7 @@
                                             <td>${o.totalPrice}</td>
                                             <td>${o.status}</td>
                                             <td>
-                                                <form action="/WebLaptop/UpdateOrder" class="center" method="post">
+                                                <form action="UpdateOrder" class="center" method="post">
                                                     <input type="text" name="id" value="${o.id}" class="hidden">
                                                     </button>
                                                     <button type="submit" class="btn btn-warning left">
@@ -178,13 +178,12 @@
                                                                     này!?</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <form action="/WebLaptop/CancelAdminOrder"
+                                                                <form action="CancelAdminOrder"
                                                                       method="post">
                                                                     <input type="text" name="id" value="${o.id}"
                                                                            class="hidden">
                                                                     <button type="submit" class="btn btn-warning right">
-                                                                        Xóa
-                                                                        sản phẩm
+                                                                        Từ chối đơn
                                                                     </button>
                                                                 </form>
                                                                 <button type="button" style="margin-right: 30px"
@@ -209,7 +208,7 @@
                                                 if (((int) request.getAttribute("CurrentPage")) == i) {
                                     %>
                                     <li class="my-pagination">
-                                        <form action="/WebLaptop/SearchAdminOrder" method="get">
+                                        <form action="SearchAdminOrder" method="get">
                                             <input type="text" name="search" class="hidden"
                                                    value="<%= request.getAttribute("SearchKey")%>">
                                             <input type="text" name="page" value="<%= i%>" class="hidden">
@@ -220,7 +219,7 @@
                                     <%
                                     } else {%>
                                     <li class="my-pagination">
-                                        <form action="/WebLaptop/SearchAdminOrder" method="get">
+                                        <form action="SearchAdminOrder" method="get">
                                             <input type="text" name="search" class="hidden"
                                                    value="<%= request.getAttribute("SearchKey")%>">
                                             <input type="text" name="page" value="<%= i%>" class="hidden">
@@ -235,7 +234,7 @@
                                     } else {
                                         if (((int) request.getAttribute("CurrentPage")) == i) {%>
                                     <li class="my-pagination">
-                                        <form action="/WebLaptop/AdminOrder" method="get">
+                                        <form action="AdminOrder" method="get">
                                             <input type="text" name="page" value="<%= i%>" class="hidden">
                                             <button type="submit" class="btn btn-sm btn-default disabled"><%= i%>
                                             </button>
@@ -245,7 +244,7 @@
                                     } else {
                                     %>
                                     <li class="my-pagination">
-                                        <form action="/WebLaptop/AdminOrder" method="get">
+                                        <form action="AdminOrder" method="get">
                                             <input type="text" name="page" value="<%= i%>" class="hidden">
                                             <button type="submit" class="btn btn-sm btn-info"><%= i%>
                                             </button>
