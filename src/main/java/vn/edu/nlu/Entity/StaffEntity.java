@@ -33,9 +33,10 @@ public class StaffEntity {
 
     public static List<Staff> getFromDB(String sql, List<Staff> rs) throws SQLException {
         PreparedStatement ps = null;
+        ResultSet rst = null;
         try {
             ps = ConnectionDB.connect(sql);
-            ResultSet rst = ps.executeQuery();
+            rst = ps.executeQuery();
             rst.last();
             int i = rst.getRow();
             rst.beforeFirst();
@@ -46,6 +47,8 @@ public class StaffEntity {
             e.printStackTrace();
             return new ArrayList<Staff>();
         } finally {
+            if(!rst.isClosed() || rst!=null)
+                rst.close();
             if (!ps.isClosed() && ps != null)
                 ps.close();
         }
@@ -59,7 +62,7 @@ public class StaffEntity {
         return getFromDB(sql, rs);
     }
 
-    public static boolean addStaff(Staff s) {
+    public static boolean addStaff(Staff s) throws SQLException {
         PreparedStatement ps = null;
         try {
             String sql = "insert into users(id,fullName, userName, password, email, phone, status, roleId) values(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -76,7 +79,11 @@ public class StaffEntity {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
-        }
+        } finally {
+        if (!ps.isClosed() && ps != null)
+            ps.close();
+
+    }
         return true;
     }
 
@@ -94,25 +101,35 @@ public class StaffEntity {
 
     public static boolean updateStaff(Staff s) throws SQLException {
         PreparedStatement ps = null;
+        boolean rlt = true;
         try {
-            String sql = "update users set fullName = '" + s.getName() + "', email = '" + s.getMail() + "', phone = '" + s.getPhone() + "', roleId = '" + s.getRole() + "' , status = '" + s.getStatus() + "' where id = '" + s.getId() + "'";
+            String sql = "update users set fullName = ?, email = ?, phone = ?, roleId = ? , status = ? where id = ?";
             ps = ConnectionDB.connect(sql);
+            ps.setString(1, s.getName());
+            ps.setString(2, s.getMail());
+            ps.setString(3, s.getPhone());
+            ps.setString(4, s.getRole());
+            ps.setString(5, s.getStatus());
+            ps.setString(6, s.getId());
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            rlt = false;
+            return rlt;
         } finally {
             if (!ps.isClosed() && ps != null)
                 ps.close();
+
         }
-        return true;
+        return rlt;
     }
 
     public static boolean deleteStaff(String id) throws SQLException {
         PreparedStatement ps = null;
         try {
-            String sql = "delete from users where id =" + id;
+            String sql = "delete from users where id = ?";
             ps = ConnectionDB.connect(sql);
+            ps.setString(1,id);
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();

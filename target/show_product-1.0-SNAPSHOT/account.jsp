@@ -103,8 +103,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 if (user2 != null) {%>
                             <div class="img-contain-div" style="width: 30%;height: 100%;display: flex;">
                                 <img src="<%= user2.getImage()%>"
-                                     style="border-radius: 50% ;width: 100%;height: 100%;border: 1px solid black;"
-                                     alt="">
+                                     style="border-radius: 50% ;width: 40px;height: 40px;border: 1px solid black;"
+                                     alt="img-user">
                             </div>
                             <div class="account-name-div"
                                  style="width: 70%;height: 100%;display:flex;float: right;padding-top: 15px;padding-left: 10px;">
@@ -141,7 +141,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingTwo">
                                     <h4 class="panel-title asd">
-                                        <a class="pa_italic" href="/WebLaptop/Purchase">
+                                        <a class="pa_italic" href="Purchase">
                                             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><i
                                                 class="glyphicon glyphicon-plus" aria-hidden="true"></i>Đơn mua
                                         </a>
@@ -161,7 +161,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="heading3">
                                     <h4 class="panel-title asd">
-                                        <a class="pa_italic" href="/WebLaptop/Notification">
+                                        <a class="pa_italic" href="Notification">
                                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
                                                 class="glyphicon glyphicon-plus" aria-hidden="true"></i>Thông báo
                                         </a>

@@ -17,31 +17,28 @@ public class Registation extends HttpServlet {
         doGet(request, response);
 
     }
-    
-
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        String n=request.getParameter("Name");
-        String p=request.getParameter("Password");
-        String e=request.getParameter("Email");
+        String n = request.getParameter("Name");
+        String p = request.getParameter("Password");
+        String e = request.getParameter("Email");
 
         String RoleID = "2";
         boolean registed = false;
         try {
-            registed = UserEntity.Register(n,p,e,RoleID);
-//            HttpSession hs = new HttpSession() {
-//            }
+            registed = UserEntity.Register(n, p, e, RoleID);
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException classNotFoundException) {
             classNotFoundException.printStackTrace();
         }
-        if (registed == true){
+        if (registed == true) {
             response.sendRedirect("index.jsp");
-        }else{
+        } else {
             response.sendRedirect("index.html");
         }
 

@@ -1,15 +1,15 @@
 package vn.edu.nlu.controller;
 
 import vn.edu.nlu.Beans.Order;
-import vn.edu.nlu.Beans.Product;
+import vn.edu.nlu.Beans.User;
 import vn.edu.nlu.Entity.OrderEntity;
-import vn.edu.nlu.Entity.ProductEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;

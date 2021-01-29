@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
@@ -55,11 +58,12 @@ public class AddProduct extends HttpServlet {
             }
             boolean added = ProductEntity.addProduct(new Product(name, price, discount, img, category, supplier, status, quantity));
             if (added) {
-                request.setAttribute("StatusAdd", "Đã thêm sản phẩm " + name);
+                request.setAttribute("Status", "Đã thêm sản phẩm " + name);
             } else {
-                request.setAttribute("StatusAdd", "Không thêm được sản phẩm " + name);
+                request.setAttribute("Status", "Không thêm được sản phẩm " + name);
             }
-            request.getRequestDispatcher("addProduct.jsp").forward(request, response);
+            request.setAttribute("BackPage", "AdminProduct");
+            request.getRequestDispatcher("resultDeleteOrUpdate.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

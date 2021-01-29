@@ -3,7 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Collection" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
@@ -85,8 +85,8 @@
     <div class="container">
         <%--       start cart --%>
         <% Cart cart = (Cart) session.getAttribute("Cart");
-            Collection<Item> list = cart.getItems().values();
-            if (list.size() == 0) {%><%
+            Collection<Item> listItem = cart.getItems().values();
+            if (listItem.size() == 0) {%><%
     %>
         <h1 style="text-align: center"> Không có sản phẩm trong giỏ hàng của bạn</h1>
         <% } else { %>
@@ -103,10 +103,9 @@
             </tr>
             </thead>
             <tbody>
-
             <%
                 }
-                for (Item s : list) {
+                for (Item s : listItem) {
             %>
             <!-- start product item -->
             <tr>
@@ -187,7 +186,7 @@
         </table>
 
         <%--       end cart --%>
-        <% if (list.size() != 0) {%>
+        <% if (listItem.size() != 0) {%>
         <!-- footer cart -->
         <div class="footer-cart">
             <div class="cart-sales">

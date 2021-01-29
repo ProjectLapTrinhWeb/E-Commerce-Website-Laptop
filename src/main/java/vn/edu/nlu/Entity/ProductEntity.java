@@ -17,7 +17,6 @@ public class ProductEntity {
         return getFromDB(sql, rs);
     }
 
-
     public static List<Product> getDiscountProduct() throws SQLException {
         List<Product> rs = new ArrayList<Product>();
         String sql = "select * from product where DISCOUNT IS NOT NULL";
@@ -32,7 +31,6 @@ public class ProductEntity {
         return getOneProduct(rst);
     }
 
-
     public static Product getName(String name) throws SQLException, ClassNotFoundException {
         String sql = "select * from product where name = '" + name + "'";
         PreparedStatement ps = ConnectionDB.connect(sql);
@@ -41,13 +39,11 @@ public class ProductEntity {
         return getOneProduct(rst);
     }
 
-
     public static List<Product> getHomeProduct() throws SQLException {
         List<Product> rs = new ArrayList<Product>();
         String sql = "select * from product where categoryId = '1'";
         return getFromDB(sql, rs);
     }
-
 
     public static List<Product> getProductWithId(String id) throws SQLException, ClassNotFoundException {
         List<Product> rs = new ArrayList<Product>();
@@ -130,9 +126,10 @@ public class ProductEntity {
 
     public static List<Product> getFromDB(String sql, List<Product> rs) throws SQLException {
         PreparedStatement ps = null;
+        ResultSet rst = null;
         try {
             ps = ConnectionDB.connect(sql);
-            ResultSet rst = ps.executeQuery();
+            rst = ps.executeQuery();
             rst.last();
             int i = rst.getRow();
             rst.beforeFirst();
@@ -143,8 +140,11 @@ public class ProductEntity {
             e.printStackTrace();
             return new ArrayList<Product>();
         } finally {
-            if (!ps.isClosed() && ps != null)
+            if (!rst.isClosed() || rst != null)
+                rst.close();
+            if (!ps.isClosed() || ps != null)
                 ps.close();
+
         }
         return rs;
     }
@@ -164,48 +164,92 @@ public class ProductEntity {
     }
 
     public static boolean addProduct(Product p) throws SQLException, ClassNotFoundException {
+        PreparedStatement ps = null;
         try {
-            String id = nextID();
-            String name = p.getName();
-            String price = p.getPrice();
-            int supplierID = p.getSupplierId();
-            double discount = p.getDiscount();
-            int categoryID = p.getCategoryId();
-            int quantity = p.getQuantity();
-            String status = p.getStatus();
-            String img = p.getImg();
-            String sql = "insert into product(id, name, price, supplierID, discount, categoryID, image, status, quantity) values('" + id + "', '" + name + "', " + price + ", '" + supplierID + "', '" + discount + "', " + categoryID + ", '" + img + "', '" + status + "', " + quantity + ")";
-            PreparedStatement ps = ConnectionDB.connect(sql);
+            String sql = "insert into product(id, name, price, supplierID, discount, categoryID, image, status, quantity) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            ps = ConnectionDB.connect(sql);
+            ps.setString(1, nextID());
+            ps.setString(2, p.getName());
+            ps.setString(3, p.getPrice());
+            ps.setInt(4, p.getSupplierId());
+            ps.setDouble(5, p.getDiscount());
+            ps.setInt(6, p.getCategoryId());
+            ps.setString(7, p.getImg());
+            ps.setString(8, p.getStatus());
+            ps.setInt(9, p.getQuantity());
+
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        } finally {
+            if (!ps.isClosed() || ps != null)
+                ps.close();
         }
         return true;
     }
 
-    public static boolean updateProduct(Product p) {
+    public static List<Product> getLimitedProductWithSupplierName(String name, int limit, int offset) throws SQLException, ClassNotFoundException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "SELECT * from product c join supplier s on c.SupplierID = s.ID  where c.Name like '%" + name + "%' limit " + limit + " offset " + offset + "";
+        return getFromDB(sql, rs);
+
+    }
+
+    public static boolean updateProduct(Product p) throws SQLException {
+        PreparedStatement ps = null;
         try {
-            String sql = "update product set name = '" + p.getName() + "', price = " + p.getPrice() + ", supplierID = '" + p.getSupplierId() + "', discount = " + p.getDiscount() + ", categoryID = '" + p.getCategoryId() + "', quantity = " + p.getQuantity() + ", status ='" + p.getStatus() + "', image ='" + p.getImg() + "' where id = '" + p.getId() + "'";
-            PreparedStatement ps = ConnectionDB.connect(sql);
+            String sql = "update product " +
+                    "set name = ?," +
+                    " price = ?," +
+                    " supplierID = ?," +
+                    " discount = ?," +
+                    " categoryID = ?," +
+                    " quantity = ?," +
+                    " status = ?," +
+                    " image = ? " +
+                    "where id = ?";
+            ps = ConnectionDB.connect(sql);
+            ps.setString(1, p.getName());
+            ps.setString(2, p.getPrice());
+            ps.setInt(3, p.getSupplierId());
+            ps.setDouble(4, p.getDiscount());
+            ps.setInt(5, p.getCategoryId());
+            ps.setInt(6, p.getQuantity());
+            ps.setString(7, p.getStatus());
+            ps.setString(8, p.getImg());
+            ps.setString(9, p.getId());
+
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        } finally {
+            if (!ps.isClosed() || ps != null)
+                ps.close();
         }
         return true;
     }
-
 
     public static String nextID() throws SQLException, ClassNotFoundException {
-        String sql = "select avg(id) from product";
-        PreparedStatement ps = ConnectionDB.connect(sql);
-        ResultSet rst = ps.executeQuery();
-        rst.next();
-        double currentID = Double.parseDouble(rst.getString(1)) * 2;
-        int temp = (int) currentID;
-        rst.close();
-        ps.close();
+        PreparedStatement ps = null;
+        ResultSet rst = null;
+        int temp = 0;
+        try {
+            String sql = "select avg(id) from product";
+            ps = ConnectionDB.connect(sql);
+            rst = ps.executeQuery();
+            rst.next();
+            double currentID = Double.parseDouble(rst.getString(1)) * 2;
+            temp = (int) currentID;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (!rst.isClosed() || rst != null)
+                rst.close();
+            if (!ps.isClosed() || ps != null)
+                ps.close();
+        }
         return temp + "";
     }
 
@@ -253,31 +297,46 @@ public class ProductEntity {
         return getFromDB(sql, rs);
     }
 
-    public static boolean deleteProductByID(String id) {
+    public static boolean deleteProductByID(String id) throws SQLException {
+        PreparedStatement ps = null;
         try {
-            String sql = "delete from product where id =" + id;
-            PreparedStatement ps = ConnectionDB.connect(sql);
+            String sql = "delete from product where id = ?";
+            ps = ConnectionDB.connect(sql);
+            ps.setString(1, id);
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        } finally {
+            if (!ps.isClosed() || ps != null)
+                ps.close();
+
         }
         return true;
     }
 
-    public static boolean updateImg(String img, String id) {
+    public static boolean updateImg(String img, String id) throws SQLException {
+        PreparedStatement ps = null;
         try {
-            String sql = "update product set image = '" + img + "' where id = '" + id + "'";
-            PreparedStatement ps = ConnectionDB.connect(sql);
+            String sql = "update product set image = ? where id = ?";
+            ps = ConnectionDB.connect(sql);
+            ps.setString(1, img);
+            ps.setString(2, id);
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        } finally {
+            if (!ps.isClosed() || ps != null)
+                ps.close();
+
         }
         return true;
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+
+
     }
 
 }

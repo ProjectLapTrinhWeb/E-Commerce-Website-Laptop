@@ -1,6 +1,6 @@
 <%@ page import="vn.edu.nlu.Beans.Product" %>
 <%@ page import="vn.edu.nlu.Entity.ProductEntity" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
@@ -86,7 +86,7 @@
 </div>
 <!-- //breadcrumbs -->
 <%
-        Product product = (Product) request.getAttribute("product");
+    Product product = (Product) request.getAttribute("product");
 //    Test:
 //    Product product = ProductEntity.getId(171);
 %>
@@ -120,83 +120,23 @@
                         <label for="supplierProduct">
                             Nhà sản xuất:
                             <select id="supplierProduct" class="form-control" name="supplier" required>
-                                <% switch (product.getSupplierId()) {
-                                    case 1: %>
-                                <option value="1">Asus</option>
-                                <option value="2">Acer</option>
-                                <option value="3">Dell</option>
-                                <option value="4">Apple</option>
-                                <option value="5">HP</option>
-                                <option value="6">MSI</option>
-                                <option value="7">Lenovo</option>
-                                <% break;
-                                    case 2: %>
-                                <option value="2">Acer</option>
-                                <option value="1">Asus</option>
-                                <option value="3">Dell</option>
-                                <option value="4">Apple</option>
-                                <option value="5">HP</option>
-                                <option value="6">MSI</option>
-                                <option value="7">Lenovo</option>
-                                <% break;
-                                    case 3: %>
-                                <option value="3">Dell</option>
-                                <option value="1">Asus</option>
-                                <option value="2">Acer</option>
-                                <option value="4">Apple</option>
-                                <option value="5">HP</option>
-                                <option value="6">MSI</option>
-                                <option value="7">Lenovo</option>
-                                <% break;
-                                    case 4: %>
-                                <option value="4">Apple</option>
-                                <option value="1">Asus</option>
-                                <option value="2">Acer</option>
-                                <option value="3">Dell</option>
-                                <option value="5">HP</option>
-                                <option value="6">MSI</option>
-                                <option value="7">Lenovo</option>
-                                <% break;
-                                    case 5: %>
-                                <option value="5">HP</option>
-                                <option value="1">Asus</option>
-                                <option value="2">Acer</option>
-                                <option value="3">Dell</option>
-                                <option value="4">Apple</option>
-                                <option value="6">MSI</option>
-                                <option value="7">Lenovo</option>
-                                <% break;
-                                    case 6: %>
-                                <option value="6">MSI</option>
-                                <option value="1">Asus</option>
-                                <option value="2">Acer</option>
-                                <option value="3">Dell</option>
-                                <option value="4">Apple</option>
-                                <option value="5">HP</option>
-                                <option value="7">Lenovo</option>
-                                <% break;
-                                    case 7: %>
-                                <option value="7">Lenovo</option>
-                                <option value="1">Asus</option>
-                                <option value="2">Acer</option>
-                                <option value="3">Dell</option>
-                                <option value="4">Apple</option>
-                                <option value="5">HP</option>
-                                <option value="6">MSI</option>
-                                <% break;
-                                    default: %>
-                                <option value="0">N/A</option>
-                                <option value="1">Asus</option>
-                                <option value="2">Acer</option>
-                                <option value="3">Dell</option>
-                                <option value="4">Apple</option>
-                                <option value="5">HP</option>
-                                <option value="6">MSI</option>
-                                <option value="7">Lenovo</option>
+                                <% List<Supplier> suppliers = SupplierEntity.getAllSupplier();
+                                    for (Supplier s : suppliers) {
+                                        if (s.getId().equals(product.getSupplierId() + "")) {
+                                %>
+                                <option value="<%= s.getId()%>"><%= s.getName()%>
+                                </option>
                                 <%
+                                        }
+                                    }
+                                    for (Supplier s : suppliers) {
+                                        if (!s.getId().equals(product.getSupplierId() + "")) {
+                                %>
+                                <option value="<%= s.getId()%>"><%= s.getName()%>
+                                </option>
+                                <%
+                                        }
                                     }%>
-
-
                             </select>
                         </label>
                     </div>
@@ -294,7 +234,8 @@
             </div>
         </form>
         <div class="thumbnail">
-            <img src="<%= product.getImg()%>" style="max-width: 450px; max-height: 300px" alt="hinh-anh-san-pham" id="img-upload">
+            <img src="<%= product.getImg()%>" style="max-width: 450px; max-height: 300px" alt="hinh-anh-san-pham"
+                 id="img-upload">
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <%@ page import="vn.edu.nlu.Beans.Staff" %>
 <%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
@@ -121,7 +121,7 @@
                             <input type="submit" value="Tìm" class="search-btn">
                         </label>
                     </form>
-                    <button type="button" data-toggle="modal" data-target="#add-more-staff"
+                    <button style="margin-bottom: 10px" type="button" data-toggle="modal" data-target="#add-more-staff"
                             rel="noopener noreferrer" id="add-staff">Thêm
                         nhân viên
                     </button>
@@ -428,7 +428,6 @@
                                 %>
                             </ul>
                         </div>
-
                     </div>
                     <div id="activeStaff" class="tab-pane fade">
                         <h3>Active Staff</h3>

@@ -6,7 +6,7 @@
   Time: 11:43 SA
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
@@ -59,208 +59,13 @@
 
 <body>
 <!-- header modal -->
-<div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
-     aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Chần chờ gì nữa, đăng nhập ngay để mua sắm nào!!!</h4>
-            </div>
-            <div class="modal-body modal-body-sub">
-                <div class="row">
-                    <div class="col-md-8 modal_body_left modal_body_left1"
-                         style="border-right: 1px dotted #C2C2C2;padding-right:3em;">
-                        <div class="sap_tabs">
-                            <div id="horizontalTab" style="display: block; width: 100%; margin: 0;">
-                                <ul>
-                                    <li class="resp-tab-item" aria-controls="tab_item-0"><span>Đăng nhập</span></li>
-                                    <li class="resp-tab-item" aria-controls="tab_item-1"><span>Đăng ký</span></li>
-                                </ul>
-                                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-                                    <div class="facts">
-                                        <div class="register">
-                                            <form action="#" method="post">
-                                                <input name="Email" placeholder="Email" type="text" required="">
-                                                <input name="Password" placeholder="Mật khẩu" type="password"
-                                                       required="">
-                                                <div class="sign-up">
-                                                    <input type="submit" value="Đăng nhập"/>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
-                                    <div class="facts">
-                                        <div class="register">
-                                            <form action="#" method="post">
-                                                <input placeholder="Tên" name="Name" type="text" required="">
-                                                <input placeholder="Email" name="Email" type="email" required="">
-                                                <input placeholder="Mật khẩu" name="Password" type="password"
-                                                       required="">
-                                                <input placeholder="Xác nhận mật khẩu" name="Password" type="password"
-                                                       required="">
-                                                <div class="sign-up">
-                                                    <input type="submit" value="Tạo tài khoản"/>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
-                        <script type="text/javascript">
-                            $(document).ready(function () {
-                                $('#horizontalTab').easyResponsiveTabs({
-                                    type: 'default', //Types: default, vertical, accordion
-                                    width: 'auto', //auto or any width like 600px
-                                    fit: true   // 100% fit in a container
-                                });
-                            });
-                        </script>
-                        <div id="OR" class="hidden-xs">Hoặc</div>
-                    </div>
-                    <div class="col-md-4 modal_body_right modal_body_right1">
-                        <div class="row text-center sign-with">
-                            <div class="col-md-12">
-                                <h3 class="other-nw">Đăng ký bằng</h3>
-                            </div>
-                            <div class="col-md-12">
-                                <ul class="social">
-                                    <li class="social_facebook"><a href="#" class="entypo-facebook"></a></li>
-                                    <li class="social_dribbble"><a href="#" class="entypo-dribbble"></a></li>
-                                    <li class="social_twitter"><a href="#" class="entypo-twitter"></a></li>
-                                    <li class="social_behance"><a href="#" class="entypo-behance"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- <script>
-    $('#myModal88').modal('show');
-</script>   -->
+<%@include file="iheaderModal.jsp"%>
 <!-- header modal -->
 <!-- header -->
-<div class="header" id="home1">
-    <div class="container">
-        <div class="w3l_login">
-            <a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user"
-                                                                           aria-hidden="true"></span></a>
-        </div>
-        <div class="w3l_logo">
-            <h1><a href="index.html">Laptop Store<span>Nonglam University</span></a></h1>
-        </div>
-        <div class="search">
-            <input class="search_box" type="checkbox" id="search_box">
-            <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search"
-                                                              aria-hidden="true"></span></label>
-            <div class="search_form">
-                <form action="#" method="post">
-                    <input type="text" name="Search" placeholder="Search...">
-                    <input type="submit" value="Send">
-                </form>
-            </div>
-        </div>
-        <div class="cart cart box_1">
-            <form action="#" method="post" class="last">
-                <input type="hidden" name="cmd" value="_cart"/>
-                <input type="hidden" name="display" value="1"/>
-                <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down"
-                                                                                    aria-hidden="true"></i></button>
-            </form>
-        </div>
-    </div>
-</div>
+<%@include file="iheader.jsp"%>
 <!-- //header -->
 <!-- navigation -->
-<div class="navigation">
-    <div class="container">
-        <nav class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header nav_2">
-                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
-                        data-target="#bs-megadropdown-tabs">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.html" class="act">Trang chủ</a></li>
-                    <!-- Mega Menu -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Laptop</h6>
-                                        <li><a href="/WebLaptop/LaptopGaming">Laptop Gaming</a></li>
-                                        <li><a href="/WebLaptop/LaptopOffice">Laptop Office</a></li>
-                                        <li><a href="/WebLaptop/LaptopGraphic">Laptop Graphic</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-3">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Phụ Kiện</h6>
-                                        <li><a href="products1.html">Bàn phím</a></li>
-                                        <li><a href="products1.html">Chuột</a></li>
-                                        <li><a href="products1.html">Loa<span>New</span></a></li>
-                                        <li><a href="products1.html">Tai nghe</a></li>
-                                        <!-- <li><a href="products1.html"><i>Tai nghe</i></a></li> -->
-                                    </ul>
-                                </div>
-                                <div class="col-sm-3">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Thương Hiệu</h6>
-                                        <li><a href="/WebLaptop/Supplier?supplier=Asus">Asus</a></li>
-                                        <li><a href="/WebLaptop/Supplier?supplier=Dell">Dell</a></li>
-                                        <li><a href="/WebLaptop/Supplier?supplier=Macbook">Macbook<span>New</span></a>
-                                        </li>
-                                        <li><a href="/WebLaptop/Supplier?supplier=HP">HP</a></li>
-                                        <!-- <li><a href="products2.html">Acer</a></li> -->
-                                        <!-- <li><a href="products2.html">Lenovo</a></li> -->
-                                    </ul>
-                                </div>
-                                <div class="img-product">
-                                    <img src="images/airpod.jpg" alt="air-pod"
-                                         style="width: 270px; height: 180px; border-radius: 4px;">
-                                </div>
-                                <!-- <div class="col-sm-4">
-                                    <div class="w3ls_products_pos">
-                                        <h4>30%<i>Off/-</i></h4>
-                                        <img src="images/1.jpg" alt=" " class="img-responsive" />
-                                    </div>
-                                </div> -->
-                                <div class="clearfix"></div>
-                            </div>
-                        </ul>
-                    </li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                           aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="icons.html">Web Icons</a></li>
-                            <li><a href="codes.html">Short Codes</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="faq.html" class="">FAQ's</a></li>
-                    <li><a href="mail.html">Mail Us</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</div>
+<%@include file="inavigation.jsp"%>
 <!-- //navigation -->
 <!-- banner -->
 <div class="banner banner1">
@@ -394,17 +199,17 @@
                         <h5><a href="DetailProduct?id=<%= s.getId()%>"><%= s.getName()%>
                         </a></h5>
                         <div class="simpleCart_shelfItem">
-                            <p><%= s.getVNDPrice()%><br><i class="item_price"><%= s.getPriceSale()%></i></p>
+                            <p><span><%= s.getVNDPrice()%></span><br><i class="item_price"><%= s.getPriceSale()%></i></p>
                             <form action="#" method="post">
                                 <input type="hidden" name="cmd" value="_cart"/>
                                 <input type="hidden" name="id" value="<%= s.getId()%>"/>
                                 <input type="hidden" name="add" value="1"/>
                                 <input type="hidden" name="link" value="DetailProduct?id=<%= s.getId()%>"/>
                                 <input type="hidden" name="w3ls_item" value="<%= s.getName()%>"/>
-                                <input type="hidden" name="amount" value="<%= s.getPrice()%>"/>
+                                <input type="hidden" name="amount" value="<%= s.getCurrentPrice()%>"/>
                                 <button type="submit" class="w3ls-cart">Thêm vào giỏ hàng</button>
                             </form>
-                            <form action="DetailProduct" method="post" accept-charset="UTF-8">
+                            <form action="DetailProduct" method="get" accept-charset="UTF-8">
                                 <input type="hidden" name="id" value="<%= s.getId()%>"/>
                                 <button type="submit" class="w3ls-cart2-btnDetail">Xem chi tiết</button>
                             </form>
@@ -475,7 +280,7 @@
                                                     <input type="hidden" name="id" value="<%= s.getId()%>"/>
                                                     <input type="hidden" name="add" value="1"/>
                                                     <input type="hidden" name="w3ls_item" value="<%= s.getName()%>"/>
-                                                    <input type="hidden" name="amount" value="<%= s.getPrice()%>"/>
+                                                    <input type="hidden" name="amount" value="<%= s.getCurrentPrice()%>"/>
                                                     <button type="submit" class="w3ls-cart">Thêm vào giỏ hàng</button>
                                                 </form>
                                             </div>
@@ -489,281 +294,206 @@
                     <%-- end modal chi tiet --%>
                     <%}%>
                 </div>
-                <div class="clearfix"></div>
-            </div>
-            <ul class="pagination" style="margin-left: 60px">
-                <% int sumPage = (int) request.getAttribute("SumPage");
-                    for (int i = 1; i <= sumPage; i++) {
-                        if (request.getAttribute("SearchKey") != null) {
-                            if (((int) request.getAttribute("CurrentPage")) == i) {
-                %>
-                <li class="my-pagination">
-                    <form action="" method="get">
-                        <input type="text" name="search" class="hidden"
-                               value="<%= request.getAttribute("SearchKey")%>">
-                        <input type="text" name="page" value="<%= i%>" class="hidden">
-                        <button type="submit" class="btn btn-sm btn-default"><%= i%>
-                        </button>
-                    </form>
-                </li>
-                <%
-                } else {%>
-                <li class="my-pagination">
-                    <form action="" method="get">
-                        <input type="text" name="search" class="hidden"
-                               value="<%= request.getAttribute("SearchKey")%>">
-                        <input type="text" name="page" value="<%= i%>" class="hidden">
-                        <button type="submit" class="btn btn-sm btn-info"><%= i%>
-                        </button>
-                    </form>
-                </li>
-                <%
-                    }
-                %>
-                <%
-                } else {
-                    if (((int) request.getAttribute("CurrentPage")) == i) {%>
-                <li class="my-pagination">
-                    <form action="<%= request.getAttribute("NamePage")%>" method="get">
-                        <input type="text" name="page" value="<%= i%>" class="hidden">
-                        <button type="submit" class="btn btn-sm btn-default"><%= i%>
-                        </button>
-                    </form>
-                </li>
-                <%
-                } else {
-                %>
-                <li class="my-pagination">
-                    <form action="<%= request.getAttribute("NamePage")%>" method="get">
-                        <input type="text" name="page" value="<%= i%>" class="hidden">
-                        <button type="submit" class="btn btn-sm btn-info"><%= i%>
-                        </button>
-                    </form>
-                </li>
-                <%
+                <ul class="pagination" style="margin-top: 550px">
+                    <% int sumPage = (int) request.getAttribute("SumPage");
+                        for (int i = 1; i <= sumPage; i++) {
+                            if (request.getAttribute("SearchKey") != null) {
+                                if (((int) request.getAttribute("CurrentPage")) == i) {
+                    %>
+                    <li class="my-pagination">
+                        <form action="" method="get">
+                            <input type="text" name="search" class="hidden"
+                                   value="<%= request.getAttribute("SearchKey")%>">
+                            <input type="text" name="page" value="<%= i%>" class="hidden">
+                            <button type="submit" class="btn btn-sm btn-default"><%= i%>
+                            </button>
+                        </form>
+                    </li>
+                    <%
+                    } else {%>
+                    <li class="my-pagination">
+                        <form action="" method="get">
+                            <input type="text" name="search" class="hidden"
+                                   value="<%= request.getAttribute("SearchKey")%>">
+                            <input type="text" name="page" value="<%= i%>" class="hidden">
+                            <button type="submit" class="btn btn-sm btn-info"><%= i%>
+                            </button>
+                        </form>
+                    </li>
+                    <%
+                        }
+                    %>
+                    <%
+                    } else {
+                        if (((int) request.getAttribute("CurrentPage")) == i) {%>
+                    <li class="my-pagination">
+                        <form action="<%= request.getAttribute("NamePage")%>" method="get">
+                            <input type="text" name="page" value="<%= i%>" class="hidden">
+                            <button type="submit" class="btn btn-sm btn-default"><%= i%>
+                            </button>
+                        </form>
+                    </li>
+                    <%
+                    } else {
+                    %>
+                    <li class="my-pagination">
+                        <form action="<%= request.getAttribute("NamePage")%>" method="get">
+                            <input type="text" name="page" value="<%= i%>" class="hidden">
+                            <button type="submit" class="btn btn-sm btn-info"><%= i%>
+                            </button>
+                        </form>
+                    </li>
+                    <%
+                                }
                             }
                         }
-                    }
-                %>
-            </ul>
+                    %>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- Related Products -->
-<div class="w3l_related_products">
-    <div class="container">
-        <h3>Related Products</h3>
-        <ul id="flexiselDemo2">
-            <li>
-                <div class="w3l_related_products_grid">
-                    <div class="agile_ecommerce_tab_left mobiles_grid">
-                        <div class="hs-wrapper hs-wrapper3">
-                            <img src="images/34.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/35.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/27.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/28.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/37.jpg" alt=" " class="img-responsive"/>
-                            <div class="w3_hs_bottom">
-                                <div class="flex_ecommerce">
-                                    <a href="#" data-toggle="modal" data-target="#myModal6"><span
-                                            class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <h5><a href="single.html">Kid's Toy</a></h5>
-                        <div class="simpleCart_shelfItem">
-                            <p class="flexisel_ecommerce_cart"><span>$150</span> <i class="item_price">$100</i></p>
-                            <form action="#" method="post">
-                                <input type="hidden" name="cmd" value="_cart">
-                                <input type="hidden" name="add" value="1">
-                                <input type="hidden" name="w3ls_item" value="Kid's Toy">
-                                <input type="hidden" name="amount" value="100.00">
-                                <button type="submit" class="w3ls-cart">Add to cart</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="w3l_related_products_grid">
-                    <div class="agile_ecommerce_tab_left mobiles_grid">
-                        <div class="hs-wrapper hs-wrapper3">
-                            <img src="images/36.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/32.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/33.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/32.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/36.jpg" alt=" " class="img-responsive"/>
-                            <div class="w3_hs_bottom">
-                                <div class="flex_ecommerce">
-                                    <a href="#" data-toggle="modal" data-target="#myModal5"><span
-                                            class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <h5><a href="single.html">Vacuum Cleaner</a></h5>
-                        <div class="simpleCart_shelfItem">
-                            <p class="flexisel_ecommerce_cart"><span>$960</span> <i class="item_price">$920</i></p>
-                            <form action="#" method="post">
-                                <input type="hidden" name="cmd" value="_cart"/>
-                                <input type="hidden" name="add" value="1"/>
-                                <input type="hidden" name="w3ls_item" value="Vacuum Cleaner"/>
-                                <input type="hidden" name="amount" value="920.00"/>
-                                <button type="submit" class="w3ls-cart">Add to cart</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="w3l_related_products_grid">
-                    <div class="agile_ecommerce_tab_left mobiles_grid">
-                        <div class="hs-wrapper hs-wrapper3">
-                            <img src="images/38.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/37.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/27.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/28.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/37.jpg" alt=" " class="img-responsive"/>
-                            <div class="w3_hs_bottom">
-                                <div class="flex_ecommerce">
-                                    <a href="#" data-toggle="modal" data-target="#myModal3"><span
-                                            class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <h5><a href="single.html">Microwave Oven</a></h5>
-                        <div class="simpleCart_shelfItem">
-                            <p class="flexisel_ecommerce_cart"><span>$650</span> <i class="item_price">$645</i></p>
-                            <form action="#" method="post">
-                                <input type="hidden" name="cmd" value="_cart"/>
-                                <input type="hidden" name="add" value="1"/>
-                                <input type="hidden" name="w3ls_item" value="Microwave Oven"/>
-                                <input type="hidden" name="amount" value="645.00"/>
-                                <button type="submit" class="w3ls-cart">Add to cart</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="w3l_related_products_grid">
-                    <div class="agile_ecommerce_tab_left mobiles_grid">
-                        <div class="hs-wrapper hs-wrapper3">
-                            <img src="images/p3.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/p5.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/p4.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/p2.jpg" alt=" " class="img-responsive"/>
-                            <img src="images/p1.jpg" alt=" " class="img-responsive"/>
-                            <div class="w3_hs_bottom">
-                                <div class="flex_ecommerce">
-                                    <a href="#" data-toggle="modal" data-target="#myModal4"><span
-                                            class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <h5><a href="single.html">Music MP3 Player</a></h5>
-                        <div class="simpleCart_shelfItem">
-                            <p><span>$60</span> <i class="item_price">$58</i></p>
-                            <form action="#" method="post">
-                                <input type="hidden" name="cmd" value="_cart"/>
-                                <input type="hidden" name="add" value="1"/>
-                                <input type="hidden" name="w3ls_item" value="Ultra MP3 Player"/>
-                                <input type="hidden" name="amount" value="58.00"/>
-                                <button type="submit" class="w3ls-cart">Add to cart</button>
-                            </form>
-                        </div>
-                        <div class="mobiles_grid_pos">
-                            <h6>New</h6>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
+<%--<div class="w3l_related_products">--%>
+<%--    <div class="container">--%>
+<%--        <h3>Related Products</h3>--%>
+<%--        <ul id="flexiselDemo2">--%>
+<%--            <li>--%>
+<%--                <div class="w3l_related_products_grid">--%>
+<%--                    <div class="agile_ecommerce_tab_left mobiles_grid">--%>
+<%--                        <div class="hs-wrapper hs-wrapper3">--%>
+<%--                            <img src="images/34.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/35.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/27.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/28.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/37.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <div class="w3_hs_bottom">--%>
+<%--                                <div class="flex_ecommerce">--%>
+<%--                                    <a href="#" data-toggle="modal" data-target="#myModal6"><span--%>
+<%--                                            class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <h5><a href="single.html">Kid's Toy</a></h5>--%>
+<%--                        <div class="simpleCart_shelfItem">--%>
+<%--                            <p class="flexisel_ecommerce_cart"><span>$150</span> <i class="item_price">$100</i></p>--%>
+<%--                            <form action="#" method="post">--%>
+<%--                                <input type="hidden" name="cmd" value="_cart">--%>
+<%--                                <input type="hidden" name="add" value="1">--%>
+<%--                                <input type="hidden" name="w3ls_item" value="Kid's Toy">--%>
+<%--                                <input type="hidden" name="amount" value="100.00">--%>
+<%--                                <button type="submit" class="w3ls-cart">Add to cart</button>--%>
+<%--                            </form>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </li>--%>
+<%--            <li>--%>
+<%--                <div class="w3l_related_products_grid">--%>
+<%--                    <div class="agile_ecommerce_tab_left mobiles_grid">--%>
+<%--                        <div class="hs-wrapper hs-wrapper3">--%>
+<%--                            <img src="images/36.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/32.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/33.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/32.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/36.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <div class="w3_hs_bottom">--%>
+<%--                                <div class="flex_ecommerce">--%>
+<%--                                    <a href="#" data-toggle="modal" data-target="#myModal5"><span--%>
+<%--                                            class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <h5><a href="single.html">Vacuum Cleaner</a></h5>--%>
+<%--                        <div class="simpleCart_shelfItem">--%>
+<%--                            <p class="flexisel_ecommerce_cart"><span>$960</span> <i class="item_price">$920</i></p>--%>
+<%--                            <form action="#" method="post">--%>
+<%--                                <input type="hidden" name="cmd" value="_cart"/>--%>
+<%--                                <input type="hidden" name="add" value="1"/>--%>
+<%--                                <input type="hidden" name="w3ls_item" value="Vacuum Cleaner"/>--%>
+<%--                                <input type="hidden" name="amount" value="920.00"/>--%>
+<%--                                <button type="submit" class="w3ls-cart">Add to cart</button>--%>
+<%--                            </form>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </li>--%>
+<%--            <li>--%>
+<%--                <div class="w3l_related_products_grid">--%>
+<%--                    <div class="agile_ecommerce_tab_left mobiles_grid">--%>
+<%--                        <div class="hs-wrapper hs-wrapper3">--%>
+<%--                            <img src="images/38.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/37.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/27.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/28.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/37.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <div class="w3_hs_bottom">--%>
+<%--                                <div class="flex_ecommerce">--%>
+<%--                                    <a href="#" data-toggle="modal" data-target="#myModal3"><span--%>
+<%--                                            class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <h5><a href="single.html">Microwave Oven</a></h5>--%>
+<%--                        <div class="simpleCart_shelfItem">--%>
+<%--                            <p class="flexisel_ecommerce_cart"><span>$650</span> <i class="item_price">$645</i></p>--%>
+<%--                            <form action="#" method="post">--%>
+<%--                                <input type="hidden" name="cmd" value="_cart"/>--%>
+<%--                                <input type="hidden" name="add" value="1"/>--%>
+<%--                                <input type="hidden" name="w3ls_item" value="Microwave Oven"/>--%>
+<%--                                <input type="hidden" name="amount" value="645.00"/>--%>
+<%--                                <button type="submit" class="w3ls-cart">Add to cart</button>--%>
+<%--                            </form>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </li>--%>
+<%--            <li>--%>
+<%--                <div class="w3l_related_products_grid">--%>
+<%--                    <div class="agile_ecommerce_tab_left mobiles_grid">--%>
+<%--                        <div class="hs-wrapper hs-wrapper3">--%>
+<%--                            <img src="images/p3.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/p5.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/p4.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/p2.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <img src="images/p1.jpg" alt=" " class="img-responsive"/>--%>
+<%--                            <div class="w3_hs_bottom">--%>
+<%--                                <div class="flex_ecommerce">--%>
+<%--                                    <a href="#" data-toggle="modal" data-target="#myModal4"><span--%>
+<%--                                            class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <h5><a href="single.html">Music MP3 Player</a></h5>--%>
+<%--                        <div class="simpleCart_shelfItem">--%>
+<%--                            <p><span>$60</span> <i class="item_price">$58</i></p>--%>
+<%--                            <form action="#" method="post">--%>
+<%--                                <input type="hidden" name="cmd" value="_cart"/>--%>
+<%--                                <input type="hidden" name="add" value="1"/>--%>
+<%--                                <input type="hidden" name="w3ls_item" value="Ultra MP3 Player"/>--%>
+<%--                                <input type="hidden" name="amount" value="58.00"/>--%>
+<%--                                <button type="submit" class="w3ls-cart">Add to cart</button>--%>
+<%--                            </form>--%>
+<%--                        </div>--%>
+<%--                        <div class="mobiles_grid_pos">--%>
+<%--                            <h6>New</h6>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </li>--%>
+<%--        </ul>--%>
 
 
-    </div>
-</div>
+<%--    </div>--%>
+<%--</div>--%>
 <!-- //Related Products -->
 <!-- newsletter -->
-<div class="newsletter">
-    <div class="container">
-        <div class="col-md-6 w3agile_newsletter_left">
-            <h3>Nhận thông báo</h3>
-            <p>Về khuyến mãi và các ưu đãi sắp tới của chúng tôi....</p>
-        </div>
-        <div class="col-md-6 w3agile_newsletter_right">
-            <form action="#" method="post">
-                <input type="email" name="Email" placeholder="Email" required="">
-                <input type="submit" value=""/>
-            </form>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
+<%@include file="inewletter.jsp"%>
 <!-- //newsletter -->
 <!-- footer -->
-<div class="footer">
-    <div class="container">
-        <div class="w3_footer_grids">
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Liên hệ</h3>
-                <ul class="address">
-                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Trường Đại Học Nông Lâm <span>Kp6, P.Linh Trung, Q.Thủ Đức, TP. Hồ Chí Minh</span>
-                    </li>
-                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="18130000@st.hcmuaf.edu.vn">18130000@st.hcmuaf.edu.vn</a></li>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+84 999 999 999</li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Thông tin</h3>
-                <ul class="info">
-                    <li><a href="about.html">Về chúng tôi</a></li>
-                    <li><a href="mail.html">Liên hệ chúng tôi</a></li>
-                    <li><a href="codes.html">Mã khuyến mãi</a></li>
-                    <li><a href="products.html">Sản phẩm đặc biệt</a></li>
-                    <li><a href="faq.html">FAQ's</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Danh mục</h3>
-                <ul class="info">
-                    <li><a href="products.html">Tablets</a></li>
-                    <li><a href="LaptopGaming.html">Laptops Gaming</a></li>
-                    <li><a href="products.html">Laptops Office</a></li>
-                    <li><a href="products2.html">Laptops Studying</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Hồ sơ</h3>
-                <ul class="info">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="products.html">Today's Deals</a></li>
-                </ul>
-                <h4>Theo dõi</h4>
-                <div class="agileits_social_button">
-                    <ul>
-                        <li><a href="#" class="facebook"> </a></li>
-                        <li><a href="#" class="twitter"> </a></li>
-                        <li><a href="#" class="google"> </a></li>
-                        <li><a href="#" class="pinterest"> </a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <div class="footer-copy">
-        <div class="footer-copy1">
-            <div class="footer-copy-pos">
-                <a href="#home1" class="scroll"><img src="images/arrow.png" alt=" " class="img-responsive"/></a>
-            </div>
-        </div>
-        <div class="container">
-            <p>&copy; 2020 Laptop Store. All rights reserved | Design by <a href="#">WE</a></p>
-        </div>
-    </div>
-</div>
+<%@include file="ifooter.jsp"%>
 <!-- //footer -->
 <script type="text/javascript">
     $(window).load(function () {
@@ -793,22 +523,5 @@
     });
 </script>
 <script type="text/javascript" src="js/jquery.flexisel.js"></script>
-<!-- cart-js -->
-<script src="js/minicart.js"></script>
-<script>
-    w3ls.render();
-
-    w3ls.cart.on('w3sb_checkout', function (evt) {
-        var items, len, i;
-
-        if (this.subtotal() > 0) {
-            items = this.items();
-
-            for (i = 0, len = items.length; i < len; i++) {
-            }
-        }
-    });
-</script>
-<!-- //cart-js -->
 </body>
 </html>

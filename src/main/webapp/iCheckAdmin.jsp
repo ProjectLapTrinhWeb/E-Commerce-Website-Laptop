@@ -1,12 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hp
-  Date: 27/1/2021
-  Time: 12:30 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page import="vn.edu.nlu.Beans.User" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
@@ -56,7 +50,7 @@
 </head>
 <body>
 <% User u = (User) session.getAttribute("User");
-    if (u == null ) {
+    if (!u.getRoleID().equals("1") || u == null) {
         response.sendRedirect("index.html");
     }%>
 </body>

@@ -2,15 +2,10 @@
 <%@ page import="vn.edu.nlu.Beans.Comments" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.nlu.Beans.User" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,13 +61,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <body>
 <!-- header modal -->
-<%@include file="iheaderModal.jsp"%>
+<%@include file="iheaderModal.jsp" %>
 <!-- header modal -->
 <!-- header -->
-<%@include file="iheader.jsp"%>
+<%@include file="iheader.jsp" %>
 <!-- //header -->
 <!-- navigation -->
-<%@include file="inavigation.jsp"%>
+<%@include file="inavigation.jsp" %>
 <!-- //navigation -->
 <!-- banner -->
 <div class="banner banner10" style="max-height: 20px">
@@ -129,9 +124,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="col-md-8 single-right">
 
 
-                <div class="rating1"><%= product.getName()%>
-                </div>
-                <span class="starRating">
+            <div class="rating1"><a href="DetailProduct?id=<%= product.getId()%>" style="font-size: 36px"><%= product.getName()%>
+            </a>
+            </div>
+            <span class="starRating">
 						<input id="rating5" type="radio" name="rating" value="5">
 						<label for="rating5">5</label>
 						<input id="rating4" type="radio" name="rating" value="4">
@@ -144,61 +140,65 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<label for="rating1">1</label>
 					</span>
 
-            </div>
-            <div class="description">
-
-            </div>
-            <div class="color-quality">
-                <div class="color-quality-right-1">
-                    <h5>Số lượng :</h5>
-                    <div class="quantity">
-                        <div class="quantity-select">
-                            <div class="entry value-minus1">&nbsp;</div>
-                            <div class="entry value1"><span>1</span></div>
-                            <div class="entry value-plus1 active">&nbsp;</div>
-                        </div>
-                    </div>
-                    <!--quantity-->
-                    <script>
-                        $('.value-plus1').on('click', function () {
-                            var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10) + 1;
-                            divUpd.text(newVal);
-                        });
-
-                        $('.value-minus1').on('click', function () {
-                            var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10) - 1;
-                            if (newVal >= 1) divUpd.text(newVal);
-                        });
-                    </script>
-                    <!--quantity-->
-                    <style>
-                        .color-quality-left h5, .color-quality-right-1 h5, .occasional h5 {
-                            text-transform: uppercase;
-                            font-size: 1em;
-                            color: #0064cf;
-                        }
-                    </style>
-
-                </div>
-                <div class="clearfix">
-                    <div class="simpleCart_shelfItem">
-                        <p class="discount"> Giảm giá: <%= product.getDiscount()%>% </p>
-                        <p class="item_price"> Thành tiền: <%= product.getPrice()%> VNĐ</p>
-                        <form action="#" method="post">
-                            <input type="hidden" name="cmd" value="_cart">
-                            <input type="hidden" name="add" value="1">
-                            <input type="hidden" name="link" value="DetailProduct?id=<%= product.getId()%>"/>
-                            <input type="hidden" name="id" value="<%= product.getId()%>">
-                            <input type="hidden" name="w3ls_item" value="<%= product.getName()%>>">
-                            <input type="hidden" name="amount" value="<%= product.getPrice()%>>">
-                            <button type="submit" class="w3ls-cart">Thêm vào giỏ hàng</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        </div>
+        <div class="description">
 
         </div>
+        <div class="color-quality">
+            <div class="color-quality-right-1">
+                <h5>Số lượng :</h5>
+                <br>
+                <div class="quantity">
+                    <div class="quantity-select">
+                        <div class="entry value-minus1">&nbsp;</div>
+                        <div class="entry value1"><span>1</span></div>
+                        <div class="entry value-plus1 active">&nbsp;</div>
+                    </div>
+                </div>
+                <!--quantity-->
+                <script>
+                    $('.value-plus1').on('click', function () {
+                        var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10) + 1;
+                        divUpd.text(newVal);
+                    });
+
+                    $('.value-minus1').on('click', function () {
+                        var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10) - 1;
+                        if (newVal >= 1) divUpd.text(newVal);
+                    });
+                </script>
+                <!--quantity-->
+                <style>
+                    .color-quality-left h5, .color-quality-right-1 h5, .occasional h5 {
+                        text-transform: uppercase;
+                        font-size: 1em;
+                        color: #0064cf;
+                    }
+                </style>
+
+            </div>
+            <div class="clearfix">
+                <div class="simpleCart_shelfItem">
+                    <p class="discount">  Giá gốc: <del><%= product.getVNDPrice()%></del>
+                    </p>
+                    <p class="discount"> Giảm giá: <ins style="background: #f50; color: white"><%= product.getDiscount()%>%</ins>
+                    </p>
+                    <p class="item_price"> Thành tiền: <strong style="color: #0064cf"><%= product.getCurrentPrice()%> VNĐ</strong></p>
+                    <form action="#" method="post">
+                        <input type="hidden" name="cmd" value="_cart">
+                        <input type="hidden" name="add" value="1">
+                        <input type="hidden" name="link" value="DetailProduct?id=<%= product.getId()%>"/>
+                        <input type="hidden" name="id" value="<%= product.getId()%>">
+                        <input type="hidden" name="w3ls_item" value="<%= product.getName()%>">
+                        <input type="hidden" name="amount" value="<%= product.getCurrentPrice()%>">
+                        <button type="submit" class="w3ls-cart">Thêm vào giỏ hàng</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
+</div>
 </div>
 <div class="KM-Info">
     <div class="Block2KQ-UD">
@@ -499,7 +499,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <h5></h5>
                             <form action="AddComment" method="get" enctype="text/plain">
                                 <input type="text" name="id" class="hidden" value="<%= product.getId()%>">
-                                <textarea name="Review" value="" placeholder="Thêm nhận xét của bạn vào" required></textarea>
+                                <textarea name="Review" value="" placeholder="Thêm nhận xét của bạn vào"
+                                          required></textarea>
                                 <input type="submit" value="Bình luận">
                             </form>
                         </div>

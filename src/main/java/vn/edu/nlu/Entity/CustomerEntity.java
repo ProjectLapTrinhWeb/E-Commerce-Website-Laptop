@@ -11,33 +11,42 @@ import java.util.List;
 
 public class CustomerEntity {
     public static List<Customer> getActiveCustomer() throws SQLException, ClassNotFoundException {
-        String sql = "select * from user where RoleID ='?' and Status = '?'";
+        String sql = "select * from users where RoleID = '2' and Status = 'Active'";
         PreparedStatement ps = ConnectionDB.connect(sql);
-        ps.setString(1, "2");
-        ps.setString(2, "Active");
+
         return getFromDB(ps);
     }
 
     public static List<Customer> getUnActiveCustomer() throws SQLException, ClassNotFoundException {
-        String sql = "select * from user where RoleID ='?' and Status = '?'";
+        String sql = "select * from users where RoleID = '2' and Status = 'Un-Active'";
         PreparedStatement ps = ConnectionDB.connect(sql);
-        ps.setString(1, "2");
-        ps.setString(2, "Un-Active");
+
         return getFromDB(ps);
     }
 
     public static List<Customer> getAllCustomer() throws SQLException, ClassNotFoundException {
-        String sql = "select * from user where RoleID ='?'";
+        String sql = "select * from users where RoleID = '2'";
         PreparedStatement ps = ConnectionDB.connect(sql);
-        ps.setString(1, "2");
+
         return getFromDB(ps);
     }
 
     public static List<Customer> getFromDB(PreparedStatement ps) throws SQLException {
         List<Customer> rs = new ArrayList<>();
-        ResultSet rst = ps.executeQuery();
-        while (rst.next()) {
-            rs.add(getCustomer(rst));
+        ResultSet rst = null;
+        try {
+            rst = ps.executeQuery();
+            while (rst.next()) {
+                rs.add(getCustomer(rst));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (!rst.isClosed() || rst != null)
+                rst.close();
+            if (!ps.isClosed() || ps != null)
+                ps.close();
+            
         }
         return rs;
     }

@@ -1,7 +1,7 @@
 <%@ page import="vn.edu.nlu.Beans.Product" %>
 <%@ page import="vn.edu.nlu.Entity.ProductEntity" %>
 <%@ page import="vn.edu.nlu.Beans.Order" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>

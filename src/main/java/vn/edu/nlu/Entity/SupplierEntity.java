@@ -1,6 +1,6 @@
 package vn.edu.nlu.Entity;
 
-import vn.edu.nlu.Beans.Staff;
+import vn.edu.nlu.Beans.Product;
 import vn.edu.nlu.Beans.Supplier;
 import vn.edu.nlu.db.ConnectionDB;
 
@@ -53,32 +53,40 @@ public class SupplierEntity {
 
     public static boolean addSupplier(String name, String status, String img) throws SQLException {
         PreparedStatement ps = null;
+        boolean rlt = true;
         try {
-            String sql = "insert into supplier(id, name, status, image) values('" + nextID() + "', '" + name + "', '" + status + "', '" + img + "')";
-            System.out.println(sql);
+            String sql = "insert into supplier(id, name, status, image) values(?,?,?,?)";
             ps = ConnectionDB.connect(sql);
+            ps.setString(1, nextID());
+            ps.setString(2, name);
+            ps.setString(3, status);
+            ps.setString(4, img);
+            System.out.println(sql);
             ps.execute();
+            return rlt;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            rlt = false;
+            return rlt;
         } finally {
-            ps.close();
-
+            if (!ps.isClosed() && ps != null)
+                ps.close();
         }
-        return true;
     }
 
     public static boolean deleteSupplier(String id) throws SQLException {
         PreparedStatement ps = null;
         try {
-            String sql = "delete from supplier where id = '" + id + "'";
+            String sql = "delete from supplier where id = ?";
             ps = ConnectionDB.connect(sql);
+            ps.setString(1, id);
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         } finally {
-            ps.close();
+            if (!ps.isClosed() && ps != null)
+                ps.close();
 
         }
         return true;
@@ -87,14 +95,20 @@ public class SupplierEntity {
     public static boolean updateSupplier(String id, String name, String status, String img) throws SQLException {
         PreparedStatement ps = null;
         try {
-            String sql = "update supplier set status = '" + status + "', name = '" + name + "', Image = '" + img + "' where id = '" + id + "'";
+            String sql = "update supplier set status = ?, name = ?, Image = ? where id = ?";
             ps = ConnectionDB.connect(sql);
+            ps.setString(1, status);
+            ps.setString(2, name);
+            ps.setString(3, img);
+            ps.setString(4, id);
+
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         } finally {
-            ps.close();
+            if (!ps.isClosed() && ps != null)
+                ps.close();
 
         }
         return true;
@@ -105,7 +119,6 @@ public class SupplierEntity {
         String name = rst.getString("Name");
         String status = rst.getString("Status");
         String img = rst.getString("Image");
-
         return new Supplier(id, name, status, img);
     }
 
@@ -113,11 +126,16 @@ public class SupplierEntity {
     public static List<Supplier> getLimitSupplier(int limit, int offset) throws SQLException {
         String sql = "select * from supplier limit " + limit + " offset " + offset;
         List<Supplier> rs = new ArrayList<>();
-
         return getFromDB(sql, rs);
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        System.out.println(updateSupplier("1","hayate","Active","123"));
+        List<Supplier> suppliers = getAllSupplier();
+        Product p =ProductEntity.getId(1);
+        System.out.println(p.getSupplierId()+"");
+        for (Supplier s : suppliers) {
+            if (s.getId().equals(p.getSupplierId()+""))
+                System.out.println(s.getId() + ":" + s.getName());
+        }
     }
 }

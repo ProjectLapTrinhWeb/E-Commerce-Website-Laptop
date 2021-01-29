@@ -1,7 +1,7 @@
 <%@ page import="vn.edu.nlu.Beans.User" %>
 <%@ page import="vn.edu.nlu.Beans.Supplier" %>
 <%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@include file="iCheckAdmin.jsp" %>
@@ -101,117 +101,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="container" style="margin: 0 !important;">
         <div class="w3ls_mobiles_grids">
             <div class="col-md-4 w3ls_mobiles_grid_left">
-                <div class="w3ls_mobiles_grid_left_grid">
-                    <h3>Quản lý</h3>
-                    <div class="w3ls_mobiles_grid_left_grid_sub">
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <h4 class="panel-title asd">
-                                        <a class="pa_italic" href="adminOrder.html">
-                                            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>Đơn hàng
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                              <div class="panel-body panel_text">
-                                <ul>
-                                    <li><a href="" role="button" data-toggle="collapse" >Tất cả</a></li>
-                                    <li><a href="#cancel"  role="button" data-toggle="collapse" >Đơn đã hủy</a></li>
-                                    <li><a href="products2.html">Đơn đang giao</a></li>
-                                    <li><a href="#delivered">Đơn đã giao</a></li>
-                                    <li><a href="products.html">Trả hàng/Hoàn tiền</a></li>
-                                </ul>
-                              </div>
-                            </div> -->
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title asd">
-                                        <a class="pa_italic" href="products.html">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
-                                                class="glyphicon glyphicon-plus" aria-hidden="true"></i>Sản phẩm
-                                        </a>
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="heading3">
-                                    <h4 class="panel-title asd">
-                                        <a class="pa_italic" href="adminStaff.html">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
-                                                class="glyphicon glyphicon-plus" aria-hidden="true"></i>Nhân viên
-                                        </a>
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="heading4">
-                                    <h4 class="panel-title asd">
-                                        <a class="pa_italic" href="adminCustomer.html">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
-                                                class="glyphicon glyphicon-plus" aria-hidden="true"></i>Khách hàng
-                                        </a>
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="heading5">
-                                    <h4 class="panel-title asd">
-                                        <a class="pa_italic" href="adminContact.html">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
-                                                class="glyphicon glyphicon-plus" aria-hidden="true"></i>Liên hệ
-                                        </a>
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="heading6">
-                                    <h4 class="panel-title asd">
-                                        <a class="pa_italic collapsed" href="adminProduct.html">
-                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><i
-                                                class="glyphicon glyphicon-plus" aria-hidden="true"></i>Nhà sản xuất
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                               <div class="panel-body panel_text">
-                                <ul>
-                                    <li><a href="products2.html">Tất cả sản phẩm</a></li>
-                                    <li><a href="products2.html">Thêm sản phẩm</a></li>
-                                    <li><a href="products2.html">Đang kinh doanh</a></li>
-                                    <li><a href="products2.html">Đã hết</a></li>
-                                </ul>
-                              </div>
-                            </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="w3ls_mobiles_grid_left_grid">
-                    <h3>Tài chính</h3>
-                    <div class="w3ls_mobiles_grid_left_grid_sub">
-                        <div class="ecommerce_color ecommerce_size">
-                            <ul>
-                                <li><a href="#">Doanh thu theo tuần</a></li>
-                                <li><a href="#">Doanh thu theo tháng</a></li>
-                                <li><a href="#">Doanh thu theo quý</a></li>
-                                <li><a href="#">Doanh thu theo năm</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="w3ls_mobiles_grid_left_grid">
-                    <h3>Dữ liệu</h3>
-                    <div class="w3ls_mobiles_grid_left_grid_sub">
-                        <div class="ecommerce_color ecommerce_size">
-                            <ul>
-                                <li><a href="#">Phân tích bán hàng</a></li>
-                                <li><a href="#">Hiệu quả hoạt động</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
+                <%@include file="iMenuAdmin.jsp" %>
             </div>
         </div>
         <div class="tab-content">
@@ -632,89 +522,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div style="background-color: #0064cf; width: 100%; height: 60px;"></div>
     <!-- end div -->
     <!-- footer -->
-    <div class="footer">
-        <div class="container">
-            <div class="w3_footer_grids">
-                <div class="col-md-3 w3_footer_grid">
-                    <h3>Liên hệ</h3>
-                    <ul class="address">
-                        <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Trường Đại Học Nông Lâm
-                            <span>Kp6, P.Linh Trung, Q.Thủ Đức, TP. Hồ Chí Minh</span>
-                        </li>
-                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                                href="18130000@st.hcmuaf.edu.vn">18130000@st.hcmuaf.edu.vn</a></li>
-                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+84 999 999 999</li>
-                    </ul>
-                </div>
-                <div class="col-md-3 w3_footer_grid">
-                    <h3>Thông tin</h3>
-                    <ul class="info">
-                        <li><a href="about.html">Về chúng tôi</a></li>
-                        <li><a href="mail.html">Liên hệ chúng tôi</a></li>
-                        <li><a href="codes.html">Mã khuyến mãi</a></li>
-                        <li><a href="products.html">Sản phẩm đặc biệt</a></li>
-                        <li><a href="faq.html">FAQ's</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 w3_footer_grid">
-                    <h3>Danh mục</h3>
-                    <ul class="info">
-                        <li><a href="products.html">Tablets</a></li>
-                        <li><a href="products1.html">Laptops Gaming</a></li>
-                        <li><a href="products.html">Laptops Office</a></li>
-                        <li><a href="products2.html">Laptops Studying</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 w3_footer_grid">
-                    <h3>Hồ sơ</h3>
-                    <ul class="info">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Today's Deals</a></li>
-                    </ul>
-                    <h4>Theo dõi</h4>
-                    <div class="agileits_social_button">
-                        <ul>
-                            <li><a href="#" class="facebook"> </a></li>
-                            <li><a href="#" class="twitter"> </a></li>
-                            <li><a href="#" class="google"> </a></li>
-                            <li><a href="#" class="pinterest"> </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <div class="footer-copy">
-            <div class="footer-copy1">
-                <div class="footer-copy-pos">
-                    <a href="#home1" class="scroll"><img src="images/arrow.png" alt=" " class="img-responsive"/></a>
-                </div>
-            </div>
-            <div class="container">
-                <p>&copy; 2020 Laptop Store. All rights reserved | Design by <a href="#">WE</a></p>
-            </div>
-        </div>
-    </div>
+    <%@include file="ifooter.jsp" %>
     <!-- //footer -->
-
-    <!-- cart-js -->
-    <!-- <script src="js/minicart.js"></script>
-    <script>
-        w3ls.render();
-
-        w3ls.cart.on('w3sb_checkout', function (evt) {
-            var items, len, i;
-
-            if (this.subtotal() > 0) {
-                items = this.items();
-
-                for (i = 0, len = items.length; i < len; i++) {
-                }
-            }
-        });
-    </script>   -->
-    <!-- //cart-js -->
-
 </div>
 </body>
 

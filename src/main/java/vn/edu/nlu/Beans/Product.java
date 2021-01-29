@@ -5,7 +5,6 @@ import vn.edu.nlu.Entity.ProductEntity;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.text.NumberFormat;
-import java.util.Locale;
 
 public class Product implements Serializable {
     private String id;
@@ -137,7 +136,6 @@ public class Product implements Serializable {
     }
 
 
-
     public void setPriceSale(String priceSale) {
         this.priceSale = priceSale;
     }
@@ -182,7 +180,7 @@ public class Product implements Serializable {
         String rs = null;
         NumberFormat nf = NumberFormat.getInstance(); // get instance
         nf.setMaximumFractionDigits(0); // set decimal places
-        rs = nf.format(Double.parseDouble(price))+ " VNĐ";
+        rs = nf.format(Double.parseDouble(price)) + " VNĐ";
         return rs;
     }
 
@@ -197,8 +195,17 @@ public class Product implements Serializable {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Product p = ProductEntity.getId(1);
-        System.out.println(p.getPriceSale());
-        System.out.println(p.getVNDPrice());
+        System.out.println(p.getPrice());
+        System.out.println(p.getCurrentPrice());
+    }
+
+    public String getCurrentPrice() {
+        double ps = (Double.parseDouble(price) * (100 - discount) / 100);
+        NumberFormat nf = NumberFormat.getInstance(); // get instance
+        nf.setMaximumFractionDigits(0); // set decimal places
+        String rs = MyUtils.getPrice(nf.format(ps));
+
+        return rs;
     }
 
     @Override

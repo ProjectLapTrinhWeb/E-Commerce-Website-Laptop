@@ -1,7 +1,6 @@
 package vn.edu.nlu.Entity;
 
 import vn.edu.nlu.Beans.Comments;
-import vn.edu.nlu.Beans.User;
 import vn.edu.nlu.db.ConnectionDB;
 
 import java.sql.PreparedStatement;
@@ -14,7 +13,7 @@ public class CommentEntity {
     public static List<Comments> getAllComment(String ProductID) throws SQLException {
         List<Comments> rs = new ArrayList<Comments>();
         String sql = "select c.ID, u.userName userName, c.userID, c.ProductID, c.Content from comment c join users u  on c.UserID = u.ID where ProductID = '" + ProductID + "'";
-        System.out.println(sql);
+
         return getFromDB(sql, rs);
     }
 
@@ -30,7 +29,7 @@ public class CommentEntity {
     public static List<Comments> getLimitComment(int id, int limit, int offset) throws SQLException {
         List<Comments> rs = new ArrayList<Comments>();
         String sql = "select c.id, u.UserName userName, c.UserID, c .ProductID, c.Content from comment c join users u on c.UserID=u.ID where ProductID = '" + id + "'  limit " + limit + " offset " + offset;
-        System.out.println(sql);
+
         return getFromDB(sql, rs);
     }
 
@@ -48,10 +47,9 @@ public class CommentEntity {
     }
 
     public static boolean addComment(String userID, String ProductID, String content) throws SQLException, ClassNotFoundException {
-
         PreparedStatement ps = null;
         try {
-            String sql = "insert into comment(UserID,ProductID, Content) values('"+userID+"','" + ProductID + "','"+content+"')";
+            String sql = "insert into comment(UserID,ProductID, Content) values('" + userID + "','" + ProductID + "','" + content + "')";
             System.out.println(sql);
             ps = ConnectionDB.connect(sql);
             ps.execute();
@@ -59,14 +57,14 @@ public class CommentEntity {
             e.printStackTrace();
             return false;
         } finally {
-            ps.close();
-
+            if (!ps.isClosed() || ps != null)
+                ps.close();
         }
         return true;
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        System.out.println(addComment("1","2","aaaaa"));
+        System.out.println(addComment("1", "2", "aaaaa"));
 //        System.out.println(getAllComment("2"));
 //        System.out.println(addComment("24","54","nhubui"));
     }

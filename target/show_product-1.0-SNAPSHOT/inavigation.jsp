@@ -1,5 +1,8 @@
 <%@ page import="vn.edu.nlu.Beans.User" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="vn.edu.nlu.Beans.Supplier" %>
+<%@ page import="java.util.List" %>
+<%@ page import="vn.edu.nlu.Entity.SupplierEntity" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
@@ -68,17 +71,17 @@
                     <li><a href="index.html" class="act">Trang chủ</a></li>
                     <!-- Mega Menu -->
                     <li class="dropdown">
-                        <a href="products.html" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm<b
+                        <a href="products" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm<b
                                 class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-3">
                             <div class="row">
                                 <div class="col-sm-3">
                                     <ul class="multi-column-dropdown">
-                                        <h6><a href="products.html">Laptop</a></h6>
-                                        <li><a href="LaptopGaming.html">Laptop Gaming</a></li>
-                                        <li><a href="products.html">Macbook<span>New</span></a></li>
-                                        <li><a href="products.html">Laptop Văn Phòng</a></li>
-                                        <li><a href="products.html">Laptop Đồ Họa<span>New</span></a></li>
+                                        <h6><a href="LoadProducts">Laptop</a></h6>
+                                        <li><a href="LaptopGaming">Laptop Gaming</a></li>
+                                        <li><a href="LaptopOffice">Laptop Văn Phòng</a></li>
+                                        <li><a href="LaptopGraphic">Laptop Đồ Họa<span>New</span></a></li>
+                                        <%--                                        <li><a href="products.html">Macbook<span>New</span></a></li>--%>
                                     </ul>
                                 </div>
                                 <div class="col-sm-3">
@@ -93,11 +96,16 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <ul class="multi-column-dropdown">
-                                        <h6><a href="products2.html">Thương Hiệu</a></h6>
-                                        <li><a href="products2.html">Asus</a></li>
-                                        <li><a href="products2.html">Dell</a></li>
-                                        <li><a href="products2.html">Macbook<span>New</span></a></li>
-                                        <li><a href="products2.html">HP</a></li>
+                                        <h6>Thương Hiệu</h6>
+                                        <%--                                        huynhaiquoc--%>
+                                        <%
+                                            List<Supplier> listSuppliers = SupplierEntity.getAllSupplier();
+                                            for (Supplier s : listSuppliers
+                                            ) {
+                                        %>
+                                        <li><a href="ThuongHieu?supplier=<%= s.getName()%>"><%= s.getName()%>
+                                        </a></li>
+                                        <%}%>
                                         <!-- <li><a href="products2.html">Acer</a></li> -->
                                         <!-- <li><a href="products2.html">Lenovo</a></li> -->
                                     </ul>
@@ -126,24 +134,32 @@
                         <ul class="dropdown-menu">
                             <% User user1 = (User) session.getAttribute("User");
                                 if (user1 != null) {%>
-                                <li><button type="button" class="btn btn-outline-info btn-user" disabled><%= user1.getUserName()%>
-                                </button></li>
-                                <li>
-                                    <form action="Info" method="post">
-                                        <button type="submit" class="btn btn-outline-info btn-user"><span class="glyphicon glyphicon-user" aria-hidden="true" style="margin-right: 20px;"></span>Profile</button>
-                                    </form>
-                                </li>
-                                <li>
-                                    <form action="Logout" method="get">
-                                        <button type="submit" class="btn btn-outline-danger btn-user"><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="margin-right: 20px;"></span>Logout</button>
-                                    </form>
-                                </li>
-                            </ul>
+                            <li>
+                                <button type="button" class="btn-default btn-user" disabled><%= user1.getUserName()%>
+                                </button>
+                            </li>
+                            <li>
+                                <form action="Info" method="post">
+                                    <button type="submit" class="btn btn-outline-info btn-user"><span
+                                            class="glyphicon glyphicon-user" aria-hidden="true"
+                                            style="margin-right: 20px;"></span>Info
+                                    </button>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="Logout" method="post">
+                                    <button type="submit" class="btn btn-outline-danger btn-user"><span
+                                            class="glyphicon glyphicon-log-out" aria-hidden="true"
+                                            style="margin-right: 20px;"></span>Logout
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
                             <%
                                 }
                             %>
-                        </ul>
-                    </li>
+                </ul>
+                </li>
 
                 </ul>
             </div>

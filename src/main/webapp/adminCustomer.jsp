@@ -1,10 +1,7 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="vn.edu.nlu.Beans.Customer" %>
+<%@ page import="java.util.List" %>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
@@ -62,13 +59,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
 <!-- header modal -->
-<%@include file="iheaderModal.jsp"%>
+<%@include file="iheaderModal.jsp" %>
 <!-- header modal -->
 <!-- header -->
-<%@include file="iheader.jsp"%>
+<%@include file="iheader.jsp" %>
 <!-- //header -->
 <!-- navigation -->
-<%@include file="inavigation.jsp"%>
+<%@include file="inavigation.jsp" %>
 <!-- //navigation -->
 <!-- banner -->
 <div class="banner banner10" style="background-image: url(images/banner-about1.jpg);">
@@ -95,14 +92,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="container" style="margin: 0 !important;">
         <div class="w3ls_mobiles_grids">
             <div class="col-md-4 w3ls_mobiles_grid_left">
-                <%@include file="iMenuAdmin.jsp"%>
+                <%@include file="iMenuAdmin.jsp" %>
             </div>
         </div>
 
         <div class="content-admin collapse in" id="admin-product">
             <div class="all-product">
                 <ul class="nav nav-tabs" id="myProductTab">
-                    <li class="active"><a data-toggle="tab" href="#all-staff">Tất cả</a></li>
+                    <li class="active"><a data-toggle="tab" href="#all-Customer">Tất cả</a></li>
                     <li><a data-toggle="tab" href="#activeCustomer">Đang hoạt động</a></li>
                     <li><a data-toggle="tab" href="#unactiveCustomer">Ngưng hoạt động</a></li>
                 </ul>
@@ -114,232 +111,219 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                    placeholder="Theo mã khách hàng...">
                             <input type="submit" value="Tìm" class="search-btn">
                         </label>
-                        <!-- <button type="button" data-toggle="modal" data-target="#add-more-staff"
-                            rel="noopener noreferrer" id="add-staff">Thêm
-                            nhân viên</button> -->
                     </form>
                 </div>
-                <div class="header-tab">
-                    <ul class="col" style="list-style-type: none;">
-                        <li class="col-md-1">ID</li>
-                        <li class="col-md-3">Tên</li>
-                        <li class="col-md-3">Mail</li>
-                        <li class="col-md-2">SĐT</li>
-                        <li class="col-md-1">TT</li>
-                        <li class="col-md-2" style="text-align: right;">Thao tác</li>
-                    </ul>
-                </div>
-                <div class="tab-content" id="content-order">
-                    <div id="all-staff" class="tab-pane fade in active">
+                <div class="tab-content">
+                    <div id="all-Customer" class="tab-pane fade in active">
+                        <div class="order-tab">
+                            <table class="table table-bordered header-tab">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Mail</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% List<Customer> list = (List<Customer>) request.getAttribute("List");
+                                    for (Customer s : list) {%>
+                                <!-- start product-->
+                                <tr>
+                                    <td><%= s.getId()%>
+                                    </td>
+                                    <td><%= s.getName()%>
+                                    </td>
+                                    <td><%= s.getMail()%>
+                                    </td>
+                                    <td><%= s.getPhone()%>
+                                    </td>
+                                    <td><%= s.getStatus()%>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn my-blue btn-sm" data-toggle="modal"
+                                                data-target="#user<%= s.getId()%>">
+                                            <i class="fa fa-wrench" style="font-size:12px;color:black"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default center"
+                                                style="margin-top: 10px" data-toggle="modal"
+                                                data-target="#myModalDelete<%= s.getId()%>">
+                                            <i class="fa fa-remove" style="font-size:12px;color:red"></i>
+                                        </button>
+                                        <%-- modal config--%>
+                                        <div id="user<%= s.getId()%>" class="modal fade" role="dialog">
+                                            <div class="modal-dialog modal-lg">
 
-                        <c:set var="count" value="${count + 1}" scope="page"/>
-                        <c:forEach items="${listCus}" var="l">
-
-                            <!-- start khach hang -->
-                            <div class="staff-info">
-                                <p class="id-staff col-sm-1">${l.id}</p>
-                                <p class="name-staff col-sm-3">${l.name}</p>
-                                <p class="mail-staff col-sm-3">${l.mail}</p>
-                                <p class="phone-staff col-sm-2">${l.phone}</p>
-                                <p class="status-staff col-sm-1">${l.status}</p>
-                                <div class="action-staff col-sm-2">
-                                    <button type="button" class="btn my-blue btn-sm" data-toggle="modal"
-                                            data-target="#user<c:set/>">
-                                        <span class="glyphicon glyphicon-cog"></span>
-                                    </button>
-                                    <button type="button" class="btn my-blue btn-sm" data-toggle="modal"
-                                            data-target="#delUser1">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- end khach hang -->
-
-                            <!-- Modal Modify-->
-                            <div id="user<c:set/>" class="modal fade" role="dialog">
-                                <div class="modal-dialog modal-lg">
-
-                                    <!-- Modal content-->
-                                    <div class="modal-content" class="config-staff-div">
-                                        <form action="" name="form-add-staff" method="post">
-                                            <div class="modal-header">
-                                                <button type="button" class="close"
-                                                        data-dismiss="modal">&times;
-                                                </button>
-                                                <h4 class="modal-title">Sửa thông tin khách hàng</h4>
+                                                <!-- Modal config content-->
+                                                <div class="modal-content">
+                                                    <form action="UpdateCustomer" method="post">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close"
+                                                                    data-dismiss="modal">&times;
+                                                            </button>
+                                                            <h4 class="modal-title">Sửa thông tin nhân viên
+                                                                id: <%= s.getId()%>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="modal-body mid-col">
+                                                            <label>
+                                                                <input type="text" name="id" class="form-control hidden"
+                                                                       value="<%= s.getId()%>" readonly>
+                                                            </label>
+                                                            <label>
+                                                                Tên:
+                                                                <input type="text" name="name" class="form-control"
+                                                                       value="<%= s.getName()%>" readonly>
+                                                            </label>
+                                                            <label>
+                                                                Email:
+                                                                <input type="text" name="mail" class="form-control"
+                                                                       value="<%= s.getMail()%>" readonly>
+                                                            </label>
+                                                            <label>
+                                                                Sđt:
+                                                                <input type="text" name="phone" class="form-control"
+                                                                       value="<%= s.getPhone()%>" readonly>
+                                                            </label>
+                                                            <label>
+                                                                Trạng thái:
+                                                                <select name="status" class="form-control"
+                                                                        style="width: 185px;">
+                                                                    <%
+                                                                        switch (s.getStatus()) {
+                                                                            case "Active": %>
+                                                                    <option value="Active">Hoạt động</option>
+                                                                    <option value="UnActive">Ngưng hoạt động</option>
+                                                                    <% break;
+                                                                        case "UnActive": %>
+                                                                    <option value="UnActive">Ngưng hoạt động</option>
+                                                                    <option value="Active">Hoạt động</option>
+                                                                    <% break;
+                                                                        default:
+                                                                    %>
+                                                                    <option value="null">N/A</option>
+                                                                    <option value="Active">Hoạt động</option>
+                                                                    <option value="UnActive">Ngưng hoạt động</option>
+                                                                    <% break;
+                                                                    }
+                                                                    %>
+                                                                </select>
+                                                            </label>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn my-blue">
+                                                                <strong>Sửa</strong></button>
+                                                            <button type="button" class="btn btn-default"
+                                                                    data-dismiss="modal">Đóng
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
-                                            <div class="modal-body">
-                                                <label>
-                                                    Tên:
-                                                    <input type="text" name="name-staff"
-                                                           value="${l.name}">
-                                                    <div id="error-name-c" class="error-validation"></div>
-                                                </label>
-                                                <label>
-                                                    Email:
-                                                    <input type="text" name="mail-staff"
-                                                           value="${l.mail}">
-                                                    <div id="error-mail-c" class="error-validation"></div>
-                                                </label>
-                                                <label>
-                                                    Sđt:
-                                                    <input type="text" name="phone-staff"
-                                                           value="${l.phone}">
-                                                    <div id="error-phone-c" class="error-validation"></div>
-                                                </label>
-                                                <label for="status-staff-c">
-                                                    Trạng thái:
-                                                    <select name="status-staff" id="status-staff-c">
-                                                        <option value="Active">Hoạt động</option>
-                                                        <option value="Un-active">Ngưng hoạt động</option>
-                                                    </select>
-                                                </label>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn my-blue"
-                                                        onclick="return checkInfoConfig()">Sửa
-                                                </button>
-                                                <button type="button" class="btn btn-default"
-                                                        data-dismiss="modal">Đóng
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                                        </div>
+                                        <%-- modal config--%>
+                                        <!-- Modal delete -->
+                                        <div class="modal fade" id="myModalDelete<%= s.getId()%>" role="dialog">
+                                            <div class="modal-dialog">
 
-                            </div>
-                            <!-- Modal Delete-->
-                            <div id="delUser<c:set/>" class="modal fade" role="dialog">
-                                <div class="modal-dialog modal-lg">
+                                                <!-- Modal delete content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                        <h4 class="modal-title">Xóa nhân viên</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p class="center">Bạn có muốn <strong>XÓA</strong> nhân viên
+                                                            <strong><%= s.getName()%>
+                                                            </strong> này
+                                                            không!?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form action="DeleteAdminCustomer" method="post">
+                                                            <input type="text" name="id" value="<%= s.getId()%>"
+                                                                   class="hidden">
+                                                            <button type="submit" class="btn btn-warning right"><strong>Xóa</strong>
+                                                            </button>
+                                                        </form>
+                                                        <button type="button" style="margin-right: 30px"
+                                                                class="btn btn-default" data-dismiss="modal">Đóng
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end Modal delete-->
+                                    </td>
+                                </tr>
+                                <!-- end product-->
+                                <%}%>
+                                </tbody>
+                            </table>
+                            <%--      <ul class="pagination" style="margin-left: 60px">
+                                      <% int sumPage = (int) request.getAttribute("SumPage");
+                                          for (int i = 1; i <= sumPage; i++) {
+                                              if (request.getAttribute("SearchKey") != null) {
+                                                  if (((int) request.getAttribute("CurrentPage")) == i) {
+                                      %>
+                                      <li class="my-pagination">
+                                          <form action="SearchAdminProduct" method="get">
+                                              <input type="text" name="search" class="hidden"
+                                                     value="<%= request.getAttribute("SearchKey")%>">
+                                              <input type="text" name="page" value="<%= i%>" class="hidden">
+                                              <button type="submit" class="btn btn-sm btn-default disabled"><%= i%>
+                                              </button>
+                                          </form>
+                                      </li>
+                                      <%
+                                      } else {%>
+                                      <li class="my-pagination">
+                                          <form action="SearchAdminProduct" method="get">
+                                              <input type="text" name="search" class="hidden"
+                                                     value="<%= request.getAttribute("SearchKey")%>">
+                                              <input type="text" name="page" value="<%= i%>" class="hidden">
+                                              <button type="submit" class="btn btn-sm btn-info"><%= i%>
+                                              </button>
+                                          </form>
+                                      </li>
+                                      <%
+                                          }
+                                      %>
+                                      <%
+                                      } else {
+                                          if (((int) request.getAttribute("CurrentPage")) == i) {%>
+                                      <li class="my-pagination">
+                                          <form action="AdminProduct" method="get">
+                                              <input type="text" name="page" value="<%= i%>" class="hidden">
+                                              <button type="submit" class="btn btn-sm btn-default disabled"><%= i%>
+                                              </button>
+                                          </form>
+                                      </li>
+                                      <%
+                                      } else {
+                                      %>
+                                      <li class="my-pagination">
+                                          <form action="AdminProduct" method="get">
+                                              <input type="text" name="page" value="<%= i%>" class="hidden">
+                                              <button type="submit" class="btn btn-sm btn-info"><%= i%>
+                                              </button>
+                                          </form>
+                                      </li>
+                                      <%
+                                                  }
+                                              }
+                                          }
+                                      %>
+                                  </ul> --%>
+                        </div>
 
-                                    <!-- Modal content-->
-                                    <div class="modal-content" class="config-staff-div">
-                                        <div class="modal-header">
-                                            <button type="button" class="close"
-                                                    data-dismiss="modal">&times;
-                                            </button>
-                                            <h4 class="modal-title">Xóa khách hàng</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h5 class="center">Bạn sẽ xóa khách hàng ID là: ${l.id}</h5>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn my-blue"
-                                                    onclick="">Xóa
-                                            </button>
-                                            <button type="button" class="btn btn-default"
-                                                    data-dismiss="modal">Đóng
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:forEach>
                     </div>
                     <div id="activeCustomer" class="tab-pane fade">
-                        <c:set var="count1" value="${count1 + 1}" scope="page"/>
-                        <c:forEach items="${listAc}" var="l">
-
-                            <!-- start khach hang -->
-                            <div class="staff-info">
-                                <p class="id-staff col-sm-1">${l.id}</p>
-                                <p class="name-staff col-sm-3">${l.name}</p>
-                                <p class="mail-staff col-sm-3">${l.mail}</p>
-                                <p class="phone-staff col-sm-2">${l.phone}</p>
-                                <p class="status-staff col-sm-1">${l.status}</p>
-                                <div class="action-staff col-sm-2">
-                                    <button type="button" class="btn my-blue btn-sm" data-toggle="modal"
-                                            data-target="#user<c:set/>">
-                                        <span class="glyphicon glyphicon-cog"></span>
-                                    </button>
-                                    <button type="button" class="btn my-blue btn-sm" data-toggle="modal"
-                                            data-target="#delUser1">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- end khach hang -->
-
-                            <!-- Modal Modify-->
-                            <div id="user<c:set/>" class="modal fade" role="dialog">
-                                <div class="modal-dialog modal-lg">
-
-                                    <!-- Modal content-->
-                                    <div class="modal-content" class="config-staff-div">
-                                        <form action="" name="form-add-staff" method="post">
-                                            <div class="modal-header">
-                                                <button type="button" class="close"
-                                                        data-dismiss="modal">&times;
-                                                </button>
-                                                <h4 class="modal-title">Sửa thông tin khách hàng</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <label>
-                                                    Tên:
-                                                    <input type="text" name="name-staff"
-                                                           value="${l.name}">
-<%--                                                    <div id="error-name-c" class="error-validation"></div>--%>
-                                                </label>
-                                                <label>
-                                                    Email:
-                                                    <input type="text" name="mail-staff"
-                                                           value="${l.mail}">
-<%--                                                    <div id="error-mail-c" class="error-validation"></div>--%>
-                                                </label>
-                                                <label>
-                                                    Sđt:
-                                                    <input type="text" name="phone-staff"
-                                                           value="${l.phone}">
-<%--                                                    <div id="error-phone-c" class="error-validation"></div>--%>
-                                                </label>
-                                                <label for="status-staff-c">
-                                                    Trạng thái:
-                                                    <select name="status-staff">
-                                                        <option value="Active">Hoạt động</option>
-                                                        <option value="Un-active">Ngưng hoạt động</option>
-                                                    </select>
-                                                </label>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn my-blue"
-                                                        onclick="return checkInfoConfig()">Sửa
-                                                </button>
-                                                <button type="button" class="btn btn-default"
-                                                        data-dismiss="modal">Đóng
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- Modal Delete-->
-                            <div id="delUser<c:set/>" class="modal fade" role="dialog">
-                                <div class="modal-dialog modal-lg">
-
-                                    <!-- Modal content-->
-                                    <div class="modal-content" class="config-staff-div">
-                                        <div class="modal-header">
-                                            <button type="button" class="close"
-                                                    data-dismiss="modal">&times;
-                                            </button>
-                                            <h4 class="modal-title">Xóa khách hàng</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h5 class="center">Bạn sẽ xóa khách hàng ID là: ${l.id}</h5>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn my-blue"
-                                                    onclick="">Xóa
-                                            </button>
-                                            <button type="button" class="btn btn-default"
-                                                    data-dismiss="modal">Đóng
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:forEach>
+                        <h3>Active Customer</h3>
+                        <p>Some content in menu 1.</p>
                     </div>
                     <div id="unactiveCustomer" class="tab-pane fade">
                         <h3>Un-active Customer</h3>
@@ -361,63 +345,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div style="background-color: #0064cf; width: 100%; height: 60px;"></div>
 <!-- end div -->
 <!-- footer -->
-<%@include file="ifooter.jsp"%>
+<%@include file="ifooter.jsp" %>
 <!-- //footer -->
-<script>
-    function checkInfoConfig() {
-        {
-            var name = document.getElementById("name-staff-c").value;
-            var mail = document.getElementById("mail-staff-c").value;
-            var phone = document.getElementById("phone-staff-c").value;
-
-            var check_mail1 = mail.indexOf("@");
-            var check_mail2 = mail.lastIndexOf(".");
-            var f_name = "", f_mail = "", f_phone = "";
-            if (check_mail1 < 1 || check_mail2 < (check_mail1 + 2)
-                || (check_mail2 + 2) >= x.length) {
-                f_mail = "Mail không hợp lệ";
-            }
-            // if (phonenumber(phone)) {
-            // 	f_phone = "Số điện thoại không hợp lệ";
-            // }
-            if (name == "") {
-                f_name = "Vui lòng nhập dữ liệu";
-            }
-            if (mail == "") {
-                f_mail = "Vui lòng nhập dữ liệu";
-            }
-            if (phone == "") {
-                f_phone = "Vui lòng nhập dữ liệu";
-            }
-
-            if (f_name == "" && f_mail == "" && f_phone == "") {
-                return true;
-            } else {
-                document.getElementById("error-name-c").innerHTML = f_name;
-                document.getElementById("error-mail-c").innerHTML = f_mail;
-                document.getElementById("error-phone-c").innerHTML = f_phone;
-                return false;
-            }
-        }
-    }
-</script>
-<!-- cart-js -->
-<!-- <script src="js/minicart.js"></script>
-<script>
-    w3ls.render();
-
-    w3ls.cart.on('w3sb_checkout', function (evt) {
-        var items, len, i;
-
-        if (this.subtotal() > 0) {
-            items = this.items();
-
-            for (i = 0, len = items.length; i < len; i++) {
-            }
-        }
-    });
-</script>   -->
-<!-- //cart-js -->
 </body>
 
 </html>

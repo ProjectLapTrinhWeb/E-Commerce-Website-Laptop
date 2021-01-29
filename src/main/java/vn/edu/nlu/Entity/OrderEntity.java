@@ -40,10 +40,22 @@ public class OrderEntity {
 
 
     public static List<Order> getFromDB(String sql, List<Order> rs) throws SQLException, ClassNotFoundException {
-        PreparedStatement ps = ConnectionDB.connect(sql);
-        ResultSet rst = ps.executeQuery();
-        while (rst.next()) {
-            rs.add(getOrder(rst));
+        PreparedStatement ps = null;
+        ResultSet rst = null;
+        try {
+            ps = ConnectionDB.connect(sql);
+            rst = ps.executeQuery();
+            while (rst.next()) {
+                rs.add(getOrder(rst));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (!rst.isClosed() || rst != null)
+                rst.close();
+            if (!ps.isClosed() || ps != null)
+                ps.close();
+            
         }
         return rs;
     }
@@ -91,14 +103,18 @@ public class OrderEntity {
         return getOrder(rst);
     }
 
-    public static boolean updateOrder(Order o) {
+    public static boolean updateOrder(Order o) throws SQLException {
+        PreparedStatement ps = null;
         try {
             String sql = "update orders set customerName = '" + o.getCustomerName() + "', phone = '" + o.getPhone() + "', address = '" + o.getAddress() + "', status = '" + o.getStatus() + "' where id = '" + o.getId() + "'";
-            PreparedStatement ps = ConnectionDB.connect(sql);
+            ps = ConnectionDB.connect(sql);
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        } finally {
+            if (!ps.isClosed() || ps != null)
+                ps.close();
         }
         return true;
     }
