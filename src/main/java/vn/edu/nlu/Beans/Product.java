@@ -1,6 +1,9 @@
 package vn.edu.nlu.Beans;
 
+import vn.edu.nlu.Entity.ProductEntity;
+
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -19,6 +22,7 @@ public class Product implements Serializable {
     private String modifiedBy;
     private String status;
     private int quantity;
+    private String priceSale;
 
     public String getId() {
         return id;
@@ -132,15 +136,12 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-    public String getPriceSale() {
-        return priceSale;
-    }
+
 
     public void setPriceSale(String priceSale) {
         this.priceSale = priceSale;
     }
 
-    private String priceSale;
 
     public Product() {
     }
@@ -179,15 +180,24 @@ public class Product implements Serializable {
 
     public String getVNDPrice() {
         String rs = null;
-        Locale loc = Locale.getDefault();
-        NumberFormat nf = NumberFormat.getCurrencyInstance(loc);
-        rs = nf.format(Double.parseDouble(price));
-        return rs.substring(1, rs.length() - 3) + " VNĐ";
+        NumberFormat nf = NumberFormat.getInstance(); // get instance
+        nf.setMaximumFractionDigits(0); // set decimal places
+        rs = nf.format(Double.parseDouble(price))+ " VNĐ";
+        return rs;
     }
 
-    public static void main(String[] args) {
-        Product p = new Product();
-        p.setPrice("100000");
+    public String getPriceSale() {
+        double ps = (Double.parseDouble(price) * (100 - discount) / 100);
+        NumberFormat nf = NumberFormat.getInstance(); // get instance
+        nf.setMaximumFractionDigits(0); // set decimal places
+        priceSale = nf.format(ps) + " VNĐ";
+
+        return priceSale;
+    }
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        Product p = ProductEntity.getId(1);
+        System.out.println(p.getPriceSale());
         System.out.println(p.getVNDPrice());
     }
 

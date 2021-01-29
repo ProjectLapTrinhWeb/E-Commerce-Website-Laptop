@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700');
+
 /*--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -229,9 +231,9 @@ a.simpleCart_empty {
 #w3lssbmincart {
     display: none;
     position: fixed;
-    left: 68%;
+    left: 60%;
     top:16%;
-	width: 420px;
+	width: 500px;
 } 
 .sbmincart-showing #w3lssbmincart {
     display: block;
@@ -2139,7 +2141,7 @@ section#tables  p {
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
 	font-size: 0.9em;
-	color: #999;
+	color: #000;
 	border-top: none !important;
 }
 .tab-content > .active {
@@ -5849,5 +5851,29 @@ input{
     margin-right: 10px;
 }
 .btn-user{
+
+}
+.mid-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mid-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+@keyframes slidebg {
+    to {
+        background-position:20vw;
+    }
+}
+.rainbow:hover{
+    background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+    animation:slidebg 5s linear infinite;
+}
+.btn-thanhToan{
 
 }

@@ -21,10 +21,22 @@ public class LaptopGraphic extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> data = null;
         try {
+            String pages = (String)request.getParameter("page");
+            int page = 1;
+            if(pages != null)
+                page = Integer.parseInt(pages);
             data = ProductEntity.getLaptopGraphic();
+            int size = data.size();
+            int sumPage = size/10;
+            if((size % 10) > 0)
+                sumPage++;
+            request.setAttribute("SumPage", sumPage);
+            request.setAttribute("CurrentPage", page);
+            data = ProductEntity.getLimitedProductWithLaptopGraphic(10, (page - 1) * 10);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        request.setAttribute("NamePage", "LaptopGraphic");
         request.setAttribute("List", data);
         request.getRequestDispatcher("products.jsp").forward(request,response);
     }

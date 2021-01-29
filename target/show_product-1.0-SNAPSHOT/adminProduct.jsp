@@ -120,6 +120,63 @@
                     </div>
                     <div class="tab-content" id="content-product">
                         <div id="all-product" class="tab-pane fade in active">
+                            <ul class="pagination" style="margin-left: 60px">
+                                <% int sumPage = (int) request.getAttribute("SumPage");
+                                    for (int i = 1; i <= sumPage; i++) {
+                                        if (request.getAttribute("SearchKey") != null) {
+                                            if (((int) request.getAttribute("CurrentPage")) == i) {
+                                %>
+                                <li class="my-pagination">
+                                    <form action="SearchAdminProduct" method="get">
+                                        <input type="text" name="search" class="hidden"
+                                               value="<%= request.getAttribute("SearchKey")%>">
+                                        <input type="text" name="page" value="<%= i%>" class="hidden">
+                                        <button type="submit" class="btn btn-sm btn-default disabled"><%= i%>
+                                        </button>
+                                    </form>
+                                </li>
+                                <%
+                                } else {%>
+                                <li class="my-pagination">
+                                    <form action="SearchAdminProduct" method="get">
+                                        <input type="text" name="search" class="hidden"
+                                               value="<%= request.getAttribute("SearchKey")%>">
+                                        <input type="text" name="page" value="<%= i%>" class="hidden">
+                                        <button type="submit" style="background: #0064cf;"
+                                                class="btn btn-sm btn-info rainbow"><%= i%>
+                                        </button>
+                                    </form>
+                                </li>
+                                <%
+                                    }
+                                %>
+                                <%
+                                } else {
+                                    if (((int) request.getAttribute("CurrentPage")) == i) {%>
+                                <li class="my-pagination">
+                                    <form action="AdminProduct" method="get">
+                                        <input type="text" name="page" value="<%= i%>" class="hidden">
+                                        <button type="submit" class="btn btn-sm btn-default disabled"><%= i%>
+                                        </button>
+                                    </form>
+                                </li>
+                                <%
+                                } else {
+                                %>
+                                <li class="my-pagination">
+                                    <form action="AdminProduct" method="get">
+                                        <input type="text" name="page" value="<%= i%>" class="hidden">
+                                        <button type="submit" style="background: #0064cf;"
+                                                class="btn btn-sm btn-info rainbow"><%= i%>
+                                        </button>
+                                    </form>
+                                </li>
+                                <%
+                                            }
+                                        }
+                                    }
+                                %>
+                            </ul>
                             <table class="table table-bordered header-tab">
                                 <thead>
                                 <tr>
@@ -150,7 +207,6 @@
                                         <td>
                                             <form action="UpdateProduct" class="center" method="post">
                                                 <input type="text" name="id" value="${p.id}" class="hidden">
-                                                </button>
                                                 <button type="submit" class="btn btn-warning left">
                                                     <i class="fa fa-wrench" style="font-size:12px;color:black"></i>
                                                 </button>
@@ -200,10 +256,9 @@
                                 </tbody>
                             </table>
                             <ul class="pagination" style="margin-left: 60px">
-                                <% int sumPage = (int) request.getAttribute("SumPage");
-                                    for (int i = 1; i <= sumPage; i++) {
-                                        if (request.getAttribute("SearchKey") != null) {
-                                            if (((int) request.getAttribute("CurrentPage")) == i) {
+                                <% for (int i = 1; i <= sumPage; i++) {
+                                    if (request.getAttribute("SearchKey") != null) {
+                                        if (((int) request.getAttribute("CurrentPage")) == i) {
                                 %>
                                 <li class="my-pagination">
                                     <form action="SearchAdminProduct" method="get">
@@ -221,7 +276,8 @@
                                         <input type="text" name="search" class="hidden"
                                                value="<%= request.getAttribute("SearchKey")%>">
                                         <input type="text" name="page" value="<%= i%>" class="hidden">
-                                        <button type="submit" class="btn btn-sm btn-info"><%= i%>
+                                        <button type="submit" style="background: #0064cf;"
+                                                class="btn btn-sm btn-info rainbow"><%= i%>
                                         </button>
                                     </form>
                                 </li>
@@ -244,7 +300,8 @@
                                 <li class="my-pagination">
                                     <form action="AdminProduct" method="get">
                                         <input type="text" name="page" value="<%= i%>" class="hidden">
-                                        <button type="submit" class="btn btn-sm btn-info"><%= i%>
+                                        <button type="submit" style="background: #0064cf;"
+                                                class="btn btn-sm btn-info rainbow"><%= i%>
                                         </button>
                                     </form>
                                 </li>

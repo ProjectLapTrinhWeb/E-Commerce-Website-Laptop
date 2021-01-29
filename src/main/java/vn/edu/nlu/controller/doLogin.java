@@ -35,10 +35,9 @@ public class doLogin extends HttpServlet {
             session.setAttribute("User", u);
             response.sendRedirect("/WebLaptop/AdminOrder");
         } else if (u != null && u.getRoleID().equalsIgnoreCase("2")) {
-
             HttpSession session = request.getSession();
             session.setAttribute("User", u);
-            request.getRequestDispatcher("index2.jsp").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {
             response.sendRedirect("index.html");
         }

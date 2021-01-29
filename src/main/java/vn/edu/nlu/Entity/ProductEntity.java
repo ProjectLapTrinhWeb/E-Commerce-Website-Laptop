@@ -1,7 +1,9 @@
 package vn.edu.nlu.Entity;
 
 import vn.edu.nlu.Beans.MyDate;
+import vn.edu.nlu.Beans.MyUtils;
 import vn.edu.nlu.Beans.Product;
+import vn.edu.nlu.controller.Laptop5To10MA;
 import vn.edu.nlu.db.ConnectionDB;
 
 import java.io.IOException;
@@ -20,6 +22,7 @@ public class ProductEntity {
         return getFromDB(sql, rs);
     }
 
+
     public static List<Product> getDiscountProduct() throws SQLException {
         List<Product> rs = new ArrayList<Product>();
         String sql = "select * from product where DISCOUNT IS NOT NULL";
@@ -33,6 +36,7 @@ public class ProductEntity {
         rst.next();
         return getOneProduct(rst);
     }
+
 
     public static Product getName(String name) throws SQLException, ClassNotFoundException {
         String sql = "select * from product where name = '" + name + "'";
@@ -57,9 +61,9 @@ public class ProductEntity {
     }
 
 
-    public static List<Product> getProductWithName(String name) throws SQLException, ClassNotFoundException {
+    public static List<Product> getProductWithSupplierName(String name) throws SQLException, ClassNotFoundException {
         List<Product> rs = new ArrayList<Product>();
-        String sql = "select * from product where name like '%" + name + "%'";
+        String sql = "SELECT * from product c join supplier s on c.SupplierID = s.ID  where c.Name like '%" + name + "%'";
         return getFromDB(sql, rs);
 
     }
@@ -73,8 +77,20 @@ public class ProductEntity {
 
     public static List<Product> getProductWithRangePrice(String fromPrice, String toPrice) throws SQLException, ClassNotFoundException {
         List<Product> rs = new ArrayList<Product>();
-        String sql = "select * from product where price between  " + Integer.parseInt(fromPrice) + " and " + Integer.parseInt(toPrice) + ";";
+        String sql = "select * from product where price between  " + MyUtils.getPrice(fromPrice) + " and " + MyUtils.getPrice(toPrice) + ";";
         return getFromDB(sql, rs);
+    }
+
+    public static boolean updateTaoLao(String price, String id) {
+        try {
+            String sql = "update product set price  = '" + price + "' where id = '" + id + "'";
+            PreparedStatement ps = ConnectionDB.connect(sql);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
 
@@ -166,7 +182,7 @@ public class ProductEntity {
             int quantity = p.getQuantity();
             String status = p.getStatus();
             String img = p.getImg();
-            String sql = "insert into product(id, name, price, supplierID, discount, categoryID, image, status, quantity) values('" + id + "', '" + name + "', '" + price + "', '" + supplierID + "', '" + discount + "', " + categoryID + ", '" + img + "', '" + status + "', " + quantity + ")";
+            String sql = "insert into product(id, name, price, supplierID, discount, categoryID, image, status, quantity) values('" + id + "', '" + name + "', " + price + ", '" + supplierID + "', '" + discount + "', " + categoryID + ", '" + img + "', '" + status + "', " + quantity + ")";
             PreparedStatement ps = ConnectionDB.connect(sql);
             ps.execute();
         } catch (Exception e) {
@@ -178,12 +194,7 @@ public class ProductEntity {
 
     public static boolean updateProduct(Product p) {
         try {
-            String sql;
-            if (!p.getImg().equalsIgnoreCase("")) {
-                sql = "update product set name = '" + p.getName() + "', price = '" + p.getPrice() + "', supplierID = '" + p.getSupplierId() + "', discount = " + p.getDiscount() + ", categoryID = '" + p.getCategoryId() + "', quantity = " + p.getQuantity() + ", status ='" + p.getStatus() + "', image ='" + p.getImg() + "' where id = '" + p.getId() + "'";
-            } else {
-                sql = "update product set name = '" + p.getName() + "', price = '" + p.getPrice() + "', supplierID = '" + p.getSupplierId() + "', discount = " + p.getDiscount() + ", categoryID = '" + p.getCategoryId() + "', quantity = " + p.getQuantity() + ", status ='" + p.getStatus() + "' where id = '" + p.getId() + "'";
-            }
+            String sql = "update product set name = '" + p.getName() + "', price = " + p.getPrice() + ", supplierID = '" + p.getSupplierId() + "', discount = " + p.getDiscount() + ", categoryID = '" + p.getCategoryId() + "', quantity = " + p.getQuantity() + ", status ='" + p.getStatus() + "', image ='" + p.getImg() + "' where id = '" + p.getId() + "'";
             PreparedStatement ps = ConnectionDB.connect(sql);
             ps.execute();
         } catch (Exception e) {
@@ -192,6 +203,7 @@ public class ProductEntity {
         }
         return true;
     }
+
 
     public static String nextID() throws SQLException, ClassNotFoundException {
         String sql = "select avg(id) from product";
@@ -207,8 +219,7 @@ public class ProductEntity {
 
     public static List<Product> getLimitProduct(int limit, int offset) throws SQLException {
         List<Product> rs = new ArrayList<Product>();
-        String sql = "select * from product limit " + limit + " offset " + offset;
-
+        String sql = " select *from product limit " + limit + " offset " + offset;
         return getFromDB(sql, rs);
     }
 
@@ -223,6 +234,30 @@ public class ProductEntity {
         List<Product> rs = new ArrayList<Product>();
         String sql = "select * from product where name like '%" + name + "%'";
 
+        return getFromDB(sql, rs);
+    }
+
+    public static List<Product> getLimitedProductWithRangePrice(String fromPrice, String toPrice, int limit, int offset) throws SQLException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product where price between  " + MyUtils.getPrice(fromPrice) + " and " + MyUtils.getPrice(toPrice) + " limit " + limit + " offset " + offset + ";";
+        return getFromDB(sql, rs);
+    }
+
+    public static List<Product> getLimitedProductWithLaptopGaming(int limit, int offset) throws SQLException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product p join category c on p.CategoryID=c.ID where c.Name = 'Gaming' limit " + limit + " offset " + offset + "";
+        return getFromDB(sql, rs);
+    }
+
+    public static List<Product> getLimitedProductWithLaptopGraphic(int limit, int offset) throws SQLException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product p join category c on p.CategoryID=c.ID where c.Name = 'Graphic' limit " + limit + " offset " + offset + "";
+        return getFromDB(sql, rs);
+    }
+
+    public static List<Product> getLimitedProductWithLaptopOffice(int limit, int offset) throws SQLException {
+        List<Product> rs = new ArrayList<Product>();
+        String sql = "select * from product p join category c on p.CategoryID=c.ID where c.Name = 'Office' limit " + limit + " offset " + offset + "";
         return getFromDB(sql, rs);
     }
 
@@ -250,7 +285,8 @@ public class ProductEntity {
         return true;
     }
 
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        System.out.println(getId(10).getDescription());
     }
+
 }

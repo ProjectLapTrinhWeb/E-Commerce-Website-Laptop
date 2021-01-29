@@ -97,13 +97,26 @@ public class MyUtils {
         return path.substring(42, path.length());
     }
 
+    // đổi price có dấu chấm (100.000.000) thành (100000000)
+    public static String getPrice(String price) {
+        if (price.equals("") || price == null)
+            return "null";
+        char[] c = price.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for (char x : c) {
+            if (!Character.toString(x).equals(".")) {
+                sb.append(x);
+            }
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) throws SQLException {
-        //nghiem cam test duoi moi hinh thuc
-//        List<Product> list = ProductEntity.getAllProduct();
-//        for (Product p : list) {
-//            String path = cutPath(p.getImg());
-//            System.out.println("Update: " + p.getName() + " : " + ProductEntity.updateImg(path, p.getId()));
-//        }
+//        nghiem cam test duoi moi hinh thuc
+        List<Product> list = ProductEntity.getAllProduct();
+        for (Product p : list) {
+            System.out.println("Update: " + p.getName() + " : " + ProductEntity.updateTaoLao(getPrice(p.getPrice()), p.getId()));
+        }
 //        System.out.println(cutPath("E:/IntelliJIDEA/WebLaptop/src/main/webapp/img/hinhanh/637444866084415793_dell-vostro-v3400-den-dd.png"));
     }
 }

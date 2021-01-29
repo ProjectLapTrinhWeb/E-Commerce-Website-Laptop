@@ -48,7 +48,6 @@
     <!-- //end-smooth-scrolling -->
 </head>
 <body>
-
 <% String namePage = (String) request.getAttribute("NamePage");%>
 <!-- menu admin -->
 <div class="w3ls_mobiles_grid_left_grid">

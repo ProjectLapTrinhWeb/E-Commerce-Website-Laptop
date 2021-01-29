@@ -40,24 +40,21 @@ public class UserEntity {
 
     }
 
-    public static boolean changePassword(String password, String Cpassword,String id) throws SQLException, ClassNotFoundException {
+    public static boolean changePassword(String password, String Cpassword, String id) throws SQLException, ClassNotFoundException {
 
-        String sql = "update Users(Password) set password ='" + Cpassword + "' where id ='" + id + " and password = '" + password + "'";
+        String sql = "update Users set Password ='" + Cpassword + "' where id ='" + id + "' and Password = '" + password + "'";
+//        System.out.println(sql);
         PreparedStatement ps = ConnectionDB.connect(sql);
-        ResultSet rst = ps.executeQuery();
-
-        rst.last();
-        int row = rst.getRow();
+        int row = ps.executeUpdate();
         if (row == 1) {
-            rst.first();
             return true;
         } else {
             return false;
         }
-
     }
-    public static boolean changeEmail(String Email,String id) throws SQLException, ClassNotFoundException {
-        String sql = "update Users(Email) set Email = '" +Email+"' where id = '"+id+"'";
+
+    public static boolean changeEmail(String Email, String id) throws SQLException, ClassNotFoundException {
+        String sql = "update Users(Email) set Email = '" + Email + "' where id = '" + id + "'";
         PreparedStatement ps = ConnectionDB.connect(sql);
         ResultSet rst = ps.executeQuery();
 
@@ -70,19 +67,19 @@ public class UserEntity {
             return false;
         }
     }
+
     public static boolean addAddress(String address , String id) throws SQLException, ClassNotFoundException {
-        String sql = "update User(Address) set Addresss = '"+address+"' and id = '"+id+"'";
+        String sql = "update Users set Address= '"+address+"' where id = "+id+"";
+        System.out.println(sql);
         PreparedStatement ps = ConnectionDB.connect(sql);
-        ResultSet rst = ps.executeQuery();
-        rst.last();
-        int row = rst.getRow();
+        int row = ps.executeUpdate();
         if (row == 1) {
-            rst.first();
             return true;
         } else {
             return false;
         }
     }
+
     public static boolean addPhone(String phone) throws SQLException, ClassNotFoundException {
         String sql = "insert into User(Phone) values('" + phone + "') ";
         PreparedStatement ps = ConnectionDB.connect(sql);

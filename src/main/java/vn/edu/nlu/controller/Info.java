@@ -19,7 +19,11 @@ public class Info extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("User");
+        if(user != null){
+            request.getRequestDispatcher("account.jsp").forward(request,response);
+        }else {
+            request.getRequestDispatcher("index.html").forward(request,response);
+        }
 
-        request.getRequestDispatcher("Account.jsp");
     }
 }

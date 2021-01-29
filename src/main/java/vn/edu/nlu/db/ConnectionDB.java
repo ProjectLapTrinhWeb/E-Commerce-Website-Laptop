@@ -18,7 +18,13 @@ public class ConnectionDB {
             Class.forName("org.mariadb.jdbc.Driver");
             cnt = DriverManager.getConnection("jdbc:mariadb://localhost:3306/projectWeb?useUnicode=true&characterEncoding=utf-8", "root", "");
         }
-        return cnt.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        return cnt.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+    }
+
+    public static void close() throws SQLException {
+        if (!cnt.isClosed()) {
+            cnt.close();
+        }
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {

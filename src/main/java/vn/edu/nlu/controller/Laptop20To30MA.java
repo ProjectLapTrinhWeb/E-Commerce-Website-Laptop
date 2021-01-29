@@ -21,11 +21,22 @@ public class Laptop20To30MA extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> data = null;
         try {
+            String pages = (String)request.getParameter("page");
+            int page = 1;
+            if(pages !=null)
+                page = Integer.parseInt(pages);
             data = ProductEntity.getProductWithRangePrice("20000000", "30000000");
-            System.out.println(data.toString());
+            int size = data.size();
+            int sumPage = size/10;
+            if((size % 10) > 0)
+                sumPage++;
+            request.setAttribute("SumPage", sumPage);
+            request.setAttribute("CurrentPage", page);
+            data = ProductEntity.getLimitedProductWithRangePrice("20000000", "30000000", 10, (page - 1) * 10);
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
+        request.setAttribute("NamePage", "Laptop20To30MA");
         request.setAttribute("List", data);
         request.getRequestDispatcher("products.jsp").forward(request,response);
     }

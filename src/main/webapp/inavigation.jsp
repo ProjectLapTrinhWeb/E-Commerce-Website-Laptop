@@ -68,7 +68,7 @@
                     <li><a href="index.html" class="act">Trang chủ</a></li>
                     <!-- Mega Menu -->
                     <li class="dropdown">
-                        <a href="products.html" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm<b
+                        <a href="/WebLaptop/products" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm<b
                                 class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-3">
                             <div class="row">
@@ -133,16 +133,16 @@
                         <ul class="dropdown-menu">
                             <% User user1 = (User) session.getAttribute("User");
                                 if (user1 != null) {%>
-                            <li><button class="disabled"><a  href="icons.html"><%= user1.getUserName()%>
+                            <li><button class="btn-default user-button disabled"><a  href="icons.html"><%= user1.getUserName()%>
                             </a></button></li>
                             <li>
-                                <form action="/WebLaptop/Logout">
-                                    <button type="submit" class="btn btn-default">Info</button>
+                                <form action="/WebLaptop/Info" method="post">
+                                    <button type="submit" class="btn btn-default user-button">Info</button>
                                 </form>
                             </li>
                             <li>
                                 <form action="/WebLaptop/Logout" method="get">
-                                    <button type="submit" class="btn btn-default">Logout</button>
+                                    <button type="submit" class="btn btn-default user-button">Logout</button>
                                 </form>
                             </li>
                             <%
@@ -158,3 +158,4 @@
 </div>
 <!-- //navigation -->
 </body>
+</html>

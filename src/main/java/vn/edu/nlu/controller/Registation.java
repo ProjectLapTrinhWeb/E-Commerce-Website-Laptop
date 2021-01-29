@@ -15,6 +15,12 @@ import java.sql.SQLException;
 public class Registation extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
+
+    }
+    
+
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
@@ -25,7 +31,7 @@ public class Registation extends HttpServlet {
         String RoleID = "2";
         boolean registed = false;
         try {
-             registed = UserEntity.Register(n,p,e,RoleID);
+            registed = UserEntity.Register(n,p,e,RoleID);
 //            HttpSession hs = new HttpSession() {
 //            }
         } catch (SQLException throwables) {
@@ -38,12 +44,6 @@ public class Registation extends HttpServlet {
         }else{
             response.sendRedirect("index.html");
         }
-
-    }
-    
-
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }
