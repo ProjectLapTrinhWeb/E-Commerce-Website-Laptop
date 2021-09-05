@@ -20,15 +20,18 @@ public class DetailProduct extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try{
+        try {
+            //get id from parameters
             int id = Integer.parseInt(request.getParameter("id"));
-            List<Comments> listComments = CommentEntity.getAllComment(id+"");
+            //get list cmt
+            List<Comments> listComments = CommentEntity.getAllComment(id + "");
             request.setAttribute("Comments", listComments);
+            //get product
             Product p = ProductEntity.getId(id);
             request.setAttribute("DetailProduct", p);
+            //router
             request.getRequestDispatcher("single.jsp").forward(request, response);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

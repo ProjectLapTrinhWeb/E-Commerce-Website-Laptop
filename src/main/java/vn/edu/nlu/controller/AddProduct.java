@@ -56,7 +56,7 @@ public class AddProduct extends HttpServlet {
                 out.write(temp, 0, length);
                 out.flush();
             }
-            boolean added = ProductEntity.addProduct(new Product(name, price, discount, img, category, supplier, status, quantity));
+            boolean added = ProductEntity.addProduct(new Product(null, name, price, discount,null, img, category, supplier, status, quantity));
             if (added) {
                 request.setAttribute("Status", "Đã thêm sản phẩm " + name);
             } else {

@@ -119,7 +119,8 @@
             <div class="form-group">
                 <label for="addressOrder">
                     Địa chỉ nhận hàng:
-                    <input type="text" width="500px" value="<%= order.getAddress()%>" class="form-control" name="address"
+                    <input type="text" width="500px" value="<%= order.getAddress()%>" class="form-control"
+                           name="address"
                            id="addressOrder"
                            placeholder="Nhập địa chỉ nhận hàng" required>
                 </label>
@@ -127,7 +128,8 @@
             <div class="form-group">
                 <label for="totalPriceOrder">
                     Giá trị đơn hàng:
-                    <input type="text" width="500px" value="<%= order.getTotalPrice()%>" class="form-control" name="totalPrice"
+                    <input type="text" width="500px" value="<%= order.getTotalPrice()%>" class="form-control"
+                           name="totalPrice"
                            id="totalPriceOrder"
                            placeholder="Nhập giá trị đơn hàng" required>
                 </label>
@@ -181,8 +183,8 @@
                         <option value="Đã xác nhận">Đã xác nhận</option>
                         <option value="Shop hủy đơn">Shop hủy đơn</option>
                         <option value="Khách đã hủy">Khách đã hủy</option>
-                        <% break;
-                        }
+                        <%
+                            }
                         %>
                     </select>
                 </label>
@@ -253,7 +255,7 @@
 <div style="background-color: #0064cf; width: 100%; height: 60px;"></div>
 <!-- end div -->
 <!-- footer -->
-<%@include file="ifooter.jsp"%>
+<%@include file="ifooter.jsp" %>
 <!-- //footer -->
 </body>
 

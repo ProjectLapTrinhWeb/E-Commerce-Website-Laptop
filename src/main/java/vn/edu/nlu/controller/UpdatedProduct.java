@@ -60,8 +60,7 @@ public class UpdatedProduct extends HttpServlet {
                 }
             }
             request.setAttribute("BackPage", "/WebLaptop/AdminProduct");
-            Product p = new Product(name, price, discount, img, category, supplier, status, quantity);
-            p.setId(id);
+            Product p = new Product(id, name, price, discount,null, img, category, supplier, status, quantity);
             boolean updated = ProductEntity.updateProduct(p);
             if (updated) {
                 request.setAttribute("Status", "Đã cập nhật sản phẩm " + name);

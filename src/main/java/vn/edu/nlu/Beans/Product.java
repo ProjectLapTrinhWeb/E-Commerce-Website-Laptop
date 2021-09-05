@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.text.NumberFormat;
 
-public class Product implements Serializable {
+public class Product implements Serializable, Comparable<Product> {
     private String id;
     private String name;
     private String price;
@@ -22,6 +22,7 @@ public class Product implements Serializable {
     private String status;
     private int quantity;
     private String priceSale;
+    private String priceSaleValue;
 
     public String getId() {
         return id;
@@ -135,32 +136,19 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-
     public void setPriceSale(String priceSale) {
         this.priceSale = priceSale;
     }
 
+    public String getPriceSaleValue() {
+        return priceSaleValue;
+    }
+
+    public void setPriceSaleValue(String priceSaleValue) {
+        this.priceSaleValue = priceSaleValue;
+    }
 
     public Product() {
-    }
-
-    public Product(String id, String name, String price, String img, String priceSale) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.img = img;
-        this.priceSale = priceSale;
-    }
-
-    public Product(String name, String price, double discount, String img, int categoryId, int supplierId, String status, int quantity) {
-        this.name = name;
-        this.price = price;
-        this.discount = discount;
-        this.img = img;
-        this.categoryId = categoryId;
-        this.supplierId = supplierId;
-        this.status = status;
-        this.quantity = quantity;
     }
 
     public Product(String id, String name, String price, double discount, String description, String img, int categoryId, int supplierId, String status, int quantity) {
@@ -174,6 +162,8 @@ public class Product implements Serializable {
         this.supplierId = supplierId;
         this.status = status;
         this.quantity = quantity;
+        this.priceSale = getPriceSale();
+        this.priceSaleValue = getCurrentPrice();
     }
 
     public String getVNDPrice() {
@@ -208,6 +198,7 @@ public class Product implements Serializable {
         return rs;
     }
 
+
     @Override
     public String toString() {
         return "Product{" +
@@ -216,5 +207,17 @@ public class Product implements Serializable {
                 ", price='" + price + '\'' +
                 ", discount=" + discount +
                 '}' + "\n";
+    }
+
+    @Override
+    public int compareTo(Product o) {
+        int x = Integer.parseInt(this.id);
+        int y = Integer.parseInt(o.getId());
+        if (x > y)
+            return 1;
+        if (x < y)
+            return -1;
+        else
+            return 0;
     }
 }

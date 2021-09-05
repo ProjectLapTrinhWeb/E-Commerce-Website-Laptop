@@ -1,8 +1,10 @@
 package vn.edu.nlu.Entity;
 
+import vn.edu.nlu.Beans.HashMD5;
 import vn.edu.nlu.Beans.User;
 import vn.edu.nlu.db.ConnectionDB;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +16,9 @@ public class UserEntity {
         PreparedStatement ps = null;
         ResultSet rst = null;
         try {
-            String sql = "select * from Users where userName =? && password =?";
+            String sql = "select * from Users where userName =? and password =?";
+            //sout
+            //System.out.println(sql);
             ps = ConnectionDB.connect(sql);
             ps.setString(1, userName);
             ps.setString(2, password);
@@ -33,20 +37,25 @@ public class UserEntity {
             if (!ps.isClosed() && ps != null)
                 ps.close();
         }
-
         return null;
     }
 
-    public static boolean Register(String username, String password, String Email, String RoleID) throws SQLException, ClassNotFoundException {
+    public static boolean Register(String username, String password, String email, String roleID) throws SQLException, ClassNotFoundException, NoSuchAlgorithmException {
         PreparedStatement ps = null;
+        password = HashMD5.hashMD5(password);
         try {
-            String sql = "insert into Users(username,password,email, RoleID) values(?,?,?,?)";
+            String sql = "insert into Users(UserName, FullName, Password, Email, RoleID, CreatedDate, Status) " +
+                    "values('" +
+                    username+ "','" +
+                    username+ "','" +
+                    password + "','" +
+                    email + "','" +
+                    roleID+ "'," +
+                    "curDate()," +
+                    "'Active')";
+            //sout
+            //System.out.println(sql);
             ps = ConnectionDB.connect(sql);
-            ps.setString(1, username);
-            ps.setString(2, password);
-            ps.setString(3, Email);
-            ps.setString(4, RoleID);
-            System.out.println(sql);
             ps.execute();
         } catch (Exception e) {
             return false;

@@ -50,11 +50,11 @@ public class AddSupplier extends HttpServlet {
             }
             boolean added = SupplierEntity.addSupplier(Name,Status,img);
             if (added) {
-                request.setAttribute("StatusAddSup", "Đã thêm nhà sản xuất " + Name);
+                request.setAttribute("UpdateStatusSup", "Đã thêm nhà sản xuất " + Name);
             } else {
-                request.setAttribute("StatusAddSup", "Không thêm được nhà sản xuất " + Name);
+                request.setAttribute("UpdateStatusSup", "Không thêm được nhà sản xuất " + Name);
             }
-            request.getRequestDispatcher("adminSupplier.jsp").forward(request, response);
+            request.getRequestDispatcher("resultDelSupllier").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

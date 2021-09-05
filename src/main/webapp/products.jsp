@@ -294,7 +294,7 @@
                     <%-- end modal chi tiet --%>
                     <%}%>
                 </div>
-                <ul class="pagination" style="margin-top: 550px">
+               <%-- <ul class="pagination" style="margin-top: 550px">
                     <% int sumPage = (int) request.getAttribute("SumPage");
                         for (int i = 1; i <= sumPage; i++) {
                             if (request.getAttribute("SearchKey") != null) {
@@ -348,7 +348,7 @@
                             }
                         }
                     %>
-                </ul>
+                </ul> ---%>
                 <div class="clearfix"></div>
             </div>
         </div>

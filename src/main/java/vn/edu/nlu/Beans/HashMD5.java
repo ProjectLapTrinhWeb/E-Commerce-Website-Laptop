@@ -71,6 +71,6 @@ public class HashMD5 {
     }
 
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        System.out.println(randomCodeMD5());
+        System.out.println(hashMD5("123456"));
     }
 }

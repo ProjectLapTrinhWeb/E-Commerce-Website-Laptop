@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ProductEntity {
@@ -41,7 +42,7 @@ public class ProductEntity {
 
     public static List<Product> getHomeProduct() throws SQLException {
         List<Product> rs = new ArrayList<Product>();
-        String sql = "select * from product where categoryId = '1'";
+        String sql = "select * from product where categoryId = '1' limit 3 offset 0";
         return getFromDB(sql, rs);
     }
 
@@ -146,6 +147,7 @@ public class ProductEntity {
                 ps.close();
 
         }
+        Collections.sort(rs);
         return rs;
     }
 
@@ -193,7 +195,6 @@ public class ProductEntity {
         List<Product> rs = new ArrayList<Product>();
         String sql = "SELECT * from product c join supplier s on c.SupplierID = s.ID  where c.Name like '%" + name + "%' limit " + limit + " offset " + offset + "";
         return getFromDB(sql, rs);
-
     }
 
     public static boolean updateProduct(Product p) throws SQLException {

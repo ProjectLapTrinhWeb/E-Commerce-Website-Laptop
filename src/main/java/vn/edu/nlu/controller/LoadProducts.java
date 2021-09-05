@@ -21,14 +21,14 @@ public class LoadProducts extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> data = null;
         try {
-            String pages = (String)request.getParameter("page");
+            String pages = (String) request.getParameter("page");
             int page = 1;
-            if(pages != null)
+            if (pages != null)
                 page = Integer.parseInt(pages);
             data = ProductEntity.getAllProduct();
             int size = data.size();
-            int sumPage = size/10;
-            if((size % 10) > 0)
+            int sumPage = size / 10;
+            if ((size % 10) > 0)
                 sumPage++;
             request.setAttribute("SumPage", sumPage);
             request.setAttribute("CurrentPage", page);
@@ -38,6 +38,6 @@ public class LoadProducts extends HttpServlet {
         }
         request.setAttribute("NamePage", "LoadProducts");
         request.setAttribute("List", data);
-        request.getRequestDispatcher("products.jsp").forward(request,response);
+        request.getRequestDispatcher("products.jsp").forward(request, response);
     }
 }

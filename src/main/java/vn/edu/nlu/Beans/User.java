@@ -13,11 +13,12 @@ public class User {
     private String RoleID;
     private String Image;
 
-    public User(String userName,String  password){
+    public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
     }
-    public User(String ID, String userName, String password, String fullName, String email, String phone, String address, String status, String roleID,String Image) {
+
+    public User(String ID, String userName, String password, String fullName, String email, String phone, String address, String status, String roleID, String Image) {
         this.ID = ID;
         this.userName = userName;
         this.password = password;
@@ -27,9 +28,8 @@ public class User {
         Address = address;
         Status = status;
         RoleID = roleID;
-        this.Image= Image;
+        this.Image = Image;
     }
-
 
     public String getID() {
         return this.ID;

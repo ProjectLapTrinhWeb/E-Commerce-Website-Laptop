@@ -55,6 +55,21 @@
     <div class="w3ls_mobiles_grid_left_grid_sub">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading12">
+                    <h4 class="panel-title asd">
+                        <a class="pa_italic" href="AdminDashboard">
+                            <% if (namePage.equalsIgnoreCase("dashboardAdmin")) {%>
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><i
+                                class="glyphicon glyphicon-minus" aria-hidden="true">
+                        </i><%} else {%>
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i
+                                class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                            <%}%>Thống kê
+                        </a>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title asd">
                         <a class="pa_italic" href="AdminOrder">

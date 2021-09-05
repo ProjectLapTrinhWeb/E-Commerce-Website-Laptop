@@ -88,7 +88,7 @@
             Collection<Item> listItem = cart.getItems().values();
             if (listItem.size() == 0) {%><%
     %>
-        <h1 style="text-align: center"> Không có sản phẩm trong giỏ hàng của bạn</h1>
+        <h1 style="text-align: center; min-height: 500px;"> Không có sản phẩm trong giỏ hàng của bạn</h1>
         <% } else { %>
         <table class="table table-bordered header-tab">
             <thead>
@@ -186,11 +186,11 @@
         </table>
 
         <%--       end cart --%>
-        <% if (listItem.size() != 0) {%>
+        <% if (listItem.size() > 0) {%>
         <!-- footer cart -->
         <div class="footer-cart">
             <div class="cart-sales">
-                <div class="cart-checkboxx center">
+                <div class="cart-checkbox center">
                     <input class="check-KM" type="checkbox">
                     <h3>Mã khuyến mãi</h3>
                 </div>
@@ -206,7 +206,7 @@
                     </tr>
                     <tr>
                         <th>Tổng tiền:</th>
-                        <td><%= cart.priceAfterSale(10l)%> VNĐ</td>
+                        <td><%= cart.priceAfterSale(0)%> VNĐ</td>
                     </tr>
                     <tr>
                         <th colspan="2" style="text-align: center;">

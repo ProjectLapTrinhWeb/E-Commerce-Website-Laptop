@@ -68,7 +68,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html" class="act">Trang chủ</a></li>
+                    <li><a href="/WebLaptop/Home" class="act">Trang chủ</a></li>
                     <!-- Mega Menu -->
                     <li class="dropdown">
                         <a href="products" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm<b
@@ -91,7 +91,6 @@
                                         <li><a href="products1.html">Chuột</a></li>
                                         <li><a href="products1.html">Loa<span>New</span></a></li>
                                         <li><a href="products1.html">Tai nghe</a></li>
-                                        <!-- <li><a href="products1.html"><i>Tai nghe</i></a></li> -->
                                     </ul>
                                 </div>
                                 <div class="col-sm-3">
@@ -124,9 +123,9 @@
                             </div>
                         </ul>
                     </li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="faq.html" class="">FAQ's</a></li>
-                    <li><a href="mail.html">Mail Us</a></li>
+                    <li><a href="template/about.html">About Us</a></li>
+                    <li><a href="template/faq.html" class="">FAQ's</a></li>
+                    <li><a href="template/mail.html">Mail Us</a></li>
 
                     <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                            aria-haspopup="true" aria-expanded="false">Account <span

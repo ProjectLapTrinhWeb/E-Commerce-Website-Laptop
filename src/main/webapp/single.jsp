@@ -55,8 +55,6 @@
 </head>
 <%
     Product product = (Product) request.getAttribute("DetailProduct");
-    if (product != null) {
-
 %>
 
 <body>
@@ -122,8 +120,6 @@
             <!-- //zooming-effect -->
         </div>
         <div class="col-md-8 single-right">
-
-
             <div class="rating1"><a href="DetailProduct?id=<%= product.getId()%>" style="font-size: 36px"><%= product.getName()%>
             </a>
             </div>
@@ -139,9 +135,6 @@
 						<input id="rating1" type="radio" name="rating" value="1">
 						<label for="rating1">1</label>
 					</span>
-
-        </div>
-        <div class="description">
 
         </div>
         <div class="color-quality">
@@ -175,7 +168,6 @@
                         color: #0064cf;
                     }
                 </style>
-
             </div>
             <div class="clearfix">
                 <div class="simpleCart_shelfItem">
@@ -184,14 +176,14 @@
                     <p class="discount"> Giảm giá: <ins style="background: #f50; color: white"><%= product.getDiscount()%>%</ins>
                     </p>
                     <p class="item_price"> Thành tiền: <strong style="color: #0064cf"><%= product.getCurrentPrice()%> VNĐ</strong></p>
-                    <form action="#" method="post">
+                    <form action="#" method="post" style="float: left;">
                         <input type="hidden" name="cmd" value="_cart">
                         <input type="hidden" name="add" value="1">
                         <input type="hidden" name="link" value="DetailProduct?id=<%= product.getId()%>"/>
                         <input type="hidden" name="id" value="<%= product.getId()%>">
                         <input type="hidden" name="w3ls_item" value="<%= product.getName()%>">
                         <input type="hidden" name="amount" value="<%= product.getCurrentPrice()%>">
-                        <button type="submit" class="w3ls-cart">Thêm vào giỏ hàng</button>
+                        <button type="submit" class="w3ls-cart btn-add-to-cart">Thêm vào giỏ hàng</button>
                     </form>
                 </div>
             </div>
@@ -262,167 +254,6 @@
                                     </tr>
 
 
-                                    <%--                                    <tr class="row-info-2" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">RAM</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;">8GB DDR4 2933MHz (2x SO-DIMM socket, up to 32GB SDRAM)</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-3" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Ổ cứng</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;">512GB SSD M.2 PCIE&nbsp;(Còn trống 1 khe SSD M.2 PCIE và 1 khe&nbsp;2.5" SATA)</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-4" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Card đồ họa</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;">NVIDIA GeForce GTX 1650Ti 4GB GDDR6 + Intel UHD Graphics</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-5" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Màn hình</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;">15.6" FHD (1920 x 1080) IPS, 144Hz, Anti-Glare</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-6" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Cổng giao tiếp</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: rgb(0, 0, 0);">1x USB 3.2 Gen 2</span>--%>
-                                    <%--                                            <br><span style="color: rgb(0, 0, 0);">2x USB 3.2 Gen 1</span>--%>
-                                    <%--                                            <br><span style="color: rgb(0, 0, 0);">1x USB Type C</span>--%>
-                                    <%--                                            <br><span style="color: rgb(0, 0, 0);">1x HDMI</span>--%>
-                                    <%--                                            <br><span style="color: rgb(0, 0, 0);">1x RJ45</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-7" style="box-sizing: border-box;"></tr>--%>
-                                    <%--                                    <td class="td-class-1">--%>
-                                    <%--                                        <span style="color: #000000;">Ổ quang</span>--%>
-                                    <%--                                    </td>--%>
-                                    <%--                                    <td class="td-class-2">--%>
-                                    <%--                                        <span style="color: #000000;">None</span>--%>
-                                    <%--                                    </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-8" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Audio</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;">Waves MaxxAudio®, Acer TrueHarmony™</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-9" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Đọc thẻ nhớ</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;">None</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-10" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Chuẩn LAN</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;">10/100/1000/Gigabits Base T</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-11" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Chuẩn WIFI</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;">802.11AX (2x2)</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-12" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Bluetooth</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;">v5.0</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-13" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Webcam</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;">HD Webcam</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-14" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td  class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Hệ điều hành</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;"><span>Windows 10 Home</span></span></td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-15" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Pin</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;">4 Cell 57.5WHr</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-inf-16" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1">--%>
-                                    <%--                                            <span style="color: #000000;">Trọng lượng</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-class-2">--%>
-                                    <%--                                            <span style="color: #000000;">2.30 kg</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
-
-
-                                    <%--                                    <tr class="row-info-18" style="box-sizing: border-box;">--%>
-                                    <%--                                        <td class="td-class-1" >--%>
-                                    <%--                                            <span style="color: #000000;">Kích thước</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                        <td class="td-classs-2" >--%>
-                                    <%--                                            <span style="color: #000000;">363.4 x 255 x 23.9 mm</span>--%>
-                                    <%--                                        </td>--%>
-                                    <%--                                    </tr>--%>
 
                                     </tbody>
                                 </table>
@@ -944,104 +775,11 @@
 </div>
 <!-- //single -->
 <!-- newsletter -->
-<div class="newsletter">
-    <div class="container">
-        <div class="col-md-6 w3agile_newsletter_left">
-            <h3>Nhận thông báo</h3>
-            <p>Về khuyến mãi và các ưu đãi sắp tới của chúng tôi.</p>
-        </div>
-        <div class="col-md-6 w3agile_newsletter_right">
-            <form action="#" method="post">
-                <input type="email" name="Email" placeholder="Email" required="">
-                <input type="submit" value=""/>
-            </form>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
+<%@include file="inewletter.jsp"%>
 <!-- //newsletter -->
 <!-- footer -->
-<div class="footer">
-    <div class="container">
-        <div class="w3_footer_grids">
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Liên hệ</h3>
-                <ul class="address">
-                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Trường Đại Học Nông Lâm <span>Kp6, P.Linh Trung, Q.Thủ Đức, TP. Hồ Chí Minh</span>
-                    </li>
-                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">18130000@st.hcmuaf.edu.vn</a></li>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+89 999 999 999</li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Thông tin</h3>
-                <ul class="info">
-                    <li><a href="about.html">Về chúng tôi</a></li>
-                    <li><a href="mail.html">Liên hệ chúng tôi</a></li>
-                    <li><a href="codes.html">Mã khuyến mãi</a></li>
-                    <li><a href="faq.html">FAQ's</a></li>
-                    <li><a href="products.html">Sản phẩm đăc biệt</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Danh mục</h3>
-                <ul class="info">
-                    <li><a href="products.html">Tablets</a></li>
-                    <li><a href="products1.html">Laptops Gaming</a></li>
-                    <li><a href="products.html">Laptops Office</a></li>
-                    <li><a href="products1.html">Laptops Studying</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Profile</h3>
-                <ul class="info">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="products.html">Today's Deals</a></li>
-                </ul>
-                <h4>Theo dõi</h4>
-                <div class="agileits_social_button">
-                    <ul>
-                        <li><a href="#" class="facebook"> </a></li>
-                        <li><a href="#" class="twitter"> </a></li>
-                        <li><a href="#" class="google"> </a></li>
-                        <li><a href="#" class="pinterest"> </a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <div class="footer-copy">
-        <div class="footer-copy1">
-            <div class="footer-copy-pos">
-                <a href="#home1" class="scroll"><img src="images/arrow.png" alt=" " class="img-responsive"/></a>
-            </div>
-        </div>
-        <div class="container">
-            <p>&copy; 2020 Laptop Store. All rights reserved | Design by <a href="http://w3layouts.com/">We</a></p>
-        </div>
-    </div>
-</div>
+<%@include file="ifooter.jsp"%>
 <!-- //footer -->
-<!-- cart-js -->
-<script src="js/minicart.js"></script>
-<script>
-    w3ls.render();
 
-    w3ls.cart.on('w3sb_checkout', function (evt) {
-        var items, len, i;
-
-        if (this.subtotal() > 0) {
-            items = this.items();
-
-            for (i = 0, len = items.length; i < len; i++) {
-            }
-        }
-    });
-</script>
-<!-- //cart-js -->
 </body>
-<%
-    }%>
 </html>

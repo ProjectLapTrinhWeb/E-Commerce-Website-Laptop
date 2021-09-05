@@ -52,7 +52,7 @@
 <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
 <!-- header modal -->
-<%@include file="iheaderModal.jsp" %>
+<%--<%@include file="iheaderModal.jsp" %>--%>
 <!-- header modal -->
 <!-- header -->
 <%@include file="iheader.jsp" %>
@@ -62,11 +62,10 @@
 <!-- //navigation -->
 <!-- banner -->
 <%@include file="ibanner.jsp"%>
->
 <!-- //banner -->
 <!-- banner-bottom -->
 <div class="banner-bottom">
-    <div class="container">
+    <div class="container-fluid">
         <div class="col-md-5 wthree_banner_bottom_left">
             <div class="video-img">
                 <a class="play-icon popup-with-zoom-anim" href="#small-dialog">
@@ -101,7 +100,7 @@
         </div>
         <div class="col-md-7 wthree_banner_bottom_right">
             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-                <ul id="myTab" class="nav nav-tabs" role="tablist">
+                <ul id="myTab" class="nav nav-tabs" role="tablist" style="margin-left: 12%">
                     <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab"
                                                               aria-controls="home">Laptop Gaming</a></li>
                     <li role="presentation"><a href="#audio" role="tab" id="audio-tab" data-toggle="tab"
@@ -137,81 +136,21 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <h5><a href="single.html">${d.name}</a></h5>
+                                    <h5><a href="DetailProduct?id=${d.id}">${d.name}</a></h5>
                                     <div class="simpleCart_shelfItem">
-                                        <p><span>${d.price}</span> <i class="item_price">${d.priceSale}</i></p>
+                                        <p><span>${d.price}</span> <br/><i class="item_price">${d.priceSale}</i></p>
                                         <form action="#" method="post">
+                                            <input type="hidden" name="id" value="${d.id}"/>
                                             <input type="hidden" name="cmd" value="_cart"/>
                                             <input type="hidden" name="add" value="1"/>
-                                            <input type="hidden" name="w3ls_item" value="Laptop cực mạnh"/>
-                                            <input type="hidden" name="amount" value="19.999.999"/>
+                                            <input type="hidden" name="w3ls_item" value="${d.name}"/>
+                                            <input type="hidden" name="amount" value="${d.priceSaleValue}"/>
                                             <button type="submit" class="w3ls-cart">Thêm vào giỏ hàng</button>
                                         </form>
                                     </div>
                                 </div>
                             </c:forEach>
                             <%--								end product --%>
-
-                            <%--								<div class="col-md-4 agile_ecommerce_tab_left">--%>
-                            <%--									<div class="hs-wrapper">--%>
-                            <%--										<img src="images/laptoppintrau02.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<img src="images/laptoppintrau01.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<img src="images/laptoppintrau03.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<img src="images/laptoppintrau04.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<img src="images/laptoppintrau05.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<img src="images/laptoppintrau06.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<img src="images/laptoppintrau07.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<!-- <img src="images/6.jpg" alt=" " class="img-responsive" /> -->--%>
-                            <%--										<div class="w3_hs_bottom">--%>
-                            <%--											<ul>--%>
-                            <%--												<li>--%>
-                            <%--													<a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>--%>
-                            <%--												</li>--%>
-                            <%--											</ul>--%>
-                            <%--										</div>--%>
-                            <%--									</div>--%>
-                            <%--									<h5><a href="single.html">Laptop pin trâu</a></h5>--%>
-                            <%--									<div class="simpleCart_shelfItem">--%>
-                            <%--										<p><span>16.000.000 VNĐ</span> <i class="item_price">13.999.999VNĐ</i></p>--%>
-                            <%--										<form action="#" method="post">--%>
-                            <%--											<input type="hidden" name="cmd" value="_cart" />--%>
-                            <%--											<input type="hidden" name="add" value="1" /> --%>
-                            <%--											<input type="hidden" name="w3ls_item" value="Laptop pin trâu" /> --%>
-                            <%--											<input type="hidden" name="amount" value="13.999.999" />   --%>
-                            <%--											<button type="submit" class="w3ls-cart">Thêm vào giỏ hàng</button>--%>
-                            <%--										</form>--%>
-                            <%--									</div>--%>
-                            <%--								</div>--%>
-                            <%--								<div class="col-md-4 agile_ecommerce_tab_left">--%>
-                            <%--									<div class="hs-wrapper">--%>
-                            <%--										<img src="images/laptopsieure01.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<img src="images/laptopsieure02.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<img src="images/laptopsieure03.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<img src="images/laptopsieure04.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<img src="images/laptopsieure05.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<img src="images/laptopsieure06.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<img src="images/laptopsieure07.jpg" alt=" " class="img-responsive" />--%>
-                            <%--										<!-- <img src="images/6.jpg" alt=" " class="img-responsive" /> -->--%>
-                            <%--										<div class="w3_hs_bottom">--%>
-                            <%--											<ul>--%>
-                            <%--												<li>--%>
-                            <%--													<a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>--%>
-                            <%--												</li>--%>
-                            <%--											</ul>--%>
-                            <%--										</div>--%>
-                            <%--									</div>--%>
-                            <%--									<h5><a href="single.html">Laptop siêu rẻ</a></h5>--%>
-                            <%--									<div class="simpleCart_shelfItem">--%>
-                            <%--										<p><span>8.000.000 VNĐ</span> <i class="item_price">5.999.999VNĐ</i></p>--%>
-                            <%--										<form action="#" method="post">--%>
-                            <%--											<input type="hidden" name="cmd" value="_cart" />--%>
-                            <%--											<input type="hidden" name="add" value="1" /> --%>
-                            <%--											<input type="hidden" name="w3ls_item" value="Laptop siêu rẻ" /> --%>
-                            <%--											<input type="hidden" name="amount" value="5.999.999" />   --%>
-                            <%--											<button type="submit" class="w3ls-cart">Thêm vào giỏ hàng</button>--%>
-                            <%--										</form>--%>
-                            <%--									</div>--%>
-                            <%--								</div>--%>
                             <div class="clearfix"></div>
                         </div>
                     </div>

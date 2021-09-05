@@ -1,3 +1,4 @@
+<%@ page import="vn.edu.nlu.Beans.Product" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -255,6 +256,10 @@
                                 </c:forEach>
                                 </tbody>
                             </table>
+                            <% List<Product> listProducts = (List<Product>) request.getAttribute("List");
+                                if (listProducts.size() == 0) {
+                            %> <h1 style="margin: auto">Không có sản phẩm nào</h1>
+                            <%}%>
                             <ul class="pagination" style="margin-left: 60px">
                                 <% for (int i = 1; i <= sumPage; i++) {
                                     if (request.getAttribute("SearchKey") != null) {
@@ -553,7 +558,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <!--                        start product-->
+                                <!-- start product-->
                                 <tr>
                                     <td>1</td>
                                     <td>Laptop</td>
